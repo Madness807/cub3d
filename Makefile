@@ -4,10 +4,19 @@ NAME			=		cub3d
 
 #***** Sources / Objs *****#
 
-SRC				=		srcs/main.c\
+SRC				=		srcs/cub3d.c \
+						srcs/exit.c \
+						srcs/moove_player.c\
+						srcs/read_map.c\
+						srcs/write_map.c\
+						srcs/check_map.c\
+						srcs/init_content.c\
+						srcs/check_map_Pathf.c\
+						srcs/error.c\
+						srcs/events.c
 
-
-OBJS			=		$(addprefix obj/, $(SRC:.c=.o))
+OBJ_DIR			=		obj/
+OBJS			=		$(patsubst srcs/%,$(OBJ_DIR)%,$(SRC:.c=.o))
 
 MAKEFLAGS += --no-print-directory
 
@@ -70,9 +79,9 @@ start:
 logo :
 			@$(MSHELL)	
 
-#%.o:		%.c ./libft/libft.h ./so_long.h Makefile
-#			@$(CC) $(CFLAGS) -c $< -o $@
-#			@$(CHARG_LINE)
+$(OBJ_DIR)%.o: srcs/%.c
+	@mkdir -p $(OBJ_DIR)
+	$(GCC) $(CFLAGS) -c $< -o $@
 
 $(NAME) :	${OBJS}
 			@$(BS_N)
@@ -88,16 +97,12 @@ l :
 			@$(MMLX)
 			$(GCC) $(L) $(SRC) $(LIBFT) $(MINILBX) -o $(NAME)
 
-#l :			${OBJS}
-#			${MLIBFT} all
-#			${CC} ${L} -o ${NAME} ${OBJS} ${MLX} ${LIBFT} 
-#			@$(END_COMP)
 
 #***** Clean *****#
 
 clean:
 			@$(S_OBJS)
-			@${RM} ${OBJS}
+			@${RM} -r $(OBJ_DIR)
 			@${MLIBFT} clean
 			@${MMLX} clean
 

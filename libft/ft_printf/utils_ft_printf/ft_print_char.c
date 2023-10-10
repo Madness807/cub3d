@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_print_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joterrett <joterrett@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/10 18:34:14 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/10 18:46:30 by joterret         ###   ########.fr       */
+/*   Created: 2022/11/09 07:08:27 by jo                #+#    #+#             */
+/*   Updated: 2022/12/21 15:30:42 by joterrett        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3D.h"
+#include "libft.h"
 
-int main(void)
+int	ft_print_char(int c)
 {
-	printf("HELLO CUBE");
-	return (0);
+	write(1, &c, 1);
+	return (1);
 }
