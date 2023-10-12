@@ -6,7 +6,7 @@
 /*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/12 16:40:26 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/12 18:36:07 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@
 # define KEY_LEFT			0
 # define KEY_CLOSE_WINDOW 	53
 
-// Sprite
-
 // Images
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -69,8 +67,20 @@ typedef struct s_img
 
 }t_img;
 
+typedef struct s_map
+{
+	char 	*NO;
+	char	*SO;
+	char 	*WE;
+	char 	*EA;
+	char	*F;
+	char	*C;
+}t_map;
+
+
 typedef struct s_cub
 {
+	t_map	*map;
 	int		nbr_exit;
 	char	**tab_map;
 	void	*mlx_p;
