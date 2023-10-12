@@ -22,8 +22,8 @@ MAKEFLAGS += --no-print-directory
 
 #***** Libft *****#
 
-LIBFT			=		./libft/libft.a
-MLIBFT			=		@$(MAKE) -C libft
+LIBFT			=		./lib/libft/libft.a
+MLIBFT			=		@$(MAKE) -C lib/libft
 
 #***** MLX *****#
 
@@ -88,7 +88,7 @@ $(NAME) :	${OBJS}
 			${CC} ${CFLAGS} -o ${NAME} ${OBJS} ${LIBFT} $(MINILBX)
 			@$(END_COMP)
 
-# $(NAME) :
+#$(NAME) :
 			# $(GCC) $(FLAGS) $(SRC) $(LIBFT) $(MINILBX) -o $(NAME)
 			
 

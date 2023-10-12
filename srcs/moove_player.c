@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   moove_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joterrett <joterrett@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 19:22:29 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/10 20:45:37 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/10 22:56:52 by joterrett        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include/cub3D.h"
 
 void	moove_up(t_slg *slg)
 {

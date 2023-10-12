@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init_content.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joterrett <joterrett@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 21:39:09 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/10 20:45:35 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/10 22:56:56 by joterrett        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include/cub3D.h"
 
 void	init_var(t_slg *slg)
 {

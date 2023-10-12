@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joterrett <joterrett@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/10 20:44:11 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/11 19:50:36 by joterrett        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef CUB3D_H
+# define CUB3D_H
 
 // LIBRAIRIE
-# include	"../libft/libft.h"
-# include	"../mlx/mlx.h"
+# include	"../lib/libft/libft.h"
+# include	"../lib/mlx.h"
 # include	<stdio.h>
 
 // TOUCHE DE DEPLACEMENT

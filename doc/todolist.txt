@@ -1,0 +1,54 @@
+Marche à Suivre pour le Projet Cub3D
+
+1. Compréhension du Projet
+Étude du Ray-Casting :
+Comprenez la technique du ray-casting et comment elle est utilisée dans les graphiques 3D.
+Étudiez "Wolfenstein 3D" pour comprendre comment le ray-casting a été appliqué dans le jeu.
+Exigences du Projet :
+Lisez en détail le document PDF pour comprendre toutes les exigences et les objectifs du projet.
+
+2. Planification du Projet
+Décomposition en Tâches :
+Divisez le projet en plusieurs petites tâches ou modules.
+Planification Temporelle :
+Attribuez un temps estimé pour chaque tâche ou module.
+Créez un calendrier du projet en tenant compte des délais.
+
+3. Environnement de Développement
+Configuration :
+Configurez votre environnement de développement avec tous les outils et bibliothèques nécessaires.
+Assurez-vous que la "minilibX" est correctement configurée et fonctionnelle.
+
+4. Développement du Labyrinthe
+Modélisation :
+Créez un modèle de labyrinthe et déterminez comment le stocker (peut-être dans un tableau 2D).
+Visualisation :
+Déterminez comment afficher le labyrinthe à l'écran avec la minilibX.
+Navigation :
+Implémentez la logique pour permettre à l'utilisateur de naviguer à travers le labyrinthe.
+
+5. Implémentation du Ray-Casting
+Algorithme de Ray-Casting :
+Comprenez et implémentez l'algorithme de ray-casting pour gérer la projection 3D du labyrinthe.
+Rendu Graphique :
+Utilisez la minilibX pour afficher les graphiques générés par le ray-casting.
+
+6. Contrôles Utilisateur
+Entrée Utilisateur :
+Implémentez les contrôles utilisateur pour permettre la navigation à travers le labyrinthe.
+Événements :
+Gérez les événements clés et les interactions utilisateur.
+
+7. Test et Debug
+Tests Unitaires :
+Écrivez des tests pour chaque fonction et module.
+Tests d'Intégration :
+Testez le système dans son ensemble et assurez-vous que tout fonctionne comme prévu.
+Débogage :
+Identifiez et résolvez tous les bugs et problèmes.
+
+8. Optimisation et Peaufinage
+Performance :
+Optimisez le code pour garantir de bonnes performances et une expérience utilisateur fluide.
+Améliorations Graphiques :
+Peaufinez les graphiques et assurez-vous que le rendu est aussi réaliste que possible.

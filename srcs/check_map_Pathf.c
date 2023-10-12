@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_Pathf.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joterrett <joterrett@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 13:47:32 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/10 20:45:23 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/10 22:56:54 by joterrett        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include/cub3D.h"
 
 void	pathf_init(t_slg *slg)
 {
