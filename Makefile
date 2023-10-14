@@ -4,7 +4,9 @@ NAME			=		cub3d
 
 # Sources / Objs
 SRC				=		srcs/main.c\
+						srcs/init.c\
 						srcs/parsing/read_map_cub.c\
+						srcs/error/print_error.c\
 						srcs/test/verbos.c
 
 OBJ_DIR			=		obj/

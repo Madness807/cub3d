@@ -6,7 +6,7 @@
 /*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/14 21:10:37 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/14 21:30:32 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,12 +88,9 @@ typedef struct s_map
 typedef struct s_cub
 {
 	t_map	*map;
-	int		nbr_exit;
 	void	*mlx_p;
 	void	*win_p;
-	t_img	*wall;
-	t_img	*player;
-	t_img	*exit;
+
 }t_cub;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -111,6 +108,7 @@ void	fill_data_struct(t_cub *cub3d);
 //		Gestion de la map
 
 //		Gestion des erreurs
+void	print_error(void);
 
 //		Utils
 
