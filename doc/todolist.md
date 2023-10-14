@@ -19,7 +19,7 @@
 ## PHASE 2
 ## Parsing
 [ ] transformer le ficher map en tableau en remplissant la les strucutres
-[ ]
+[ ] Ne pas dependre de l ordre des lignes pour remplir les elements de la map
 
 ### MLX
 [ ] initialiser la mlx proprement

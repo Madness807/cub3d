@@ -1,37 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   verbos.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/14 19:48:41 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/14 19:49:35 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-int main(int argc, char **argv)
+void	print_struct_data(t_cub *cub3d)
 {
-	t_cub cub3d;
-	
-	if (argc < 2)
-		return (1);
-
-	//SECTION - Parsing
-	check_map_file(argv[1]);
-	read_map_file(&cub3d);
-	fill_data_struct(&cub3d);
-
-	//SECTION - temp test zone
-	print_struct_data(&cub3d);
-
-
-	return (0);
+	(void)cub3d;
+	printf("je suis dans print_struct_data\n");
+	return ;
 }
-
-// il faut ouvire le fichier map avec open 
-// il faut lire le fichier avec get next line pour remplire un tableau
-// reprendre ce tableau est remplire les elements de la structe avec
-// faire des test d impressions des elements de la structe pour verifier qu ils corespondent a ce quon attend

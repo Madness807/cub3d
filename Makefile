@@ -3,7 +3,10 @@
 NAME			=		cub3d
 
 # Sources / Objs
-SRC				=		srcs/main.c
+SRC				=		srcs/main.c\
+						srcs/parsing/read_map_cub.c\
+						srcs/test/verbos.c
+
 OBJ_DIR			=		obj/
 OBJS			=		$(patsubst srcs/%,$(OBJ_DIR)%,$(SRC:.c=.o))
 
@@ -21,8 +24,9 @@ all: $(LIBFT) $(NAME)
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
-$(OBJ_DIR)%.o: srcs/%.c
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJ_DIR)%.o: srcs/%.c 
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -I./include -c $< -o $@
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT)

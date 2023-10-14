@@ -6,7 +6,7 @@
 /*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/12 18:36:07 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/14 21:10:37 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,17 @@
 # define KEY_LEFT			0
 # define KEY_CLOSE_WINDOW 	53
 
-// Images
+//message erreurs
+# define err_extension			"Error\nMauvaise extension de fichier de map"
+# define err_map_wall			"Error\nLa map n'est pas fermee par des murs"
+# define err_map_sprite_path	"Error\nLa texture n'existe pas"
+# define err_map_color			"Error\nNumero de couleur plus grand que 255"
+# define err_map_no_valid_char	"Error\nValeur invalide dans la map"
 
 ////////////////////////////////////////////////////////////////////////////////
 // 									enum								      //
 ////////////////////////////////////////////////////////////////////////////////
+
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -69,6 +75,7 @@ typedef struct s_img
 
 typedef struct s_map
 {
+	char	**map_tab;
 	char 	*NO;
 	char	*SO;
 	char 	*WE;
@@ -82,13 +89,10 @@ typedef struct s_cub
 {
 	t_map	*map;
 	int		nbr_exit;
-	char	**tab_map;
 	void	*mlx_p;
 	void	*win_p;
 	t_img	*wall;
 	t_img	*player;
-	t_img	*item;
-	t_img	*floor;
 	t_img	*exit;
 }t_cub;
 
@@ -96,16 +100,25 @@ typedef struct s_cub
 // 							Prototype de fonctions						      //
 ////////////////////////////////////////////////////////////////////////////////
 
-// init
+//		Init
+void	init_struct(t_cub *cub3d);
 
-// Gestion de la map
+//		Parsing
+void	check_map_file(char *input_file);
+void	read_map_file(t_cub *cub3d);
+void	fill_data_struct(t_cub *cub3d);
 
-//Gestion des erreurs
+//		Gestion de la map
 
-// Utils
+//		Gestion des erreurs
 
-// Utils Moove 
+//		Utils
 
-// Gestion de events 
+//		Utils Moove 
+
+//		Gestion de events 
+
+//		Test
+void	print_struct_data(t_cub *cub3d);
 
 #endif
