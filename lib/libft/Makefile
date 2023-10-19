@@ -90,8 +90,8 @@ start:
 		@${START}
 
 %.o: %.c
-		@${CC} ${CFLAGS} -c $< -o $@
-		@printf "${GREEN}%-50s\r${ENDCOLOR}" $@
+	@${CC} ${CFLAGS} -c $< -o $@
+	@printf "${GREEN}%-50s\r${ENDCOLOR}" $@
 
 ${NAME}: ${OBJS}
 		@$(BS_N)

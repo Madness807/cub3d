@@ -6,7 +6,7 @@
 /*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 19:14:49 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/19 17:30:08 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/19 20:49:51 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,27 +35,26 @@ int	key_hook(int key, t_game *game)
 		game->player->angle -= 0.1;
 		if (game->player->angle < 0)
 			game->player->angle += 2 * PI;
-		game->player->deltaX = cos(game->player->angle) * 5;
-		game->player->deltaY = sin(game->player->angle) * 5;
-
+		game->player->delta_x = cos(game->player->angle) * 5;
+		game->player->delta_y = sin(game->player->angle) * 5;
 	}
 	else if (key == K_DOWN)
 	{
-		game->player->posx -= game->player->deltaX;
-		game->player->posy -= game->player->deltaY;
+		game->player->posx -= game->player->delta_x;
+		game->player->posy -= game->player->delta_y;
 	}
 	else if (key == K_RIGHT)
 	{
 		game->player->angle += 0.1;
 		if (game->player->angle > 2 * PI)
 			game->player->angle -= 2 * PI;
-		game->player->deltaX = cos(game->player->angle) * 5;
-		game->player->deltaY = sin(game->player->angle) * 5;
+		game->player->delta_x = cos(game->player->angle) * 5;
+		game->player->delta_y = sin(game->player->angle) * 5;
 	}
 	else if (key == K_UP)
 	{
-		game->player->posx += game->player->deltaX;
-		game->player->posy += game->player->deltaY;
+		game->player->posx += game->player->delta_x;
+		game->player->posy += game->player->delta_y;
 	}
 	//check_angle(game);
 	render(game);

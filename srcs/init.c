@@ -6,7 +6,7 @@
 /*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:10:12 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/19 19:06:21 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/19 20:50:21 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void	put_pixel_to_img(t_img *img, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-t_img *create_new_img(t_game *game)
+t_img	*create_new_img(t_game *game)
 {
-	t_img *img;
-	
+	t_img	*img;
+
 	img = malloc(sizeof(t_img *) + 100);
 	img->img = mlx_new_image(game->mlx, SCREEN_W, SCREEN_H);
 	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->line_length,
@@ -31,7 +31,7 @@ t_img *create_new_img(t_game *game)
 	return (img);
 }
 
-t_game *init_game(void)
+t_game	*init_game(void)
 {
 	t_game *game;
 
@@ -46,9 +46,8 @@ t_game *init_game(void)
 	game->player->posx = 750;
 	game->player->posy = 750;
 	game->player->angle = 0;
-	game->player->deltaX = cos(game->player->angle) * 5;
-	game->player->deltaY = sin(game->player->angle) * 5;
+	game->player->delta_x = cos(game->player->angle) * 5;
+	game->player->delta_y = sin(game->player->angle) * 5;
 	render(game);
-	
 	return (game);
 }

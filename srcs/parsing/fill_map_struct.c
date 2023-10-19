@@ -6,14 +6,14 @@
 /*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/19 19:06:43 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/19 20:47:01 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
 /*
-void	fill_map_struct(t_game *cub3d)
+void	fill_map_struct(t_game *game)
 {
 	(void)cub3d;
 	return ;

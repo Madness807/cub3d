@@ -6,7 +6,7 @@
 /*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/19 19:07:11 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/19 20:47:55 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,19 +60,16 @@
 # define DR					0.0174533
 
 //message erreurs
-# define err_extension			"Error\nMauvaise extension de fichier de map"
-# define err_map_wall			"Error\nLa map n'est pas fermee par des murs"
-# define err_map_sprite_path	"Error\nLa texture n'existe pas"
-# define err_map_color			"Error\nNumero de couleur plus grand que 255"
-# define err_map_no_valid_char	"Error\nValeur invalide dans la map"
-# define err_cant_open_file		"Error\nImpossible d'ouvrir le fichier"
+# define ERR_EXTENSION			"ERROR\nMAUVAISE EXTENSION DE FICHIER DE MAP"
+# define ERR_MAP_WALL			"ERROR\nLA MAP N'EST PAS FERMEE PAR DES MURS"
+# define ERR_MAP_SPRITE_PATH	"ERROR\nLA TEXTURE N'EXISTE PAS"
+# define ERR_MAP_COLOR			"ERROR\nNUMERO DE COULEUR PLUS GRAND QUE 255"
+# define ERR_MAP_NO_VALID_CHAR	"ERROR\nVALEUR INVALIDE DANS LA MAP"
+# define ERR_CANT_OPEN_FILE		"ERROR\nIMPOSSIBLE D'OUVRIR LE FICHIER"
 
 ////////////////////////////////////////////////////////////////////////////////
 // 									enum								      //
 ////////////////////////////////////////////////////////////////////////////////
-
-
-
 ////////////////////////////////////////////////////////////////////////////////
 // 									structs								      //
 ////////////////////////////////////////////////////////////////////////////////
@@ -80,49 +77,49 @@
 typedef struct s_game {
 	void				*mlx;
 	void				*win;
-	struct s_player 	*player;
-	struct s_img 		*img;
+	struct s_player		*player;
+	struct s_img		*img;
 	int					**map;
 	struct s_mapfile	*mapfile;
-	int color;
+	int					color;
 }t_game;
 
 typedef struct s_img {
-	void			*img;
-	char			*addr;
-	int				bpp;
-	int				line_length;
-	int				endian;
+	void				*img;
+	char				*addr;
+	int					bpp;
+	int					line_length;
+	int					endian;
 }t_img;
 
 typedef struct s_player {
-	double			posx;
-	double			posy;
-	double			deltaX;
-	double			deltaY;
-	double			angle;
+	double				posx;
+	double				posy;
+	double				delta_x;
+	double				delta_y;
+	double				angle;
 }t_player;
 
 typedef struct s_var {
-	double			rx;
-	double			ry;
-	double			ra;
-	double			xo;
-	double			yo;
-	int				dof;
-	int				r;
+	double				rx;
+	double				ry;
+	double				ra;
+	double				xo;
+	double				yo;
+	int					dof;
+	int					r;
 }t_var;
 
 typedef struct s_mapfile
 {
-	int		nbr_line;
-	char	**map_tab;
-	char 	*NO;
-	char	*SO;
-	char 	*WE;
-	char 	*EA;
-	char	*F;
-	char	*C;
+	int					nbr_line;
+	char				**map_tab;
+	char				*no;
+	char				*so;
+	char				*we;
+	char				*ea;
+	char				*f;
+	char				*c;
 }t_mapfile;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -130,7 +127,7 @@ typedef struct s_mapfile
 ////////////////////////////////////////////////////////////////////////////////
 
 //		Init
-t_game 	*init_game(void);
+t_game	*init_game(void);
 void	init_struct(t_game *game);
 
 //		Parsing
@@ -147,7 +144,7 @@ void	print_error(void);
 //		Utils
 double	angle_corrector(double angle);
 double	return_lowest_int(double a, double b, t_game *game);
-t_img 	*create_new_img(t_game *game);
+t_img	*create_new_img(t_game *game);
 
 //		Hooks
 int		key_hook(int key, t_game *game);
@@ -155,7 +152,7 @@ int		key_hook(int key, t_game *game);
 //		render
 void	render(t_game *game);
 void	put_pixel_to_img(t_img *img, int x, int y, int color);
-int	w_colors(t_game *game, int x, int y);
+int		w_colors(t_game *game, int x, int y);
 
 //		Rays
 double	ray_collision(t_game *game, t_var *var);
@@ -163,7 +160,7 @@ void	draw_rays(t_game *game, int depth, t_var *var);
 void	ray_caster(t_game *game);
 
 //		2D
-void 	draw_cubes(t_game *game,int x, int y, int color);
+void	draw_cubes(t_game *game, int x, int y, int color);
 void	draw_player(t_game *game);
 
 //		3D
