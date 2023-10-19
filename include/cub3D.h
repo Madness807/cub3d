@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
+/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/19 07:03:58 by efailla          ###   ########.fr       */
+/*   Updated: 2023/10/19 17:30:43 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@
 # define RESET "\x1B[0m"
 
 //key binding
-# define KEY_UP 			13
-# define KEY_RIGHT			2
-# define KEY_DOWN			1
-# define KEY_LEFT			0
-# define K_ESC				53
+# define K_UP 			13
+# define K_RIGHT		2
+# define K_DOWN			1
+# define K_LEFT			0
+# define K_ESC			53
 
 //presets jeu
 # define SCREEN_W			1000
