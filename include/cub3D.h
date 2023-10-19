@@ -6,7 +6,7 @@
 /*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/14 21:30:32 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/18 18:26:33 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@
 # define err_map_sprite_path	"Error\nLa texture n'existe pas"
 # define err_map_color			"Error\nNumero de couleur plus grand que 255"
 # define err_map_no_valid_char	"Error\nValeur invalide dans la map"
+# define err_cant_open_file		"Error\nImpossible d'ouvrir le fichier"
 
 ////////////////////////////////////////////////////////////////////////////////
 // 									enum								      //
@@ -73,8 +74,9 @@ typedef struct s_img
 
 }t_img;
 
-typedef struct s_map
+typedef struct s_mapfile
 {
+	int		nbr_line;
 	char	**map_tab;
 	char 	*NO;
 	char	*SO;
@@ -82,14 +84,13 @@ typedef struct s_map
 	char 	*EA;
 	char	*F;
 	char	*C;
-}t_map;
-
+}t_mapfile;
 
 typedef struct s_cub
 {
-	t_map	*map;
-	void	*mlx_p;
-	void	*win_p;
+	t_mapfile	*mapfile;
+	void		*mlx_p;
+	void		*win_p;
 
 }t_cub;
 
@@ -102,8 +103,10 @@ void	init_struct(t_cub *cub3d);
 
 //		Parsing
 void	check_map_file(char *input_file);
-void	read_map_file(t_cub *cub3d);
-void	fill_data_struct(t_cub *cub3d);
+void	build_map_tab(t_cub *cub3d, char *argv);
+void	write_map_tab(t_cub *cub3d, char *argv);
+int		read_map_file(char *argv);
+//void	fill_map_struct(t_cub *cub3d);
 
 //		Gestion de la map
 

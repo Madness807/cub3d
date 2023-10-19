@@ -6,17 +6,17 @@
 /*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/14 21:25:59 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/18 18:32:59 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-
 void	init_struct_cub(t_cub *cub3d)
 {
 	(void)cub3d;
-
+	cub3d->mlx_p = 0;
+	cub3d->win_p = 0;
 	//TODO - initialisation de la structure principal
 	return ;
 }

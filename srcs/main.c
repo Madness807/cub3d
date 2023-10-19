@@ -6,7 +6,7 @@
 /*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/14 19:48:41 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/18 18:27:43 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,20 @@
 
 int main(int argc, char **argv)
 {
+	
 	t_cub cub3d;
 	
 	if (argc < 2)
 		return (1);
 
+	
 	//SECTION - Parsing
-	check_map_file(argv[1]);
-	read_map_file(&cub3d);
-	fill_data_struct(&cub3d);
+	//check_map_file(argv[1]);
+	build_map_tab(&cub3d, argv[1]);
+	//fill_map_struct(&cub3d);
 
 	//SECTION - temp test zone
-	print_struct_data(&cub3d);
+	//print_struct_data(&cub3d);
 
 
 	return (0);

@@ -6,29 +6,82 @@
 /*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/14 19:49:27 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/19 16:24:11 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-void	check_map_file(char *input_file)
+void	check_map_file(char *input_file)//TODO - verif extension
 {
 	(void)input_file;
-	printf("je suis dans check_map_file\n");
 	return ;
 }
 
-void	read_map_file(t_cub *cub3d)
+int		read_map_file(char *argv)
 {
-	(void)cub3d;
-	printf("je suis dans read_map_file\n");
+	char	*line;
+	int		fd;
+	int 	nbr_line;
+
+	line = "";
+	nbr_line = 0;
+	fd = open(argv, O_RDONLY);
+	if (fd == -1)
+		printf(err_cant_open_file);
+	while (line)
+	{
+		line = get_next_line(fd);
+		nbr_line++;
+	}
+	close (fd);
+	return (nbr_line);
+}
+
+void	write_map_tab(t_cub *cub3d, char *argv)
+{
+
+	char	*line;
+	int		fd;
+	int 	i;
+
+	line = "";
+	i = 0;
+	cub3d->mapfile->map_tab = malloc(cub3d->mapfile->nbr_line * sizeof(char*));
+
+	fd = open(argv, O_RDONLY);
+	if (fd == -1)
+		printf(err_cant_open_file);
+		
+	while (line)
+	{
+		line = get_next_line(fd);
+		if (line == NULL)
+			break ;
+		int line_len = ft_strlen(line) -1;
+		cub3d->mapfile->map_tab[i] = malloc(line_len * sizeof(char));
+		cub3d->mapfile->map_tab[i] = line;
+		i++;
+	}
+	cub3d->mapfile->map_tab[i] = 0;
+
+	
+	i = 0;
+	while (cub3d->mapfile->map_tab[i])
+	{
+		printf("%s",cub3d->mapfile->map_tab[i]);
+		i++;
+	}
+	
+
+	close (fd);
 	return ;
 }
 
-void	fill_data_struct(t_cub *cub3d)
+void	build_map_tab(t_cub *cub3d, char *argv)
 {
-	(void)cub3d;
-	printf("je suis dans fill_data_struct\n");
+	cub3d->mapfile->nbr_line = read_map_file(argv);
+	write_map_tab(cub3d, argv);
 	return ;
 }
+
