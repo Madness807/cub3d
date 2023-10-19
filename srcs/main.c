@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
+/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:04:27 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/19 06:58:14 by efailla          ###   ########.fr       */
+/*   Updated: 2023/10/19 18:50:22 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,14 +94,21 @@ int	w_colors(t_game *game, int x, int y)
 	return (0);
 }
 
-
 int	main(int ac, char **av)
 {
 	t_game *game;
 
+	game = NULL;
+
 	(void)ac;
 	(void)av;
+	if (ac < 2)
+		return (1);
+
+
 	game = init_game();
+	build_map_tab(game, av[1]);
+	
 	//mlx_key_hook(game->win, key_hook, game);
 	mlx_hook(game->win, 2, (1L<<0), key_hook, game);
 	mlx_loop(game->mlx);

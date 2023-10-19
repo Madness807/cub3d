@@ -6,7 +6,7 @@
 /*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/19 17:30:43 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/19 17:57:37 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,12 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 typedef struct s_game {
-	void			*mlx;
-	void			*win;
-	struct s_player *player;
-	struct s_img 	*img;
-	int				**map;
+	void				*mlx;
+	void				*win;
+	struct s_player 	*player;
+	struct s_img 		*img;
+	int					**map;
+	struct s_mapfile	*mapfile;
 	int color;
 }t_game;
 
@@ -111,18 +112,17 @@ typedef struct s_var {
 	int				r;
 }t_var;
 
-// typedef struct s_map
-// {
-// 	char	**map_tab;
-// 	char 	*NO;
-// 	char	*SO;
-// 	char 	*WE;
-// 	char 	*EA;
-// 	char	*F;
-// 	char	*C;
-// }t_map;
-
-
+typedef struct s_mapfile
+{
+	int		nbr_line;
+	char	**map_tab;
+	char 	*NO;
+	char	*SO;
+	char 	*WE;
+	char 	*EA;
+	char	*F;
+	char	*C;
+}t_mapfile;
 
 ////////////////////////////////////////////////////////////////////////////////
 // 							Prototype de fonctions						      //
@@ -130,8 +130,13 @@ typedef struct s_var {
 
 //		Init
 t_game 	*init_game(void);
+void	init_struct(t_game *game);
 
 //		Parsing
+void	check_map_file(char *input_file);
+void	build_map_tab(t_game *game, char *argv);
+void	write_map_tab(t_game *game, char *argv);
+int		read_map_file(char *argv);
 
 //		Gestion de la map
 
@@ -166,5 +171,8 @@ void	draw_screen_line(t_game *game, t_var *var, double len, int x);
 
 //		Test
 int		**map_alloc(t_game *game);
+
+//		Test
+void	print_struct_data(t_game *cub3d);
 
 #endif

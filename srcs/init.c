@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
+/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:10:12 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/19 06:58:37 by efailla          ###   ########.fr       */
+/*   Updated: 2023/10/19 18:49:17 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ t_game *init_game(void)
 	game = malloc(sizeof(t_game));
 	game->player = malloc(sizeof(t_player));
 	game->mlx = mlx_init();
+	game->mapfile = malloc(sizeof(t_mapfile *));
 	game->win = mlx_new_window(game->mlx, SCREEN_W, SCREEN_H, "cub3fesses");
 	game->img = create_new_img(game);
 	//game->img = malloc(sizeof(t_img *));
