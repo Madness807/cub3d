@@ -3,44 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
+/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/14 21:25:59 by joterret         ###   ########.fr       */
+/*   Created: 2023/10/12 14:10:12 by efailla           #+#    #+#             */
+/*   Updated: 2023/10/19 06:58:37 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cub3D.h>
+#include "cub3D.h"
 
-
-void	init_struct_cub(t_cub *cub3d)
+void	put_pixel_to_img(t_img *img, int x, int y, int color)
 {
-	(void)cub3d;
+	char	*dst;
 
-	//TODO - initialisation de la structure principal
-	return ;
+	dst = img->addr + (y * img->line_length + x * (img->bpp / 8));
+	*(unsigned int*)dst = color;
 }
 
-void	init_struct_map(t_cub *cub3d)
+t_img *create_new_img(t_game *game)
 {
-		(void)cub3d;
-
-	//TODO - initialisation de la structure map
-	return ;
+	t_img *img;
+	
+	img = malloc(sizeof(t_img *) + 100);
+	img->img = mlx_new_image(game->mlx, SCREEN_W, SCREEN_H);
+	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->line_length,
+								&img->endian);
+	return (img);
 }
 
-void	init_struct_img(t_cub *cub3d)
+t_game *init_game(void)
 {
-	(void)cub3d;
+	t_game *game;
 
-	//TODO - initialisation de la structure image
-	return ;
-}
-
-void	init_cub3d(t_cub *cub3d)
-{
-	init_struct_cub(cub3d);
-	init_struct_map(cub3d);
-	init_struct_img(cub3d);
-	return ;
+	game = malloc(sizeof(t_game));
+	game->player = malloc(sizeof(t_player));
+	game->mlx = mlx_init();
+	game->win = mlx_new_window(game->mlx, SCREEN_W, SCREEN_H, "cub3fesses");
+	game->img = create_new_img(game);
+	//game->img = malloc(sizeof(t_img *));
+	game->map = map_alloc(game);
+	game->player->posx = 750;
+	game->player->posy = 750;
+	game->player->angle = 0;
+	game->player->deltaX = cos(game->player->angle) * 5;
+	game->player->deltaY = sin(game->player->angle) * 5;
+	render(game);
+	
+	return (game);
 }

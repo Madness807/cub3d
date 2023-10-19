@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
+/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/14 21:30:32 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/19 07:03:58 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,19 @@
 # define KEY_RIGHT			2
 # define KEY_DOWN			1
 # define KEY_LEFT			0
-# define KEY_CLOSE_WINDOW 	53
+# define K_ESC				53
+
+//presets jeu
+# define SCREEN_W			1000
+# define SCREEN_H			1000
+# define CUBESIZE			100
+# define FOV				60
+
+//valeurs math
+# define PI					3.1415926
+# define P2					PI / 2
+# define P3					3 * PI / 2
+# define DR					0.0174533
 
 //message erreurs
 # define err_extension			"Error\nMauvaise extension de fichier de map"
@@ -64,46 +76,62 @@
 // 									structs								      //
 ////////////////////////////////////////////////////////////////////////////////
 
-typedef struct s_img
-{
-	void	*sprite;
-	char	*path_xpm;
-	int		largeur;
-	int		longueur;
+typedef struct s_game {
+	void			*mlx;
+	void			*win;
+	struct s_player *player;
+	struct s_img 	*img;
+	int				**map;
+	int color;
+}t_game;
 
+typedef struct s_img {
+	void			*img;
+	char			*addr;
+	int				bpp;
+	int				line_length;
+	int				endian;
 }t_img;
 
-typedef struct s_map
-{
-	char	**map_tab;
-	char 	*NO;
-	char	*SO;
-	char 	*WE;
-	char 	*EA;
-	char	*F;
-	char	*C;
-}t_map;
+typedef struct s_player {
+	double			posx;
+	double			posy;
+	double			deltaX;
+	double			deltaY;
+	double			angle;
+}t_player;
+
+typedef struct s_var {
+	double			rx;
+	double			ry;
+	double			ra;
+	double			xo;
+	double			yo;
+	int				dof;
+	int				r;
+}t_var;
+
+// typedef struct s_map
+// {
+// 	char	**map_tab;
+// 	char 	*NO;
+// 	char	*SO;
+// 	char 	*WE;
+// 	char 	*EA;
+// 	char	*F;
+// 	char	*C;
+// }t_map;
 
 
-typedef struct s_cub
-{
-	t_map	*map;
-	void	*mlx_p;
-	void	*win_p;
-
-}t_cub;
 
 ////////////////////////////////////////////////////////////////////////////////
 // 							Prototype de fonctions						      //
 ////////////////////////////////////////////////////////////////////////////////
 
 //		Init
-void	init_struct(t_cub *cub3d);
+t_game 	*init_game(void);
 
 //		Parsing
-void	check_map_file(char *input_file);
-void	read_map_file(t_cub *cub3d);
-void	fill_data_struct(t_cub *cub3d);
 
 //		Gestion de la map
 
@@ -111,12 +139,32 @@ void	fill_data_struct(t_cub *cub3d);
 void	print_error(void);
 
 //		Utils
+double	angle_corrector(double angle);
+double	return_lowest_int(double a, double b, t_game *game);
+t_img 	*create_new_img(t_game *game);
 
-//		Utils Moove 
+//		Hooks
+int		key_hook(int key, t_game *game);
 
-//		Gestion de events 
+//		render
+void	render(t_game *game);
+void	put_pixel_to_img(t_img *img, int x, int y, int color);
+int	w_colors(t_game *game, int x, int y);
+
+//		Rays
+double	ray_collision(t_game *game, t_var *var);
+void	draw_rays(t_game *game, int depth, t_var *var);
+void	ray_caster(t_game *game);
+
+//		2D
+void 	draw_cubes(t_game *game,int x, int y, int color);
+void	draw_player(t_game *game);
+
+//		3D
+void	draw_screen(t_game *game, t_var *var, double len, int x);
+void	draw_screen_line(t_game *game, t_var *var, double len, int x);
 
 //		Test
-void	print_struct_data(t_cub *cub3d);
+int		**map_alloc(t_game *game);
 
 #endif
