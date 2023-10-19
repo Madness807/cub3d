@@ -6,11 +6,7 @@
 /*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2023/10/18 18:26:33 by joterret         ###   ########.fr       */
-=======
-/*   Updated: 2023/10/19 17:57:37 by joterret         ###   ########.fr       */
->>>>>>> edo
+/*   Updated: 2023/10/19 19:07:11 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +95,6 @@ typedef struct s_img {
 	int				endian;
 }t_img;
 
-<<<<<<< HEAD
-=======
 typedef struct s_player {
 	double			posx;
 	double			posy;
@@ -119,7 +113,6 @@ typedef struct s_var {
 	int				r;
 }t_var;
 
->>>>>>> edo
 typedef struct s_mapfile
 {
 	int		nbr_line;
@@ -131,17 +124,6 @@ typedef struct s_mapfile
 	char	*F;
 	char	*C;
 }t_mapfile;
-<<<<<<< HEAD
-
-typedef struct s_cub
-{
-	t_mapfile	*mapfile;
-	void		*mlx_p;
-	void		*win_p;
-
-}t_cub;
-=======
->>>>>>> edo
 
 ////////////////////////////////////////////////////////////////////////////////
 // 							Prototype de fonctions						      //
@@ -153,16 +135,9 @@ void	init_struct(t_game *game);
 
 //		Parsing
 void	check_map_file(char *input_file);
-<<<<<<< HEAD
-void	build_map_tab(t_cub *cub3d, char *argv);
-void	write_map_tab(t_cub *cub3d, char *argv);
-int		read_map_file(char *argv);
-//void	fill_map_struct(t_cub *cub3d);
-=======
 void	build_map_tab(t_game *game, char *argv);
 void	write_map_tab(t_game *game, char *argv);
 int		read_map_file(char *argv);
->>>>>>> edo
 
 //		Gestion de la map
 

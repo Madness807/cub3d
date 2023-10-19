@@ -5,32 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-<<<<<<< HEAD
-/*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/18 18:32:59 by joterret         ###   ########.fr       */
-=======
 /*   Created: 2023/10/12 14:10:12 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/19 18:49:17 by joterret         ###   ########.fr       */
->>>>>>> edo
+/*   Updated: 2023/10/19 19:06:21 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-<<<<<<< HEAD
-void	init_struct_cub(t_cub *cub3d)
-{
-	(void)cub3d;
-	cub3d->mlx_p = 0;
-	cub3d->win_p = 0;
-	//TODO - initialisation de la structure principal
-	return ;
-}
-
-void	init_struct_map(t_cub *cub3d)
-=======
 void	put_pixel_to_img(t_img *img, int x, int y, int color)
->>>>>>> edo
 {
 	char	*dst;
 

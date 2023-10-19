@@ -5,13 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-<<<<<<< HEAD
-/*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/18 18:27:43 by joterret         ###   ########.fr       */
-=======
 /*   Created: 2023/10/12 14:04:27 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/19 18:50:22 by joterret         ###   ########.fr       */
->>>>>>> edo
+/*   Updated: 2023/10/19 19:06:27 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +14,6 @@
 
 int	**map_alloc(t_game *game)
 {
-<<<<<<< HEAD
-	
-	t_cub cub3d;
-	
-	if (argc < 2)
-		return (1);
-
-	
-	//SECTION - Parsing
-	//check_map_file(argv[1]);
-	build_map_tab(&cub3d, argv[1]);
-	//fill_map_struct(&cub3d);
-
-	//SECTION - temp test zone
-	//print_struct_data(&cub3d);
-=======
 	(void)game;
 	int rows = 10;
     int cols = 10;
@@ -84,7 +63,6 @@ double	ray_collision(t_game *game, t_var *var)
 	double	len;
 	int mx;
 	int my;
->>>>>>> edo
 
 	// var->dof = 0;
 	while (var->dof < 10)
