@@ -75,7 +75,7 @@ ENDCOLOR		=		\033[0m
 
 #******Echo********#
 
-START			=		echo "$(BLUE_T)Start compilation LIBFT\n$(ENDCOLOR)"
+START			=		echo "$(BLUE_T)COMPILATION LIBFT\n$(ENDCOLOR)"
 END_COMP_LIB	=		echo "$(BLUE_T)End compilation LIBFT\n$(ENDCOLOR)"
 END_CLEAN	=		echo "$(GREEN)Succes cleaning\n$(ENDCOLOR)"
 CHARG_LINE		=		echo "$(BLUE)    $(ENDCOLOR)\c"
@@ -96,7 +96,8 @@ start:
 ${NAME}: ${OBJS}
 		@$(BS_N)
 		@${AR} ${NAME} ${OBJS}
-		@$(END_COMP_LIB)
+		@printf "\r$(GREEN)DONE$(ENDCOLOR)%-60s\n" ""
+		@echo ""
 
 #***** Clean *****#
 

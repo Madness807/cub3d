@@ -6,7 +6,7 @@
 /*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:04:27 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/19 19:06:27 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/20 05:08:30 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,21 +96,22 @@ int	w_colors(t_game *game, int x, int y)
 
 int	main(int ac, char **av)
 {
-	t_game *game;
+	t_game game;
 
-	game = NULL;
-
-	(void)ac;
 	(void)av;
 	if (ac < 2)
 		return (1);
-
-
-	game = init_game();
-	build_map_tab(game, av[1]);
+	init_map_file(&game);
+	//game = *init_game();
+	build_map_tab(&game, av[1]);
+	print_struct_data(&game);
 	
-	//mlx_key_hook(game->win, key_hook, game);
-	mlx_hook(game->win, 2, (1L<<0), key_hook, game);
-	mlx_loop(game->mlx);
+	//mlx_key_hook(game.win, key_hook, &game);
+	//mlx_hook(game.win, 2, (1L<<0), key_hook, &game);
+	//mlx_loop(game.mlx);
 	return (0);
 }
+
+//NOTE - J 'AI COMMENTER TES PARTIES SI TU LES DECOMMENTE IL FAUT JUSTE 
+//NOTE - COMMENTER LES MIENNES POUR QUE CA MARCHE Y A UN PETIT SOUCI AVEC UN
+//NOTE - INIT ON VERRA CELA IRL

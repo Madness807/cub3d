@@ -6,11 +6,11 @@
 /*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:10:12 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/19 20:50:21 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/20 01:58:52 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include <cub3D.h>
 
 void	put_pixel_to_img(t_img *img, int x, int y, int color)
 {
@@ -38,7 +38,6 @@ t_game	*init_game(void)
 	game = malloc(sizeof(t_game));
 	game->player = malloc(sizeof(t_player));
 	game->mlx = mlx_init();
-	game->mapfile = malloc(sizeof(t_mapfile *));
 	game->win = mlx_new_window(game->mlx, SCREEN_W, SCREEN_H, "cub3fesses");
 	game->img = create_new_img(game);
 	//game->img = malloc(sizeof(t_img *));

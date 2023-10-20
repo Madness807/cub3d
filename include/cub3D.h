@@ -6,7 +6,7 @@
 /*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/19 20:47:55 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/20 01:47:22 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ typedef struct s_mapfile
 //		Init
 t_game	*init_game(void);
 void	init_struct(t_game *game);
+void    init_map_file(t_game *game);
 
 //		Parsing
 void	check_map_file(char *input_file);
@@ -171,6 +172,6 @@ void	draw_screen_line(t_game *game, t_var *var, double len, int x);
 int		**map_alloc(t_game *game);
 
 //		Test
-void	print_struct_data(t_game *cub3d);
+void	print_struct_data(t_game *game);
 
 #endif

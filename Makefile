@@ -2,7 +2,8 @@ NAME			=		cub3d
 
 # Sources / Objs
 SRC				=		srcs/main.c\
-						srcs/init.c\
+						srcs/init/init.c\
+						srcs/init/init_mapfile.c\
 						srcs/parsing/read_map_cub.c\
 						srcs/parsing/fill_map_struct.c\
 						srcs/engine/render.c\
@@ -23,10 +24,10 @@ LIBFT_DIR		=		./lib/libft/
 LIBFT			=		$(LIBFT_DIR)libft.a
 
 # MLX
-MLX_DIR         =       ./lib/mlx/
+MLX_DIR			=		./lib/mlx/
 MLX				=		$(MLX_DIR)libmlx.a
 
-#***** Couleurs *****#
+# Couleurs
 GREEN			=		\033[1;32m
 BG_GREEN		=		\033[42m
 BLUE			=		\033[0;94m
@@ -34,8 +35,8 @@ RED				=		\033[1;31m
 GREY			=		\033[0;37m
 ENDCOLOR		=		\033[0m
 
-#******Echo********#
-START			=		echo "$(BLUE)Start compilation cub3D\n$(ENDCOLOR)"
+# Echo
+START			=		echo "$(BLUE)COMPILATION CUB3D\n$(ENDCOLOR)"
 
 # Compiler and flags
 CC				=		gcc -g
@@ -60,10 +61,14 @@ logo :
 
 $(OBJ_DIR)%.o: srcs/%.c 
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) -I./include -c $< -o $@
+	@printf "${GREEN}Compiling $@...${ENDCOLOR}\r"
+	@sleep 0.1
+	@$(CC) $(CFLAGS) -I./include -c $< -o $@
 
 $(NAME): $(OBJS)
-	$(CC) $(OBJS) -L $(LIBFT_DIR) -lft $(MINILBX) -o $(NAME)
+	@$(CC) $(OBJS) -L $(LIBFT_DIR) -lft $(MINILBX) -o $(NAME)
+	@echo "\n"
+	@echo "$(GREEN)DONE$(ENDCOLOR)"
 
 l :
 	@$(MAKE) -C $(LIBFT_DIR)
