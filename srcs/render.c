@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
+/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 19:16:26 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/19 06:59:21 by efailla          ###   ########.fr       */
+/*   Updated: 2023/10/20 17:44:57 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void	render(t_game *game)
 	//clear la fenetre
 	mlx_clear_window(game->mlx, game->win);
 	//ma fonction pour dessiner, dessiner dans un t_img
-	//draw_map(game);
-	//draw_player(game);
+	draw_map(game);
+	draw_player(game);
 	ray_caster(game);
 	//draw_rays(game);
 	//push ton img sur la window

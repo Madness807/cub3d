@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
+/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:10:12 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/19 18:49:17 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/20 17:12:41 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,15 @@
 void	put_pixel_to_img(t_img *img, int x, int y, int color)
 {
 	char	*dst;
+
+	if (x > SCREEN_W)
+		x = SCREEN_W;
+	if (x < 0)
+		x = 0;
+	if (y > SCREEN_H)
+		y = SCREEN_H;
+	if (y < 0)
+		y = 0;
 
 	dst = img->addr + (y * img->line_length + x * (img->bpp / 8));
 	*(unsigned int*)dst = color;

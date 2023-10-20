@@ -3,14 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
+/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:48:18 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/19 06:59:26 by efailla          ###   ########.fr       */
+/*   Updated: 2023/10/20 17:36:54 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+int coord_map(double x)
+{
+	int n;
+	int limit;
+
+	limit = CUBESIZE / 10 - 1;
+	n = (int)(x) / CUBESIZE;
+	if (n > limit)
+		n = limit;
+	if (n < 0)
+		n = 0;
+	return (n);
+}
 
 double	return_lowest_int(double a, double b, t_game *game)
 {

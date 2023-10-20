@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
+/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/19 17:57:37 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/20 17:45:59 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,15 @@
 # define SCREEN_W			1000
 # define SCREEN_H			1000
 # define CUBESIZE			100
+//# define FOV				150
 # define FOV				60
 
 //valeurs math
 # define PI					3.1415926
 # define P2					PI / 2
 # define P3					3 * PI / 2
-# define DR					0.0174533
+ # define DR					0.0174533
+//# define DR					0.005
 
 //message erreurs
 # define err_extension			"Error\nMauvaise extension de fichier de map"
@@ -147,6 +149,7 @@ void	print_error(void);
 double	angle_corrector(double angle);
 double	return_lowest_int(double a, double b, t_game *game);
 t_img 	*create_new_img(t_game *game);
+int 	coord_map(double x);
 
 //		Hooks
 int		key_hook(int key, t_game *game);
@@ -154,7 +157,7 @@ int		key_hook(int key, t_game *game);
 //		render
 void	render(t_game *game);
 void	put_pixel_to_img(t_img *img, int x, int y, int color);
-int	w_colors(t_game *game, int x, int y);
+int		w_colors(t_game *game, int x, int y);
 
 //		Rays
 double	ray_collision(t_game *game, t_var *var);

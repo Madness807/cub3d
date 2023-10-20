@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rays.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
+/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 23:17:03 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/19 07:02:14 by efailla          ###   ########.fr       */
+/*   Updated: 2023/10/20 17:45:05 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,8 +148,8 @@ void	ray_caster(t_game *game)
 		//len = check_horizontal(game, var, aTan);
 		//len = check_vertical(game, var, aTan);
 		//draw_rays2(game, var);
-		//draw_rays(game, len, var);
-		draw_screen_line(game, var, len, i);
+		draw_rays(game, len, var);
+		//draw_screen_line(game, var, len, i);
 		var->ra += DR;
 		var->ra = angle_corrector(var->ra);
 	}

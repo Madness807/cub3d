@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
+/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:04:27 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/19 18:50:22 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/20 17:36:43 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,7 @@ int	**map_alloc(t_game *game)
 	return (map);
 }
 
-int coord_map(double x)
-{
-	int n;
 
-	n = (int)(x) / 100;
-	if (n > 9)
-		n = 9;
-	if (n < 0)
-		n = 0;
-	return (n);
-}
 double	ray_collision(t_game *game, t_var *var)
 {
 	double	len;
@@ -102,12 +92,12 @@ int	main(int ac, char **av)
 
 	(void)ac;
 	(void)av;
-	if (ac < 2)
-		return (1);
+	// if (ac < 2)
+	// 	return (1);
 
 
 	game = init_game();
-	build_map_tab(game, av[1]);
+	//build_map_tab(game, av[1]);
 	
 	//mlx_key_hook(game->win, key_hook, game);
 	mlx_hook(game->win, 2, (1L<<0), key_hook, game);
