@@ -6,7 +6,7 @@
 /*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:04:27 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/20 05:08:30 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/20 17:36:41 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,12 @@ int	main(int ac, char **av)
 
 	(void)av;
 	if (ac < 2)
+	{
+		printf(ERR_NO_ARGS);
 		return (1);
+	}
 	init_map_file(&game);
-	//game = *init_game();
+	//init_game(&game);
 	build_map_tab(&game, av[1]);
 	print_struct_data(&game);
 	

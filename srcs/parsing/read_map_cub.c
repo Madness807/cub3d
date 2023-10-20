@@ -6,7 +6,7 @@
 /*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/20 05:01:32 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/20 18:18:47 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,3 +97,24 @@ void	build_map_tab(t_game *game, char *argv)
 	write_map_tab(game, argv);
 	return ;
 }
+
+/*
+void	map_squared(t_game *game)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (game->mapfile->map_tab[i])
+	{
+		j = 0;
+		while (game->mapfile->map_tab[i][j])
+		{
+			if (game->mapfile->map_tab[i][j] == " ")
+				game->mapfile->map_tab[i][j] = "1";
+		}
+		i++;
+	}
+	return ;
+}
+*/

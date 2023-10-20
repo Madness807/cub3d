@@ -6,7 +6,7 @@
 /*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:10:12 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/20 01:58:52 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/20 17:35:04 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,35 @@ t_img	*create_new_img(t_game *game)
 	return (img);
 }
 
-t_game	*init_game(void)
+void	init_game(t_game *game)
 {
-	t_game *game;
-
+	//SECTION - MALLOC STRUCTURE PRINCIPAL
 	game = malloc(sizeof(t_game));
+
+	//SECTION - INIT STRUCTURE PRINCIPAL
 	game->player = malloc(sizeof(t_player));
 	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, SCREEN_W, SCREEN_H, "cub3fesses");
 	game->img = create_new_img(game);
 	//game->img = malloc(sizeof(t_img *));
-	game->map = map_alloc(game);
+	//game->map = map_alloc(game);
+
+	//SECTION - INIT STRUCUTRE PLAYER
 	game->player->posx = 750;
 	game->player->posy = 750;
 	game->player->angle = 0;
 	game->player->delta_x = cos(game->player->angle) * 5;
 	game->player->delta_y = sin(game->player->angle) * 5;
+
+	//SECTION - INIT STRUCTURE IMG
+	/*
+	game->img->img = 0;
+	game->img->addr = 0;
+	game->img->bpp = 0;
+	game->img->line_length = 0;
+	game->img->endian = 0;
+	*/
+
 	render(game);
-	return (game);
+	return ;
 }

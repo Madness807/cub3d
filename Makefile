@@ -5,7 +5,6 @@ SRC				=		srcs/main.c\
 						srcs/init/init.c\
 						srcs/init/init_mapfile.c\
 						srcs/parsing/read_map_cub.c\
-						srcs/parsing/fill_map_struct.c\
 						srcs/engine/render.c\
 						srcs/engine/rays.c\
 						srcs/engine/3d.c\

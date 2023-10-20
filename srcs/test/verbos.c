@@ -6,7 +6,7 @@
 /*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/20 05:04:25 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/20 18:07:23 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,16 @@
 
 void	print_struct_data(t_game *game)
 {
-	int i;
+	
+	printf("\n");
+	printf(YEL"GAME CONFIGURATION\n"RESET);
+	printf(YEL"=======================================================\n"RESET);
+	printf("SCREEN_W: \t%d\n", SCREEN_W);
+	printf("SCREEN_H: \t%d\n", SCREEN_H);
+	printf("CUBESIZE: \t%d\n", CUBESIZE);
+	printf("FOV: \t\t%d\n", FOV);
+	printf(YEL"=======================================================\n"RESET);
 
-	i = 0;
 	printf("\n");
 	printf(BLU"DATA STRUCT: mapfile\n"RESET);
 	printf(BLU"=======================================================\n"RESET);
@@ -26,8 +33,9 @@ void	print_struct_data(t_game *game)
 	printf("PATH EAST: \t%s\n",game->mapfile->ea);
 	printf("PATH FLOOR: \t%s",game->mapfile->f);
 	printf("PATH CEILING: \t%s\n",game->mapfile->c);
-	printf("MAP:\n");
+	printf("MAP RAW (char):\n\n");
 
+	int i = 0;
 	while(game->mapfile->map_tab[i])
 	{
 		printf("%s",game->mapfile->map_tab[i]);

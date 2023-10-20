@@ -6,7 +6,7 @@
 /*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/20 01:47:22 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/20 18:18:45 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,13 @@
 # define DR					0.0174533
 
 //message erreurs
-# define ERR_EXTENSION			"ERROR\nMAUVAISE EXTENSION DE FICHIER DE MAP"
-# define ERR_MAP_WALL			"ERROR\nLA MAP N'EST PAS FERMEE PAR DES MURS"
-# define ERR_MAP_SPRITE_PATH	"ERROR\nLA TEXTURE N'EXISTE PAS"
-# define ERR_MAP_COLOR			"ERROR\nNUMERO DE COULEUR PLUS GRAND QUE 255"
-# define ERR_MAP_NO_VALID_CHAR	"ERROR\nVALEUR INVALIDE DANS LA MAP"
-# define ERR_CANT_OPEN_FILE		"ERROR\nIMPOSSIBLE D'OUVRIR LE FICHIER"
+# define ERR_NO_ARGS			"ERROR\nAUCUN ARGUMENT\n"
+# define ERR_EXTENSION			"ERROR\nMAUVAISE EXTENSION DE FICHIER DE MAP\n"
+# define ERR_MAP_WALL			"ERROR\nLA MAP N'EST PAS FERMEE PAR DES MURS\n"
+# define ERR_MAP_SPRITE_PATH	"ERROR\nLA TEXTURE N'EXISTE PAS\n"
+# define ERR_MAP_COLOR			"ERROR\nNUMERO DE COULEUR PLUS GRAND QUE 255\n"
+# define ERR_MAP_NO_VALID_CHAR	"ERROR\nVALEUR INVALIDE DANS LA MAP\n"
+# define ERR_CANT_OPEN_FILE		"ERROR\nIMPOSSIBLE D'OUVRIR LE FICHIER\n"
 
 ////////////////////////////////////////////////////////////////////////////////
 // 									enum								      //
@@ -75,12 +76,12 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 typedef struct s_game {
-	void				*mlx;
-	void				*win;
+	struct s_mapfile	*mapfile;
 	struct s_player		*player;
 	struct s_img		*img;
+	void				*mlx;
+	void				*win;
 	int					**map;
-	struct s_mapfile	*mapfile;
 	int					color;
 }t_game;
 
@@ -114,6 +115,7 @@ typedef struct s_mapfile
 {
 	int					nbr_line;
 	char				**map_tab;
+	int					**map_int;
 	char				*no;
 	char				*so;
 	char				*we;
@@ -127,7 +129,7 @@ typedef struct s_mapfile
 ////////////////////////////////////////////////////////////////////////////////
 
 //		Init
-t_game	*init_game(void);
+void	init_game(t_game *game);
 void	init_struct(t_game *game);
 void    init_map_file(t_game *game);
 
