@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joterrett <joterrett@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:10:12 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/20 17:35:04 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/21 00:51:54 by joterrett        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,19 @@ t_img	*create_new_img(t_game *game)
 
 void	init_game(t_game *game)
 {
-	//SECTION - MALLOC STRUCTURE PRINCIPAL
-	game = malloc(sizeof(t_game));
-
+	
 	//SECTION - INIT STRUCTURE PRINCIPAL
 	game->player = malloc(sizeof(t_player));
+	game->mapfile = malloc(sizeof(t_mapfile));
 	game->mlx = mlx_init();
 	game->win = mlx_new_window(game->mlx, SCREEN_W, SCREEN_H, "cub3fesses");
 	game->img = create_new_img(game);
-	//game->img = malloc(sizeof(t_img *));
+	if (!game->mapfile)
+		exit (1);
 	//game->map = map_alloc(game);
+
+	//SECTION - INIT STRUCTURE MAPFILE
+	init_map_file(game->mapfile);
 
 	//SECTION - INIT STRUCUTRE PLAYER
 	game->player->posx = 750;
@@ -60,6 +63,8 @@ void	init_game(t_game *game)
 	game->img->endian = 0;
 	*/
 
-	render(game);
+	//render(game);
 	return ;
 }
+
+

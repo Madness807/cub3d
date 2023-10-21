@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joterrett <joterrett@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/20 18:18:45 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/20 23:00:06 by joterrett        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ typedef struct s_mapfile
 //		Init
 void	init_game(t_game *game);
 void	init_struct(t_game *game);
-void    init_map_file(t_game *game);
+void    init_map_file(t_mapfile *mapfile);
 
 //		Parsing
 void	check_map_file(char *input_file);

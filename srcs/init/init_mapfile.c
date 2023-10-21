@@ -3,28 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   init_mapfile.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joterrett <joterrett@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:10:12 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/20 02:19:17 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/21 02:02:44 by joterrett        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-void	init_map_file(t_game *game)
+void	init_map_file(t_mapfile *mapfile)
 {
-	game->mapfile = malloc(sizeof(t_mapfile));
-	if (!game->mapfile)
-		exit (1);
-	
-	game->mapfile->nbr_line = 0;
-	game->mapfile->map_tab = NULL;
-	game->mapfile->no = NULL;
-	game->mapfile->so = NULL;
-	game->mapfile->ea = NULL;
-	game->mapfile->we = NULL;
-	game->mapfile->c = NULL;
-	game->mapfile->f = NULL;
+	mapfile->nbr_line = 0;
+	mapfile->map_tab = NULL;
+	mapfile->map_int = NULL;
+	mapfile->no = NULL;
+	mapfile->so = NULL;
+	mapfile->ea = NULL;
+	mapfile->we = NULL;
+	mapfile->c = NULL;
+	mapfile->f = NULL;
 }
-
