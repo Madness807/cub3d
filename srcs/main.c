@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joterrett <joterrett@student.42.fr>        +#+  +:+       +#+        */
+/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:04:27 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/21 00:51:45 by joterrett        ###   ########.fr       */
+/*   Updated: 2023/10/21 20:59:37 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int	main(int ac, char **av)
 	build_map_tab(game, av[1]);
 	print_struct_data(game);
 	
-	//mlx_key_hook(game.win, key_hook, &game);
+	//mlx_key_hook(game->win, key_hook, &game);
 	//mlx_hook(game->win, 2, (1L<<0), key_hook, &game);
 	//mlx_loop(game->mlx);
 	return (0);

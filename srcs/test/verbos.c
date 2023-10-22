@@ -6,7 +6,7 @@
 /*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/20 18:07:23 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/22 01:36:27 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,19 @@ void	print_struct_data(t_game *game)
 	printf("\n");
 	printf(BLU"DATA STRUCT: mapfile\n"RESET);
 	printf(BLU"=======================================================\n"RESET);
-	printf("PATH NORD: \t%s",game->mapfile->no);
-	printf("PATH SOUTH: \t%s",game->mapfile->so);
-	printf("PATH WEST: \t%s",game->mapfile->we);
+	printf("PATH NORD: \t%s\n",game->mapfile->no);
+	printf("PATH SOUTH: \t%s\n",game->mapfile->so);
+	printf("PATH WEST: \t%s\n",game->mapfile->we);
 	printf("PATH EAST: \t%s\n",game->mapfile->ea);
-	printf("PATH FLOOR: \t%s",game->mapfile->f);
-	printf("PATH CEILING: \t%s\n",game->mapfile->c);
-	printf("MAP RAW (char):\n\n");
+	printf("COLOR FLOOR: \t%s\n",game->mapfile->f);
+	printf("COLOR CEILING: \t%s\n",game->mapfile->c);
+	printf("MAP\n");
+	printf("-------------------------------------------------------\n");
 
 	int i = 0;
 	while(game->mapfile->map_tab[i])
 	{
-		printf("%s",game->mapfile->map_tab[i]);
+		printf("Line [%i]\t%s", i, game->mapfile->map_tab[i]);
 		i++;
 	}
 	printf("\n");

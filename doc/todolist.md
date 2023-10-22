@@ -7,34 +7,33 @@ ________/\\\\\\\\\__/\\\________/\\\__/\\\\\\\\\\\\\_______/\\\\\\\\\\___/\\\\\\
       __\///\\\__________\//\\\______/\\\__\/\\\_______\/\\\__/\\\______/\\\__\/\\\_______/\\\__  
        ____\////\\\\\\\\\__\///\\\\\\\\\/___\/\\\\\\\\\\\\\/__\///\\\\\\\\\/___\/\\\\\\\\\\\\/___ 
         _______\/////////_____\/////////_____\/////////////______\/////////_____\////////////_____
-# Cud3D
 
-##PHASE 1
-### Grahpics
-[ ] choix des textures
-[ ] choix des son 
-
+## PHASE 1
 ### input
-[ ] bon nombre d args
+[X] bon nombre d args
 
 ### Gestion des erreurs
 ## Lecture de la map 
-[ ] voir si la map existe
-[ ] verifier si le format du fichier est bon 
-[ ] verifier si le fichier .cub comporte tout les elements qu  il faut
-[ ] veifier la veraciter des elements
-[ ] verifier que la map sois valide 
+[ ] Verifier que le fichier map est bien un .cub
+[ ] Verifier que l'on peut ouvrir le fichier .cub
+[ ] Verifier que la map est bien entouré par des murs
+[ ] Les parametres de la map peut etre séparer par des espaces
+[ ] La map doit toujours etre presente uniquement apres les parametres
+[ ] Les lignes de la map ne doivent pas etre séparer par des retour a la ligne
+[ ] Gerer les espaces en trop pour la partie parametres
+[ ] Les parametres de couleur doivent etre des INT rgb stoquer dans une struct
+
 
 ## PHASE 2
-## Parsing
-[ ] transformer le ficher map en tableau en remplissant la les strucutres
-[ ] Ne pas dependre de l ordre des lignes pour remplir les elements de la map
-
 ### MLX
 [ ] initialiser la mlx proprement
 [ ] affiche le jeux
 [ ] gestion des touches
 [ ] faire ne sorte de fermer la fenetre en appuyant sur la croix et escape
+
+### Grahpics
+[ ] choix des textures
+[ ] choix des son 
 
 
 ## PHASE 3

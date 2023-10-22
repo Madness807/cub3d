@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_map_cub.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joterrett <joterrett@student.42.fr>        +#+  +:+       +#+        */
+/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/21 03:06:28 by joterrett        ###   ########.fr       */
+/*   Updated: 2023/10/22 02:39:19 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,67 +31,119 @@ int	read_map_file(char *argv)
 		exit(EXIT_FAILURE) ;
 	while ((line = get_next_line(fd)) != NULL)
 	{
-        if (line[0] == '0' || line[0] == '1' || line[0] == ' ') 
-            nbr_line++;
-        free(line);
-    }
+		if (line[0] == '0' || line[0] == '1' || line[0] == ' ') 
+			nbr_line++;
+		free(line);
+	}
 	
 	close (fd);
 	return (nbr_line + 1);
 }
 
-
-void	is_path_color(t_game *game, char *line)
+int	is_param(char *line)
 {
 	if (ft_strncmp(line, "NO", 2) == 0)
-		game->mapfile->no = ft_strtrim(line, "NO ");
+		return (0);
 	else if (ft_strncmp(line, "WE", 2) == 0)
-		game->mapfile->we = ft_strtrim(line, "WE ");
+		return (0);
 	else if (ft_strncmp(line, "SO", 2) == 0)
-		game->mapfile->so = ft_strtrim(line, "SO ");
+		return (0);
 	else if (ft_strncmp(line, "EA", 2) == 0)
-		game->mapfile->ea= ft_strtrim(line, "EA ");
+		return (0);
 	else if (ft_strncmp(line, "F", 1) == 0)
-		game->mapfile->f= ft_strtrim(line, "F ");
+		return (0);
 	else if (ft_strncmp(line, "C", 1) == 0)
-		game->mapfile->c= ft_strtrim(line, "C ");
-	return ;
-}
+		return (0);
+	else
+		return (1);
 
+}
+int	is_map_line(char *line)
+{
+	int i;
+	int hasMapParam = 1;
+
+	i = 0;
+	while (line[i] != 0)
+	{
+		if (line[i] == '0' || line[i] == '1' || line[i] == 'N' || line[i] == 'S' || line[i] == 'E' || line[i] == 'W')
+		{
+			hasMapParam = 0;
+		}
+		
+		if (!(line[i] == '0' || line[i] == '1' || line[i] == ' '|| line[i] == 'N' || line[i] == 'S' || line[i] == 'E' || line[i] == 'W' || line[i] == '\n'))
+		{
+			return (1);
+		}
+		++i;
+	}
+	return (hasMapParam);
+}
 void	write_map_tab(t_game *game, char *argv)
 {
 	char	*line;
 	int		fd;
 	int		i;
+	int		map_mode;
 
 	line = "";
 	i = 0;
+	map_mode = 0;
 	game->mapfile->map_tab = malloc(game->mapfile->nbr_line * sizeof(char *));
 	fd = open(argv, O_RDONLY);
 	if (fd == -1)
 		exit(1) ;
-	while (line)
+
+
+	while (1)
 	{
 		line = get_next_line(fd);
 		if (line == NULL)
 			break ;
-		is_path_color(game, line);
-		if (line && line[0] != '\n')
+
+
+
+		if (line[0] == '\n')
+			continue ;
+
+
+
+		if (is_map_line(line) == 0)
 		{
-			if (line[0] == 'N' || line[0] == 'W' || line[0] == 'S' || line[0] == 'E' || line[0] == 'F' || line[0] == 'C')
+			map_mode = 1;
+			if (line[0] != '\n')
 			{
-				printf("ERREUR:\nCorp etranger dans la map");
+				game->mapfile->map_tab[i] = ft_strdup(line);
+				i++;
+			}
+			else 
+			{
+				printf("ERROR\n Ligne vide dans la map\n");
 				exit (EXIT_FAILURE);
 			}
-			game->mapfile->map_tab[i] = ft_strdup(line);
-			i++;
 		}
-		else if (line && line[0] == '\n')
-			continue;
-		else
+		if (is_param(line) == 0)
 		{
-			printf(ERR_MAP_NO_VALID_CHAR);
-			exit (1);
+			if (map_mode == 0)
+			{
+				if (ft_strncmp(line, "NO", 2) == 0)
+					game->mapfile->no = ft_strtrim(line, "NO ");
+				else if (ft_strncmp(line, "WE", 2) == 0)
+					game->mapfile->we = ft_strtrim(line, "WE ");
+				else if (ft_strncmp(line, "SO", 2) == 0)
+					game->mapfile->so = ft_strtrim(line, "SO ");
+				else if (ft_strncmp(line, "EA", 2) == 0)
+					game->mapfile->ea= ft_strtrim(line, "EA ");
+				else if (ft_strncmp(line, "F", 1) == 0)
+					game->mapfile->f= ft_strtrim(line, "F ");
+				else if (ft_strncmp(line, "C", 1) == 0)
+					game->mapfile->c= ft_strtrim(line, "C ");
+			}
+			else 
+			{
+				printf("ERROR\n Corp etranger dans la map\n");
+				exit(EXIT_FAILURE);
+			}
 		}
 		free (line);
 	}
@@ -99,19 +151,12 @@ void	write_map_tab(t_game *game, char *argv)
 	close (fd);
 	return ;
 }
-
 void	build_map_tab(t_game *game, char *argv)
 {
 	t_mapfile *mapfile;
-
+	
 	mapfile = game->mapfile;
 	mapfile->nbr_line = read_map_file(argv);
 	write_map_tab(game, argv);
 	return ;
 }
-
-//TODO - LA PARTIE MAP NE DOIT PAS AVOIR DE DE LIGNE VIDE 
-//TODO - REFACTORISER LA FONCTION WRITE MAP 
-//TODO - FAIRE UNE FONCTION QUI PERMET DE RENTRER EN MODE MAP POUR NE PARCOURIR QUE LA MAP ET EN CAS DE CORP 
-
-
