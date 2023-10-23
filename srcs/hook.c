@@ -6,11 +6,45 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 19:14:49 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/23 09:38:53 by efailla          ###   ########.fr       */
+/*   Updated: 2023/10/23 11:12:22 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+int mouse_motion_handler(int x, int y, t_game *game)
+{
+    static int prev_x = -1;
+	double angle;
+	double sens;
+	(void)y;
+
+	sens = 0.5;
+	angle = game->player->angle;
+    if (prev_x == -1)
+    {
+        prev_x = x;
+        return (0);
+    }
+	//mlx_mouse_move(game->win, SCREEN_W / 2, SCREEN_H / 2);
+    int dx = x - prev_x; // Calcule le déplacement horizontal
+
+    // Ajoute ou retire 0.1 de l'angle en fonction du déplacement horizontal
+    if (dx > 0)
+    {
+        angle += (0.1 * sens);
+    }
+    else if (dx < 0)
+    {
+        angle -= (0.1 * sens);
+    }
+	game->player->angle =  angle_corrector(angle);
+	game->player->deltaX = cos(game->player->angle) * 5;
+		game->player->deltaY = sin(game->player->angle) * 5;
+    prev_x = x; // Met à jour la position précédente
+	render(game);
+	return (0);
+}
 
 int		check_collisions(t_game *game, int key)
 {

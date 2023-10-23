@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 19:16:26 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/23 10:08:43 by efailla          ###   ########.fr       */
+/*   Updated: 2023/10/23 11:16:50 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,12 @@ void	render(t_game *game)
 	mlx_clear_window(game->mlx, game->win);
 	//ma fonction pour dessiner, dessiner dans un t_img
 	ray_caster(game);
-	draw_map(game);
-	draw_player(game);
-	draw_direction(game, 20);
+	if (game->minimap == 1)
+	{
+		draw_map(game);
+		draw_player(game);
+		draw_direction(game, 20);
+	}
 	//push ton img sur la window
 	mlx_put_image_to_window(game->mlx, game->win, game->img->img, 0, 0);
 	//free img

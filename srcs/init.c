@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
+/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:10:12 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/20 17:12:41 by efailla          ###   ########.fr       */
+/*   Updated: 2023/10/23 11:17:30 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ t_game *init_game(void)
 	game->player->posx = 750;
 	game->player->posy = 750;
 	game->player->angle = 0;
+	game->minimap = 0;
 	game->player->deltaX = cos(game->player->angle) * 5;
 	game->player->deltaY = sin(game->player->angle) * 5;
 	render(game);

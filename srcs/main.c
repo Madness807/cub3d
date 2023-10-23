@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
+/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:04:27 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/20 17:36:43 by efailla          ###   ########.fr       */
+/*   Updated: 2023/10/23 11:17:57 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,16 @@ double	ray_collision(t_game *game, t_var *var)
 	return (len);
 }
 
+int	minimap(int key, t_game *game)
+{
+	if (game->minimap == 0 && key == K_MAP)
+		game->minimap = 1;
+	else if (game->minimap == 1 && key == K_MAP)
+		game->minimap = 0;
+	render (game);
+	return (0);
+}
+
 int	w_colors(t_game *game, int x, int y)
 {
 	if (game->map[y][x] == 0)
@@ -99,8 +109,9 @@ int	main(int ac, char **av)
 	game = init_game();
 	//build_map_tab(game, av[1]);
 	
-	//mlx_key_hook(game->win, key_hook, game);
+	mlx_key_hook(game->win, minimap, game);
 	mlx_hook(game->win, 2, (1L<<0), key_hook, game);
+	mlx_hook(game->win, 6, (1L << 6), mouse_motion_handler, game);
 	mlx_loop(game->mlx);
 	return (0);
 }
