@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
+/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:10:12 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/23 11:17:30 by efailla          ###   ########.fr       */
+/*   Updated: 2023/10/23 13:43:24 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,10 @@ t_game *init_game(void)
 	game->player->posy = 750;
 	game->player->angle = 0;
 	game->minimap = 0;
+	game->mouse = 0;
 	game->player->deltaX = cos(game->player->angle) * 5;
 	game->player->deltaY = sin(game->player->angle) * 5;
+	mlx_mouse_move(game->win, SCREEN_W / 2, SCREEN_H / 2);
 	render(game);
 	
 	return (game);

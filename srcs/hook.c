@@ -3,45 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
+/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 19:14:49 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/23 11:12:22 by efailla          ###   ########.fr       */
+/*   Updated: 2023/10/23 13:52:38 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int mouse_motion_handler(int x, int y, t_game *game)
+int mouse(int x, int y, t_game *game)
 {
-    static int prev_x = -1;
-	double angle;
-	double sens;
+	double	sens;
+	double	angle;
+	int		dx;
+	// printf("coord x : %d\n", x);
+	// printf("coord y : %d\n\n", y);
+	if (game->mouse == 0)
+		return (0);
 	(void)y;
-
 	sens = 0.5;
 	angle = game->player->angle;
-    if (prev_x == -1)
-    {
-        prev_x = x;
-        return (0);
-    }
-	//mlx_mouse_move(game->win, SCREEN_W / 2, SCREEN_H / 2);
-    int dx = x - prev_x; // Calcule le déplacement horizontal
-
-    // Ajoute ou retire 0.1 de l'angle en fonction du déplacement horizontal
-    if (dx > 0)
-    {
-        angle += (0.1 * sens);
-    }
-    else if (dx < 0)
-    {
-        angle -= (0.1 * sens);
-    }
+	dx = x - SCREEN_W / 2;
+	mlx_mouse_move(game->win, SCREEN_W / 2, SCREEN_H / 2);
+	if (dx > 0)
+		angle += (0.1 * sens);
+	else if (dx < 0)
+		angle -= (0.1 * sens);
 	game->player->angle =  angle_corrector(angle);
 	game->player->deltaX = cos(game->player->angle) * 5;
-		game->player->deltaY = sin(game->player->angle) * 5;
-    prev_x = x; // Met à jour la position précédente
+	game->player->deltaY = sin(game->player->angle) * 5;
 	render(game);
 	return (0);
 }
@@ -74,7 +65,7 @@ int		check_collisions(t_game *game, int key)
 
 void	side_movement(t_game *game, int key)
 {
-	if (key == K_LEFT)
+	if (key == K_LEFT && game->mouse == 0)
 	{
 		game->player->angle -= 0.1;
 		if (game->player->angle < 0)
@@ -83,7 +74,7 @@ void	side_movement(t_game *game, int key)
 		game->player->deltaY = sin(game->player->angle) * 5;
 
 	}
-	else if (key == K_RIGHT)
+	else if (key == K_RIGHT && game->mouse == 0)
 	{
 		game->player->angle += 0.1;
 		if (game->player->angle > 2 * PI)

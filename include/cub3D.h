@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
+/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/23 11:24:11 by efailla          ###   ########.fr       */
+/*   Updated: 2023/10/23 13:49:42 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@
 # define K_LEFT			0
 # define K_ESC			53
 # define K_MAP			46
+# define K_MOUSE		45
 
 //presets jeu
 # define SCREEN_W			1400
@@ -88,6 +89,7 @@ typedef struct s_game {
 	struct s_mapfile	*mapfile;
 	int color;
 	int minimap;
+	int	mouse;
 }t_game;
 
 typedef struct s_img {
@@ -182,6 +184,6 @@ int		**map_alloc(t_game *game);
 
 //		Test
 void	print_struct_data(t_game *cub3d);
-int		 mouse_motion_handler(int x, int y, t_game *game);
+int		 mouse(int x, int y, t_game *game);
 
 #endif
