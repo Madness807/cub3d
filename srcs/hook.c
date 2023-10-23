@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
+/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 19:14:49 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/20 17:59:52 by efailla          ###   ########.fr       */
+/*   Updated: 2023/10/23 09:38:53 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int		check_collisions(t_game *game, int key)
 	}
 	mx = coord_map(next_x);
 	my = coord_map(next_y);
-	printf("coord x : %d\n", mx);
-	printf("coord y : %d\n\n", my);
+	// printf("coord x : %d\n", mx);
+	// printf("coord y : %d\n\n", my);
 	if (game->map[my][mx] == 1)
 		return (0);
 	return (1);

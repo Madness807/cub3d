@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
+/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/20 17:45:59 by efailla          ###   ########.fr       */
+/*   Updated: 2023/10/23 10:07:38 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,18 @@
 # define K_ESC			53
 
 //presets jeu
-# define SCREEN_W			1000
+# define SCREEN_W			1400
 # define SCREEN_H			1000
 # define CUBESIZE			100
-//# define FOV				150
-# define FOV				60
+# define FOV				150
+//# define FOV				60
 
 //valeurs math
 # define PI					3.1415926
 # define P2					PI / 2
 # define P3					3 * PI / 2
- # define DR					0.0174533
-//# define DR					0.005
+//# define DR					0.0174533
+# define DR					0.005
 
 //message erreurs
 # define err_extension			"Error\nMauvaise extension de fichier de map"
@@ -167,6 +167,9 @@ void	ray_caster(t_game *game);
 //		2D
 void 	draw_cubes(t_game *game,int x, int y, int color);
 void	draw_player(t_game *game);
+
+//		Minimap
+void	draw_direction(t_game *game, int depth);
 
 //		3D
 void	draw_screen(t_game *game, t_var *var, double len, int x);

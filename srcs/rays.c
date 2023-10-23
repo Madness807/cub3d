@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rays.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
+/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 23:17:03 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/20 17:45:05 by efailla          ###   ########.fr       */
+/*   Updated: 2023/10/23 10:09:44 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,29 +28,21 @@ void	draw_rays(t_game *game, int depth, t_var *var)
 				(int)(sin(angle) * len + y), 0x00EF95CF);
 }
 
-// void	draw_rays2(t_game *game, t_var *var)
-// {
-// 	int	x;
-// 	int y;
-// 	int	len;
-// 	double angle;
-// 	int jsp1;
-// 	int jsp2;
+void	draw_direction(t_game *game, int depth)
+{
+	int	x;
+	int y;
+	int	len;
+	double angle;
 
-// 	x = (int)game->player->posx;
-// 	y = (int)game->player->posy;
-// 	angle = game->player->angle;
-// 	len = 1;
-// 	jsp1 = (int)(cos(angle) * len + x);
-// 	jsp2 = (int)(sin(angle) * len + y);
-// 	while ((jsp1 != var->rx && jsp2 != var->ry) && len < 300)
-// 	{
-// 		jsp1 = (int)(cos(angle) * len + x);
-// 		jsp2 = (int)(sin(angle) * len + y);
-// 		put_pixel_to_img(game->img, jsp1, jsp2, 0x00EF95CF);
-// 		len++;
-// 	}
-// }
+	x = (int)game->player->posx / 5;
+	y = (int)game->player->posy / 5;
+	angle = game->player->angle;
+	len = 1;
+	while (++len < depth)
+		put_pixel_to_img(game->img, (int)(cos(angle) * len + x),
+				(int)(sin(angle) * len + y), 0x00FF0000);
+}
 
 int	check_ray_len(int ax, int ay, int bx, int by)
 {
@@ -148,8 +140,8 @@ void	ray_caster(t_game *game)
 		//len = check_horizontal(game, var, aTan);
 		//len = check_vertical(game, var, aTan);
 		//draw_rays2(game, var);
-		draw_rays(game, len, var);
-		//draw_screen_line(game, var, len, i);
+		//draw_rays(game, len, var);
+		draw_screen_line(game, var, len, i);
 		var->ra += DR;
 		var->ra = angle_corrector(var->ra);
 	}
