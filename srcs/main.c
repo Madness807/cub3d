@@ -6,7 +6,7 @@
 /*   By: joterrett <joterrett@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:04:27 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/23 09:50:27 by joterrett        ###   ########.fr       */
+/*   Updated: 2023/10/23 17:11:20 by joterrett        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,17 +47,7 @@ int	**map_alloc(t_game *game)
 	return (map);
 }
 
-int coord_map(double x)
-{
-	int n;
 
-	n = (int)(x) / 100;
-	if (n > 9)
-		n = 9;
-	if (n < 0)
-		n = 0;
-	return (n);
-}
 double	ray_collision(t_game *game, t_var *var)
 {
 	double	len;
@@ -83,6 +73,19 @@ double	ray_collision(t_game *game, t_var *var)
 	return (len);
 }
 
+int	params(int key, t_game *game)
+{
+	if (game->minimap == 0 && key == K_MAP)
+		game->minimap = 1;
+	else if (game->minimap == 1 && key == K_MAP)
+		game->minimap = 0;
+	if (game->mouse == 0 && key == K_MOUSE)
+		game->mouse = 1;
+	else if (game->mouse == 1 && key == K_MOUSE)
+		game->mouse = 0;
+	return (0);
+}
+
 int	w_colors(t_game *game, int x, int y)
 {
 	if (game->map[y][x] == 0)
@@ -92,6 +95,15 @@ int	w_colors(t_game *game, int x, int y)
 	else if (game->map[y][x] == 0)
 		return (0x0053565A);
 	return (0);
+}
+
+void	ft_scandale(t_game *game)
+{
+	mlx_key_hook(game->win, params, game);
+	mlx_hook(game->win, 2, (1L<<0), key_hook, game);
+	mlx_hook(game->win, 6, (1L << 6), mouse, game);
+	mlx_mouse_hide();
+	mlx_loop(game->mlx);
 }
 
 int	main(int ac, char **av)
@@ -111,6 +123,10 @@ int	main(int ac, char **av)
 	//mlx_hook(game->win, 2, (1L<<0), key_hook, &game);
 	//mlx_loop(game->mlx);
 	//free_exit(game);
+	game = NULL;
+	game = init_game();
+	ft_scandale(game);
+
 	return (0);
 }
 

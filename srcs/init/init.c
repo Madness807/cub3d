@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joterrett <joterrett@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:10:12 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/21 21:48:54 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/23 17:16:59 by joterrett        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,15 @@
 void	put_pixel_to_img(t_img *img, int x, int y, int color)
 {
 	char	*dst;
+
+	if (x > SCREEN_W)
+		x = SCREEN_W;
+	if (x < 0)
+		x = 0;
+	if (y > SCREEN_H)
+		y = SCREEN_H;
+	if (y < 0)
+		y = 0;
 
 	dst = img->addr + (y * img->line_length + x * (img->bpp / 8));
 	*(unsigned int*)dst = color;
@@ -63,8 +72,12 @@ void	init_game(t_game *game)
 	game->img->endian = 0;
 	*/
 
-	//render(game);
-	return ;
+	game->minimap = 0;
+	game->mouse = 0;
+	game->player->deltaX = cos(game->player->angle) * 5;
+	game->player->deltaY = sin(game->player->angle) * 5;
+	mlx_mouse_move(game->win, SCREEN_W / 2, SCREEN_H / 2);
+	render(game);
+	
+	return (game);
 }
-
-
