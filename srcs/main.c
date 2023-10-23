@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joterrett <joterrett@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:04:27 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/21 20:59:37 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/23 09:50:27 by joterrett        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ int	main(int ac, char **av)
 	//mlx_key_hook(game->win, key_hook, &game);
 	//mlx_hook(game->win, 2, (1L<<0), key_hook, &game);
 	//mlx_loop(game->mlx);
+	//free_exit(game);
 	return (0);
 }
 

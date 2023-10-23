@@ -1,19 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_error.c                                      :+:      :+:    :+:   */
+/*   read_map_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joterrett <joterrett@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/23 13:43:51 by joterrett        ###   ########.fr       */
+/*   Updated: 2023/10/23 14:10:39 by joterrett        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-void    print_error(char *error)
+void	check_map_file(char *input_file)
 {
-    printf("%s", error);
-    exit (EXIT_FAILURE);
+	(void)input_file;
+	return ;
 }
+
+void	read_map_file(t_mapfile *mapfile, char *argv)
+{
+	char	*line;
+	int		fd;
+	int		nbr_line;
+
+	line = "";
+	nbr_line = 0;
+	fd = open(argv, O_RDONLY);
+	if (fd == -1)
+		exit(EXIT_FAILURE) ;
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		if (line[0] == '0' || line[0] == '1' || line[0] == ' ') 
+			nbr_line++;
+		free(line);
+	}
+	mapfile->map_tab = malloc(nbr_line + 1 * sizeof(char *));
+	if (!mapfile->map_tab)
+	{
+		printf("ERROR: Malloc map tab echouer");
+		exit (EXIT_FAILURE);
+	}
+	close (fd);
+	return ;
+}
+
+

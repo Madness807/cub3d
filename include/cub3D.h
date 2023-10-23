@@ -6,7 +6,7 @@
 /*   By: joterrett <joterrett@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/20 23:00:06 by joterrett        ###   ########.fr       */
+/*   Updated: 2023/10/23 14:22:21 by joterrett        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,9 @@
 # define ERR_MAP_SPRITE_PATH	"ERROR\nLA TEXTURE N'EXISTE PAS\n"
 # define ERR_MAP_COLOR			"ERROR\nNUMERO DE COULEUR PLUS GRAND QUE 255\n"
 # define ERR_MAP_NO_VALID_CHAR	"ERROR\nVALEUR INVALIDE DANS LA MAP\n"
+# define ERR_EMPTY_LINE_MAP		"ERROR\nLigne vide dans la map\n"
 # define ERR_CANT_OPEN_FILE		"ERROR\nIMPOSSIBLE D'OUVRIR LE FICHIER\n"
+# define ERR_INVALID_ARG_MAP	"ERROR\nCorp étranger dans la map\n"
 
 ////////////////////////////////////////////////////////////////////////////////
 // 									enum								      //
@@ -111,17 +113,27 @@ typedef struct s_var {
 	int					r;
 }t_var;
 
+typedef struct s_rgb
+{
+	int					hexa_color;
+	int					r;
+	int					g;
+	int					b;
+}t_rgb;
+
 typedef struct s_mapfile
 {
-	int					nbr_line;
+	t_rgb				*color_celling;
+	t_rgb				*color_floor;
 	char				**map_tab;
-	int					**map_int;
+	int					nbr_line;
 	char				*no;
 	char				*so;
 	char				*we;
 	char				*ea;
 	char				*f;
 	char				*c;
+	int					*fd;
 }t_mapfile;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -137,12 +149,13 @@ void    init_map_file(t_mapfile *mapfile);
 void	check_map_file(char *input_file);
 void	build_map_tab(t_game *game, char *argv);
 void	write_map_tab(t_game *game, char *argv);
-int		read_map_file(char *argv);
-
-//		Gestion de la map
+void	read_map_file(t_mapfile *mapfile, char *argv);
+int		is_param(char *line);
+int		is_map_line(char *line);
+char	*copy_clean_line_map(char *line);
 
 //		Gestion des erreurs
-void	print_error(void);
+void    print_error(char *error);
 
 //		Utils
 double	angle_corrector(double angle);
@@ -175,5 +188,10 @@ int		**map_alloc(t_game *game);
 
 //		Test
 void	print_struct_data(t_game *game);
+
+//		Free && Exit
+void    free_exit(t_game *game);
+
+
 
 #endif

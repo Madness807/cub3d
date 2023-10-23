@@ -4,7 +4,10 @@ NAME			=		cub3d
 SRC				=		srcs/main.c\
 						srcs/init/init.c\
 						srcs/init/init_mapfile.c\
-						srcs/parsing/read_map_cub.c\
+						srcs/parsing/main_parsing.c\
+						srcs/parsing/read_map_file.c\
+						srcs/parsing/fill_map_data.c\
+						srcs/parsing/utils_parsing.c\
 						srcs/engine/render.c\
 						srcs/engine/rays.c\
 						srcs/engine/3d.c\

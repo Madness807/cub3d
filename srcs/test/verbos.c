@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verbos.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
+/*   By: joterrett <joterrett@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/22 01:36:27 by joterret         ###   ########.fr       */
+/*   Updated: 2023/10/22 16:03:35 by joterrett        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	print_struct_data(t_game *game)
 	int i = 0;
 	while(game->mapfile->map_tab[i])
 	{
-		printf("Line [%i]\t%s", i, game->mapfile->map_tab[i]);
+		printf("Line [%i]\t%s\n", i, game->mapfile->map_tab[i]);
 		i++;
 	}
 	printf("\n");
