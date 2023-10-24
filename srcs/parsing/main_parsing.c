@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joterrett <joterrett@student.42.fr>        +#+  +:+       +#+        */
+/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/22 14:04:19 by joterrett        ###   ########.fr       */
+/*   Updated: 2023/10/24 16:53:44 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,7 @@
 
 void	build_map_tab(t_game *game, char *argv)
 {
-	t_mapfile *mapfile;
-	
-	mapfile = game->mapfile;
-	read_map_file(mapfile, argv);
+	read_map_file(game->mapfile, argv);
 	write_map_tab(game, argv);
 	return ;
 }

@@ -3,14 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
+/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:48:18 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/20 17:36:54 by efailla          ###   ########.fr       */
+/*   Updated: 2023/10/24 17:15:25 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+void	put_pixel_to_img(t_img *img, int x, int y, int color)
+{
+	char	*dst;
+
+	if (x > SCREEN_W)
+		x = SCREEN_W;
+	if (x < 0)
+		x = 0;
+	if (y > SCREEN_H)
+		y = SCREEN_H;
+	if (y < 0)
+		y = 0;
+
+	dst = img->addr + (y * img->line_length + x * (img->bpp / 8));
+	*(unsigned int*)dst = color;
+}
 
 int coord_map(double x)
 {

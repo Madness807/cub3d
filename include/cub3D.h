@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joterrett <joterrett@student.42.fr>        +#+  +:+       +#+        */
+/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/23 17:14:29 by joterrett        ###   ########.fr       */
+/*   Updated: 2023/10/24 17:13:51 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,8 @@ typedef struct s_img {
 typedef struct s_player {
 	double				posx;
 	double				posy;
-	double				delta_x;
-	double				delta_y;
+	double				deltaX;
+	double				deltaY;
 	double				angle;
 }t_player;
 
@@ -129,8 +129,6 @@ typedef struct s_rgb
 
 typedef struct s_mapfile
 {
-	t_rgb				*color_celling;
-	t_rgb				*color_floor;
 	char				**map_tab;
 	int					nbr_line;
 	char				*no;
@@ -147,9 +145,8 @@ typedef struct s_mapfile
 ////////////////////////////////////////////////////////////////////////////////
 
 //		Init
-void	init_game(t_game *game);
+t_game	*init_game(void);
 void	init_struct(t_game *game);
-void    init_map_file(t_mapfile *mapfile);
 
 //		Parsing
 void	check_map_file(char *input_file);

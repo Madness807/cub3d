@@ -3,49 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joterrett <joterrett@student.42.fr>        +#+  +:+       +#+        */
+/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:04:27 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/23 17:11:20 by joterrett        ###   ########.fr       */
+/*   Updated: 2023/10/24 17:15:52 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	**map_alloc(t_game *game)
-{
-	(void)game;
-	int rows = 10;
-    int cols = 10;
+// int	**map_alloc(t_game *game)
+// {
+// 	(void)game;
+// 	int rows = 10;
+//     int cols = 10;
 
-    // Allouer de la mémoire pour le tableau 2D
-    int **map = (int **)malloc(rows * sizeof(int *));
-    for (int i = 0; i < rows; i++) {
-        map[i] = (int *)malloc(cols * sizeof(int));
-    }
+//     // Allouer de la mémoire pour le tableau 2D
+//     int **map = (int **)malloc(rows * sizeof(int *));
+//     for (int i = 0; i < rows; i++) {
+//         map[i] = (int *)malloc(cols * sizeof(int));
+//     }
 
-    // Initialiser le tableau 2D
-    int initialMap[10][10] = {
-        {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-        {1, 0, 0, 0, 0, 0, 0, 1, 0, 1},
-        {1, 0, 1, 1, 0, 0, 0, 1, 0, 1},
-        {1, 0, 0, 1, 1, 0, 0, 1, 0, 1},
-        {1, 0, 0, 0, 1, 0, 0, 0, 0, 1},
-        {1, 0, 0, 1, 0, 1, 0, 0, 0, 1},
-        {1, 1, 1, 0, 0, 0, 0, 0, 0, 1},
-        {1, 1, 1, 0, 0, 0, 0, 0, 0, 1},
-        {1, 1, 1, 0, 0, 0, 0, 0, 0, 1},
-        {1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
-    };
+//     // Initialiser le tableau 2D
+//     int initialMap[10][10] = {
+//         {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
+//         {1, 0, 0, 0, 0, 0, 0, 1, 0, 1},
+//         {1, 0, 1, 1, 0, 0, 0, 1, 0, 1},
+//         {1, 0, 0, 1, 1, 0, 0, 1, 0, 1},
+//         {1, 0, 0, 0, 1, 0, 0, 0, 0, 1},
+//         {1, 0, 0, 1, 0, 1, 0, 0, 0, 1},
+//         {1, 1, 1, 0, 0, 0, 0, 0, 0, 1},
+//         {1, 1, 1, 0, 0, 0, 0, 0, 0, 1},
+//         {1, 1, 1, 0, 0, 0, 0, 0, 0, 1},
+//         {1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+//     };
 
-    // Copier les valeurs de initialMap dans map
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < cols; j++) {
-            map[i][j] = initialMap[i][j];
-        }
-    }
-	return (map);
-}
+//     // Copier les valeurs de initialMap dans map
+//     for (int i = 0; i < rows; i++) {
+//         for (int j = 0; j < cols; j++) {
+//             map[i][j] = initialMap[i][j];
+//         }
+//     }
+// 	return (map);
+// }
 
 
 double	ray_collision(t_game *game, t_var *var)
@@ -112,20 +112,11 @@ int	main(int ac, char **av)
 
 	if (ac < 2)
 		return (1);
-	game = malloc(sizeof(t_game));
-	if (!game)
-		exit (1);
-	init_game(game);
+	game = init_game();
+
 	build_map_tab(game, av[1]);
 	print_struct_data(game);
-	
-	//mlx_key_hook(game->win, key_hook, &game);
-	//mlx_hook(game->win, 2, (1L<<0), key_hook, &game);
-	//mlx_loop(game->mlx);
-	//free_exit(game);
-	game = NULL;
-	game = init_game();
-	ft_scandale(game);
+	//ft_scandale(game);
 
 	return (0);
 }
