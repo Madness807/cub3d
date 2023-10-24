@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:04:27 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/24 17:15:52 by efailla          ###   ########.fr       */
+/*   Updated: 2023/10/24 17:56:53 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,14 +113,9 @@ int	main(int ac, char **av)
 	if (ac < 2)
 		return (1);
 	game = init_game();
-
 	build_map_tab(game, av[1]);
 	print_struct_data(game);
 	//ft_scandale(game);
 
 	return (0);
 }
-
-//NOTE - J 'AI COMMENTER TES PARTIES SI TU LES DECOMMENTE IL FAUT JUSTE 
-//NOTE - COMMENTER LES MIENNES POUR QUE CA MARCHE Y A UN PETIT SOUCI AVEC UN
-//NOTE - INIT ON VERRA CELA IRL

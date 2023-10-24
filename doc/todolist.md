@@ -14,12 +14,12 @@ ________/\\\\\\\\\__/\\\________/\\\__/\\\\\\\\\\\\\_______/\\\\\\\\\\___/\\\\\\
 
 ### Gestion des erreurs
 ## Lecture de la map 
+[X] Les parametres de la map peut etre séparer par des espaces
+[X] La map doit toujours etre presente uniquement apres les parametres
+[X] Les lignes de la map ne doivent pas etre séparer par des retour a la ligne
 [ ] Verifier que le fichier map est bien un .cub
 [ ] Verifier que l'on peut ouvrir le fichier .cub
 [ ] Verifier que la map est bien entouré par des murs
-[ ] Les parametres de la map peut etre séparer par des espaces
-[ ] La map doit toujours etre presente uniquement apres les parametres
-[ ] Les lignes de la map ne doivent pas etre séparer par des retour a la ligne
 [ ] Gerer les espaces en trop pour la partie parametres
 [ ] Les parametres de couleur doivent etre des INT rgb stoquer dans une struct
 

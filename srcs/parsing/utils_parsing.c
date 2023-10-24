@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joterrett <joterrett@student.42.fr>        +#+  +:+       +#+        */
+/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/23 10:03:05 by joterrett        ###   ########.fr       */
+/*   Updated: 2023/10/24 20:12:19 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,30 +26,10 @@ int	is_param(char *line)
 		return (0);
 	else if (ft_strncmp(line, "C", 1) == 0)
 		return (0);
+	else if (ft_strncmp(line, "\n", 1) == 0)
+		return (0);
 	else
 		return (1);
-
-}
-int	is_map_line(char *line)
-{
-	int i;
-	int hasMapParam = 1;
-
-	i = 0;
-	while (line[i] != 0)
-	{
-		if (line[i] == '0' || line[i] == '1' || line[i] == 'N' || line[i] == 'S' || line[i] == 'E' || line[i] == 'W')
-		{
-			hasMapParam = 0;
-		}
-		
-		if (!(line[i] == '0' || line[i] == '1' || line[i] == ' '|| line[i] == 'N' || line[i] == 'S' || line[i] == 'E' || line[i] == 'W' || line[i] == '\n'))
-		{
-			return (1);
-		}
-		++i;
-	}
-	return (hasMapParam);
 }
 
 char	*copy_clean_line_map(char *line)
@@ -65,9 +45,6 @@ char	*copy_clean_line_map(char *line)
 	while (line[i])
 	{
 		
-
-
-
 		if (line[i] != '\n')
 		{	
 			ret_line[i] = line[i];
@@ -76,7 +53,6 @@ char	*copy_clean_line_map(char *line)
 		{			
 			ret_line[i] = '\0';
 			return (ret_line);
-
 		}
 		i++;
 	}

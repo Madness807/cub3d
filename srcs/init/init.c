@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:10:12 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/24 17:16:31 by efailla          ###   ########.fr       */
+/*   Updated: 2023/10/24 17:56:39 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ t_mapfile	*init_map_file(void)
 
 	mapfile = malloc(sizeof(t_mapfile) + 100);
 
-	mapfile->nbr_line = 0;
+	mapfile->map_h = 0;
 	mapfile->map_tab = NULL;
 	mapfile->no = NULL;
 	mapfile->so = NULL;

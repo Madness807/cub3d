@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/24 17:13:51 by efailla          ###   ########.fr       */
+/*   Updated: 2023/10/24 20:12:19 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,8 @@
 # define ERR_MAP_NO_VALID_CHAR	"ERROR\nVALEUR INVALIDE DANS LA MAP\n"
 # define ERR_EMPTY_LINE_MAP		"ERROR\nLigne vide dans la map\n"
 # define ERR_CANT_OPEN_FILE		"ERROR\nIMPOSSIBLE D'OUVRIR LE FICHIER\n"
-# define ERR_INVALID_ARG_MAP	"ERROR\nCorp étranger dans la map\n"
+# define ERR_INVALID_ARG_MAP	"ERROR\nCorp étrange dans la map\n"
+# define ERR_INVALID_ARG_PARAM	"ERROR\nCorp étrange dans les param de la map\n"
 
 ////////////////////////////////////////////////////////////////////////////////
 // 									enum								      //
@@ -130,7 +131,8 @@ typedef struct s_rgb
 typedef struct s_mapfile
 {
 	char				**map_tab;
-	int					nbr_line;
+	int					map_h;
+	int					map_w;
 	char				*no;
 	char				*so;
 	char				*we;
@@ -151,10 +153,10 @@ void	init_struct(t_game *game);
 //		Parsing
 void	check_map_file(char *input_file);
 void	build_map_tab(t_game *game, char *argv);
-void	write_map_tab(t_game *game, char *argv);
+void	write_map_tab(t_game *game, char *argv, int mapstart);
 void	read_map_file(t_mapfile *mapfile, char *argv);
 int		is_param(char *line);
-int		is_map_line(char *line);
+int		is_map_line(char *line, char *charset);
 char	*copy_clean_line_map(char *line);
 
 //		Gestion des erreurs
