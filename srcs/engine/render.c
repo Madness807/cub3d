@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 19:16:26 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/23 11:16:50 by efailla          ###   ########.fr       */
+/*   Updated: 2023/10/26 18:23:19 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ void draw_cubes(t_game *game, int x, int y, int color)
 
 	x1 = -1;
 	y1 = -1;
-	while (++x1 < 20)
+	while (++x1 < 10)
 	{
-		while (++y1 < 20)
-			put_pixel_to_img(game->img, (x * 20) + x1, (y * 20) + y1, color);
+		while (++y1 < 10)
+			put_pixel_to_img(game->img, (x * 10) + x1, (y * 10) + y1, color);
 		y1 = -1;
 	}
 }
@@ -44,13 +44,17 @@ void draw_map(t_game *game)
 	int x;
 	int y;
 
-	x = -1;
-	y = -1;
-	while (++x < 10) //largeur map
+	x = 0;
+	y = 0;
+	while (game->mapfile->map_tab[y][x] != 0) //largeur map
 	{
-		while (++y < 10)// hauteur map
+		while (game->mapfile->map_tab[y] != 0)
+		{
 			draw_cubes(game, x, y, w_colors(game, x, y));
-		y = -1;
+			y++;
+		}
+		y = 0;
+		x++;
 	}
 }
 
@@ -100,8 +104,8 @@ void	draw_player(t_game *game)
 	int	playerposX;
 	int	playerposY;
 
-	playerposX = (int)game->player->posx / 5; //screenW / 20
-	playerposY = (int)game->player->posy / 5; // screen H / 20
+	playerposX = (int)game->player->posx / 10; //screenW / 20
+	playerposY = (int)game->player->posy / 10; // screen H / 20
 	x = -1;
 	y = -1;
 	while (++x < 6)

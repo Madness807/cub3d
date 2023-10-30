@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/24 20:12:19 by efailla          ###   ########.fr       */
+/*   Updated: 2023/10/30 17:12:38 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,30 +31,27 @@ void	read_map_file(t_mapfile *mapfile, char *argv)
 {
 	char	*line;
 	int		fd;
-	int		nbr_line;
 
 	line = "";
-	nbr_line = 0;
 	fd = open(argv, O_RDONLY);
 	if (fd == -1)
 		exit(EXIT_FAILURE) ;
 	while ((line = get_next_line(fd)) != NULL)
 	{
-		if (is_map_line(line, " 01"))
-			nbr_line++;
+		if (is_map_line(line, " WSNE01\n\0") && !is_map_line(line, " 	\n\0"))
+			mapfile->map_h++;
 		free(line);
 	}
-	mapfile->map_tab = malloc(nbr_line + 1 * sizeof(char *));
+	mapfile->map_tab = malloc((mapfile->map_h + 2) * sizeof(char *));
 	if (!mapfile->map_tab)
 	{
 		printf("ERROR: Malloc map tab echouer");
 		exit (EXIT_FAILURE);
 	}
 	close (fd);
-	return ;
 }
 
-int		find_map_start(char *argv)
+int		find_map_start(char *argv) // COMPTER LES \n JUSQUAU \0
 {
 	char	*line;
 	int		fd;
@@ -81,6 +78,27 @@ int		find_map_start(char *argv)
 	return (0);
 }
 
+void	set_player_pos(t_game *game)
+{
+	int	x;
+	int	y;
+
+	x = -1;
+	y = -1;
+	while (game->mapfile->map_tab[++y] != 0)
+	{
+		while (game->mapfile->map_tab[y][++x] != 0)
+		{
+			if (game->mapfile->map_tab[y][x] == 'W')
+			{
+				game->player->posx = x * 100 + 50;
+				game->player->posy = y * 100 + 50;
+			}
+		}
+		x = -1;
+	}
+}
+
 void	build_map_tab(t_game *game, char *argv)
 {
 	int	mapstart;
@@ -88,5 +106,8 @@ void	build_map_tab(t_game *game, char *argv)
 	mapstart = find_map_start(argv);
 	read_map_file(game->mapfile, argv);
 	write_map_tab(game, argv, mapstart);
+	set_player_pos(game);
+	game->mapfile->map_h = real_map_h(game) - 1;
+	
 	return ;
 }

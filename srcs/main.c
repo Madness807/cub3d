@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:04:27 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/24 17:56:53 by efailla          ###   ########.fr       */
+/*   Updated: 2023/10/30 17:15:19 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,14 @@ double	ray_collision(t_game *game, t_var *var)
 	int my;
 
 	// var->dof = 0;
-	while (var->dof < 10)
+	while (var->dof < 50)
 	{
-		mx = coord_map(var->rx);
-		my = coord_map(var->ry);
-		if (game->map[my][mx] == 1)
-			var->dof = 10;
+		my = coord_mapy(var->ry, game->mapfile->map_h);
+		mx = coord_mapx(game, var->rx, my);
+		// printf("coord x : %d\n", mx);
+		// printf("coord y : %d\n\n", my);
+		if (game->mapfile->map_tab[my][mx] == '1')
+			var->dof = 50;
 		else
 		{
 			var->rx += var->xo;
@@ -83,16 +85,17 @@ int	params(int key, t_game *game)
 		game->mouse = 1;
 	else if (game->mouse == 1 && key == K_MOUSE)
 		game->mouse = 0;
+	render(game);
 	return (0);
 }
 
 int	w_colors(t_game *game, int x, int y)
 {
-	if (game->map[y][x] == 0)
+	if (game->mapfile->map_tab[y][x] == '0')
 		return (0x002D2926);
-	else if (game->map[y][x] == 1)
+	else if (game->mapfile->map_tab[y][x] == '1')
 		return (0x00D9D9D6);
-	else if (game->map[y][x] == 0)
+	else if (game->mapfile->map_tab[y][x] == 'W')
 		return (0x0053565A);
 	return (0);
 }
@@ -115,7 +118,9 @@ int	main(int ac, char **av)
 	game = init_game();
 	build_map_tab(game, av[1]);
 	print_struct_data(game);
-	//ft_scandale(game);
+	//printf("maph : %d\n\n", game->mapfile->map_h);
+	render(game);
+	ft_scandale(game);
 
 	return (0);
 }

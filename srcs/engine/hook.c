@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 19:14:49 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/24 16:58:12 by efailla          ###   ########.fr       */
+/*   Updated: 2023/10/26 18:55:22 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,11 @@ int		check_collisions(t_game *game, int key)
 		next_x = game->player->posx - (game->player->deltaX * 4);
 		next_y = game->player->posy - (game->player->deltaY * 4);
 	}
-	mx = coord_map(next_x);
-	my = coord_map(next_y);
+	mx = next_x / CUBESIZE;//coord_map(next_x);
+	my = next_y / CUBESIZE;//coord_map(next_y);
 	// printf("coord x : %d\n", mx);
 	// printf("coord y : %d\n\n", my);
-	if (game->map[my][mx] == 1)
+	if (game->mapfile->map_tab[my][mx] == '1')
 		return (0);
 	return (1);
 }

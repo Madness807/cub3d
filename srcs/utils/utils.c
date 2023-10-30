@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:48:18 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/24 17:15:25 by efailla          ###   ########.fr       */
+/*   Updated: 2023/10/30 17:15:38 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,28 @@ void	put_pixel_to_img(t_img *img, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-int coord_map(double x)
+int coord_mapy(double y, int limit)
 {
 	int n;
+
+	n = (int)(y) / CUBESIZE;
+	if (n > limit)
+		n = limit;
+	if (n < 0)
+		n = 0;
+	return (n);
+}
+
+int coord_mapx(t_game *game, double x, int y)
+{
+	int n;
+	int	i;
 	int limit;
 
-	limit = CUBESIZE / 10 - 1;
+	i = 0;
+	while (game->mapfile->map_tab[y][i] != 0)
+		i++;
+	limit = i - 1;
 	n = (int)(x) / CUBESIZE;
 	if (n > limit)
 		n = limit;

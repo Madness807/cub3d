@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:10:12 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/24 17:56:39 by efailla          ###   ########.fr       */
+/*   Updated: 2023/10/26 16:14:21 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ t_player *init_player(void)
 
 	player = malloc(sizeof(t_player) + 100);
 
-	player->posx = 750;
-	player->posy = 750;
+	// player->posx = 750;
+	// player->posy = 750;
 	player->angle = 0;
 	player->deltaX = cos(player->angle) * 5;
 	player->deltaY = sin(player->angle) * 5;
@@ -59,7 +59,7 @@ t_mapfile	*init_map_file(void)
 t_game	*init_game(void)
 {
 	t_game *game;
-	//SECTION - INIT STRUCTURE PRINCIPAL
+
 	game = malloc(sizeof(t_game) + 100);
 	game->mapfile = init_map_file();
 	game->player = init_player();

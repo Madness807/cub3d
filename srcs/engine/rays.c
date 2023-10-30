@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 23:17:03 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/23 10:09:44 by efailla          ###   ########.fr       */
+/*   Updated: 2023/10/30 17:18:11 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	draw_direction(t_game *game, int depth)
 	int	len;
 	double angle;
 
-	x = (int)game->player->posx / 5;
-	y = (int)game->player->posy / 5;
+	x = (int)game->player->posx / 10;
+	y = (int)game->player->posy / 10;
 	angle = game->player->angle;
 	len = 1;
 	while (++len < depth)
@@ -74,8 +74,8 @@ double	check_vertical(t_game *game, t_var *var, double aTan)
 	}
 	if (var->ra == PI || var->ra == 0)
 	{
-		var->rx = 1000;//game->player->posx;
-		var->ry = 1000;//game->player->posy;
+		var->rx = game->player->posx;
+		var->ry = game->player->posy;
 		var->dof = 10;
 	}
 	// printf("coord x : %lf\n", var->rx);
@@ -106,8 +106,8 @@ double	check_horizontal(t_game *game, t_var *var, double aTan)
 	}
 	if (var->ra == PI || var->ra == 0)
 	{
-		var->rx = 1000;//game->player->posx;
-		var->ry = 1000;//game->player->posy;
+		var->rx = game->player->posx;
+		var->ry = game->player->posy;
 		var->dof = 10;
 	}
 	// printf("coord x : %lf\n", var->rx);

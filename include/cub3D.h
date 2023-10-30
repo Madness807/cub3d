@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/24 20:12:19 by efailla          ###   ########.fr       */
+/*   Updated: 2023/10/30 17:15:37 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,10 +154,11 @@ void	init_struct(t_game *game);
 void	check_map_file(char *input_file);
 void	build_map_tab(t_game *game, char *argv);
 void	write_map_tab(t_game *game, char *argv, int mapstart);
-void	read_map_file(t_mapfile *mapfile, char *argv);
+//void	read_map_file(t_mapfile *mapfile, char *argv);
 int		is_param(char *line);
 int		is_map_line(char *line, char *charset);
 char	*copy_clean_line_map(char *line);
+int		real_map_h(t_game *game);
 
 //		Gestion des erreurs
 void    print_error(char *error);
@@ -166,7 +167,8 @@ void    print_error(char *error);
 double	angle_corrector(double angle);
 double	return_lowest_int(double a, double b, t_game *game);
 t_img 	*create_new_img(t_game *game);
-int 	coord_map(double x);
+int 	coord_mapy(double y, int limit);
+int 	coord_mapx(t_game *game, double x, int y);
 
 //		Hooks
 int		key_hook(int key, t_game *game);
