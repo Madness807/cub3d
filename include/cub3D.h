@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/30 17:15:37 by efailla          ###   ########.fr       */
+/*   Updated: 2023/10/30 19:22:34 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ typedef struct s_game {
 	struct s_img		*img;
 	void				*mlx;
 	void				*win;
-	int					**map;
 	int color;
 	int minimap;
 	int	mouse;
@@ -132,7 +131,6 @@ typedef struct s_mapfile
 {
 	char				**map_tab;
 	int					map_h;
-	int					map_w;
 	char				*no;
 	char				*so;
 	char				*we;
@@ -159,6 +157,11 @@ int		is_param(char *line);
 int		is_map_line(char *line, char *charset);
 char	*copy_clean_line_map(char *line);
 int		real_map_h(t_game *game);
+void	verif_map_spaces(t_game *game);
+void	set_player_angle_pos(t_game *game, int x, int y);
+
+//		Verif Map
+void	only_one_player(t_game *game);
 
 //		Gestion des erreurs
 void    print_error(char *error);

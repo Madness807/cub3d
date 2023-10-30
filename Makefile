@@ -7,6 +7,7 @@ SRC				=		srcs/main.c\
 						srcs/parsing/main_parsing.c\
 						srcs/parsing/fill_map_data.c\
 						srcs/parsing/utils_parsing.c\
+						srcs/parsing/map_verif.c\
 						srcs/engine/render.c\
 						srcs/engine/rays.c\
 						srcs/engine/3d.c\
