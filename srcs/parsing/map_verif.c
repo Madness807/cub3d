@@ -6,11 +6,43 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 18:45:31 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/30 19:22:04 by efailla          ###   ########.fr       */
+/*   Updated: 2023/10/31 16:57:05 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
+
+void	reset_map(t_game *game)
+{
+	int	x;
+	int	y;
+
+	x = -1;
+	y = -1;
+	while (game->mapfile->map_tab[++y] != 0)
+	{
+		while (game->mapfile->map_tab[y][++x] != 0)
+		{
+			if (game->mapfile->map_tab[y][x] == 'x')
+				game->mapfile->map_tab[y][x] = '0';
+		}
+		x = -1;
+	}
+}
+
+void	check_possible_path(t_game *game, int x, int y)
+{
+	if (game->mapfile->map_tab[y][x] == '1' ||
+		game->mapfile->map_tab[y][x] == 'x')
+		return ;
+	if (game->mapfile->map_tab[y][x] != '0' && !is_player(game, x, y))
+		print_error("map is not surrounded by walls\n");
+	game->mapfile->map_tab[y][x] = 'x';
+	check_possible_path(game, x - 1, y);
+	check_possible_path(game, x + 1, y);
+	check_possible_path(game, x, y + 1);
+	check_possible_path(game, x, y - 1);
+}
 
 int	is_player(t_game *game, int x, int y)
 {

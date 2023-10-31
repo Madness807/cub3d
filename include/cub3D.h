@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/30 19:22:34 by efailla          ###   ########.fr       */
+/*   Updated: 2023/10/31 16:57:21 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,6 +162,9 @@ void	set_player_angle_pos(t_game *game, int x, int y);
 
 //		Verif Map
 void	only_one_player(t_game *game);
+void	check_possible_path(t_game *game, int x, int y);
+int		is_player(t_game *game, int x, int y);
+void	reset_map(t_game *game);
 
 //		Gestion des erreurs
 void    print_error(char *error);

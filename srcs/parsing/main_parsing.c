@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/30 19:23:57 by efailla          ###   ########.fr       */
+/*   Updated: 2023/10/31 16:57:29 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,12 @@ void	set_player_pos(t_game *game)
 	{
 		while (game->mapfile->map_tab[y][++x] != 0)
 		{
-			if (game->mapfile->map_tab[y][x] == 'N' ||
-				game->mapfile->map_tab[y][x] == 'S' ||
-				game->mapfile->map_tab[y][x] == 'E' ||
-				game->mapfile->map_tab[y][x] == 'W')
-					set_player_angle_pos(game, x, y);
+			if (is_player(game, x, y))
+			{
+				set_player_angle_pos(game, x, y);
+				check_possible_path(game, x, y);
+				return ;
+			}
 		}
 		x = -1;
 	}
@@ -109,6 +110,7 @@ void	build_map_tab(t_game *game, char *argv)
 	//verif_map_spaces(game);
 	only_one_player(game);
 	set_player_pos(game);
+	reset_map(game);
 	game->mapfile->map_h = real_map_h(game) - 1;
 
 }

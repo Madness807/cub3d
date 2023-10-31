@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/30 18:42:27 by efailla          ###   ########.fr       */
+/*   Updated: 2023/10/31 17:00:30 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,42 +42,6 @@ int	real_map_h(t_game *game)
 	return (y);
 }
 
-// void	possible_space(t_game *game, int x, int y)
-// {
-// 	if (x != 0)
-// 	{
-// 		if (game->mapfile->map_tab[y][x + 1] == '1')
-// 			print_error("Map is not valid, space is not surrounded by walls\n");
-// 		if (game->mapfile->map_tab[y][x - 1] != '1')
-// 			print_error("Map is not valid, space is not surrounded by walls\n");
-// 	}
-// 	if (y != 0)
-// 	{
-// 		if (game->mapfile->map_tab[y + 1][x] != '1')
-// 			print_error("Map is not valid, space is not surrounded by walls\n");
-// 		if (game->mapfile->map_tab[y - 1][x] != '1')
-// 			print_error("Map is not valid, space is not surrounded by walls\n");
-// 	}
-// }
-
-// void	verif_map_spaces(t_game *game)
-// {
-// 	int	x;
-// 	int	y;
-
-// 	x = -1;
-// 	y = -1;
-// 	while (game->mapfile->map_tab[++y] != 0)
-// 	{
-// 		while (game->mapfile->map_tab[y][++x] != 0)
-// 		{
-// 			if (game->mapfile->map_tab[y][x] == '0')
-// 				possible_space(game, x, y);
-// 		}
-// 		x = -1;
-// 	}
-// }
-
 void	set_player_angle_pos(t_game *game, int x, int y)
 {
 	game->player->posx = x * 100 + 50;
@@ -90,6 +54,8 @@ void	set_player_angle_pos(t_game *game, int x, int y)
 		game->player->angle = PI / 2;
 	else if (game->mapfile->map_tab[y][x] == 'E')
 		game->player->angle = 0;
+	game->player->deltaX = cos(game->player->angle) * 5;
+	game->player->deltaY = sin(game->player->angle) * 5;
 }
 
 char	*copy_clean_line_map(char *line)
