@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:04:27 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/01 19:41:04 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/01 20:23:18 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,11 @@ double	ray_collision(t_game *game, t_var *var)
 		// printf("coord y : %d\n\n", my);
 		if (game->mapfile->map_tab[my][mx] == '1')
 			var->dof = 50;
+		else if (game->mapfile->map_tab[my][mx] == 'd')
+		{
+			var->dof = 50;
+			game->color = 0x00FF0000;
+		}
 		else
 		{
 			var->rx += var->xo;
@@ -77,6 +82,8 @@ double	ray_collision(t_game *game, t_var *var)
 
 int	params(int key, t_game *game)
 {
+	if (key == K_OPEN)
+		open_door(game);
 	if (game->minimap == 0 && key == K_MAP)
 		game->minimap = 1;
 	else if (game->minimap == 1 && key == K_MAP)
@@ -95,8 +102,8 @@ int	w_colors(t_game *game, int x, int y)
 		return (0x002D2926);
 	else if (game->mapfile->map_tab[y][x] == '1')
 		return (0x00D9D9D6);
-	else if (game->mapfile->map_tab[y][x] == 'W')
-		return (0x0053565A);
+	else if (game->mapfile->map_tab[y][x] == 'd')
+		return (0x00FF0000);
 	return (0);
 }
 

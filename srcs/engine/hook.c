@@ -6,11 +6,26 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 19:14:49 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/26 18:55:22 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/01 20:19:27 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+void	open_door(t_game *game)
+{
+	double	next_x;
+	double	next_y;
+	int		mx;
+	int		my;
+	
+	next_x = game->player->posx + (game->player->deltaX * 15);
+	next_y = game->player->posy + (game->player->deltaY * 15);
+	mx = next_x / CUBESIZE;
+	my = next_y / CUBESIZE;
+	if (game->mapfile->map_tab[my][mx] == 'd')
+		game->mapfile->map_tab[my][mx] = '0';
+}
 
 int mouse(int x, int y, t_game *game)
 {

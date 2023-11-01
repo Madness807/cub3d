@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/11/01 19:38:48 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/01 20:17:10 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@
 # define K_ESC			53
 # define K_MAP			46
 # define K_MOUSE		45
+# define K_OPEN			14
 
 //presets jeu
 # define SCREEN_W			1400
@@ -179,6 +180,7 @@ int		str_to_color(char *str);
 
 //		Hooks
 int		key_hook(int key, t_game *game);
+void	open_door(t_game *game);
 
 //		render
 void	render(t_game *game);

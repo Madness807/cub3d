@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 18:45:31 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/31 16:57:05 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/01 20:03:39 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ void	reset_map(t_game *game)
 	{
 		while (game->mapfile->map_tab[y][++x] != 0)
 		{
-			if (game->mapfile->map_tab[y][x] == 'x')
+			if (game->mapfile->map_tab[y][x] == 'D')
+				game->mapfile->map_tab[y][x] = 'd';
+			else if (game->mapfile->map_tab[y][x] == 'x')
 				game->mapfile->map_tab[y][x] = '0';
 		}
 		x = -1;
@@ -33,11 +35,16 @@ void	reset_map(t_game *game)
 void	check_possible_path(t_game *game, int x, int y)
 {
 	if (game->mapfile->map_tab[y][x] == '1' ||
-		game->mapfile->map_tab[y][x] == 'x')
+		game->mapfile->map_tab[y][x] == 'x' ||
+		game->mapfile->map_tab[y][x] == 'D')
 		return ;
-	if (game->mapfile->map_tab[y][x] != '0' && !is_player(game, x, y))
+	if (game->mapfile->map_tab[y][x] != '0' && !is_player(game, x, y) &&
+			game->mapfile->map_tab[y][x] != 'd')
 		print_error("map is not surrounded by walls\n");
-	game->mapfile->map_tab[y][x] = 'x';
+	if (game->mapfile->map_tab[y][x] == 'd')
+		game->mapfile->map_tab[y][x] = 'D';
+	else
+		game->mapfile->map_tab[y][x] = 'x';
 	check_possible_path(game, x - 1, y);
 	check_possible_path(game, x + 1, y);
 	check_possible_path(game, x, y + 1);

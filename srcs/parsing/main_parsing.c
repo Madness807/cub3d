@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/31 17:05:27 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/01 19:55:58 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int		find_map_start(char *argv)
 		exit(EXIT_FAILURE) ;
 	while ((line = get_next_line(fd)) != NULL)
 	{
-		if (is_map_line(line, "	 01\n") && !is_map_line(line, " 	\n"))
+		if (is_map_line(line, "	 d01\n") && !is_map_line(line, " 	\n"))
 		{
 			mapstart = i;
 			return (mapstart);

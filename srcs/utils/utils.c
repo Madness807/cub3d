@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:48:18 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/30 17:15:38 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/01 20:25:11 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ double	return_lowest_int(double a, double b, t_game *game)
 	// printf("vertical len : %d\n\n", b);
 	if (a <= b)
 	{
-		game->color = 0x0000AB84;
+		if (game->color != 0x00FF0000)
+			game->color = 0x0000AB84;
 		return (a);
 	}
 	else

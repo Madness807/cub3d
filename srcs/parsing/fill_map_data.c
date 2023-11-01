@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/11/01 19:40:02 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/01 19:56:16 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	write_map(t_game *game, char *line, int mapindex)
 	//printf("la ligne: %s", line);
 	if (is_map_line(line, " 	\n"))
 		print_error(ERR_EMPTY_LINE_MAP);
-	else if (is_map_line(line, " 01WNSE\n\0"))
+	else if (is_map_line(line, " 01WNSEd\n\0"))
 		game->mapfile->map_tab[mapindex] = copy_clean_line_map(line);
 	else if (line == NULL)
 		game->mapfile->map_tab[mapindex] = 0;

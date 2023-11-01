@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:10:12 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/26 16:14:21 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/01 20:01:29 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ t_mapfile	*init_map_file(void)
 	mapfile->so = NULL;
 	mapfile->ea = NULL;
 	mapfile->we = NULL;
-	mapfile->c = NULL;
-	mapfile->f = NULL;
+	mapfile->c = 0;
+	mapfile->f = 0;
 
 	return (mapfile);
 }
