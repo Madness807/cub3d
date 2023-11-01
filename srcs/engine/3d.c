@@ -6,11 +6,13 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:49:09 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/23 10:32:46 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/01 17:18:51 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+
 
 void	paint_roof(t_game *game, int wallwidth, int x)
 {
@@ -58,10 +60,10 @@ void	draw_screen_line(t_game *game, t_var *var, double len, int x)
 	i = -1;
 	wallwidth = SCREEN_W / FOV;
 	wallsize = (CUBESIZE * SCREEN_H) / len;
+	if (wallsize >= SCREEN_H)
+		wallsize = SCREEN_H;
 	lineoff = (SCREEN_H - wallsize) / 2;
 	//printf("len : %lf\n", len);
-	if (wallsize > SCREEN_H)
-		wallsize = SCREEN_H;
 	// while (y < (SCREEN_H - wallsize) / 2)
 	// 	y++;
 	paint_roof(game, wallwidth, x);

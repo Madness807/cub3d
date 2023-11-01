@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/31 16:57:29 by efailla          ###   ########.fr       */
+/*   Updated: 2023/10/31 17:05:27 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	read_map_file(t_mapfile *mapfile, char *argv)
 	close (fd);
 }
 
-int		find_map_start(char *argv) // COMPTER LES \n JUSQUAU \0
+int		find_map_start(char *argv)
 {
 	char	*line;
 	int		fd;
