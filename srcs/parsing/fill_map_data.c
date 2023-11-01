@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_map_data.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joterrett <joterrett@student.42.fr>        +#+  +:+       +#+        */
+/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/24 20:14:16 by joterrett        ###   ########.fr       */
+/*   Updated: 2023/11/01 19:40:02 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ void	fill_map_param(t_game *game, char *line)
 	else if (ft_strncmp(line, "EA", 2) == 0)
 		game->mapfile->ea= ft_strtrim(line, "EA ");
 	else if (ft_strncmp(line, "F", 1) == 0)
-		game->mapfile->f= ft_strtrim(line, "F ");
+		game->mapfile->f= str_to_color(ft_strtrim(line, "F "));
 	else if (ft_strncmp(line, "C", 1) == 0)
-		game->mapfile->c= ft_strtrim(line, "C ");
+		game->mapfile->c= str_to_color(ft_strtrim(line, "C "));
 }
 
 void	write_param(t_game *game, char *line)

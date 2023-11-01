@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:04:27 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/30 17:15:19 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/01 19:41:04 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,10 @@ int	main(int ac, char **av)
 	print_struct_data(game);
 	//printf("maph : %d\n\n", game->mapfile->map_h);
 	render(game);
+	// printf("couleur C : %s\n", game->mapfile->c);
+	// printf("couleur F : %s\n\n", game->mapfile->f);
+	printf("maph : %X\n\n", game->mapfile->f);
+	printf("maph : %X\n\n", game->mapfile->c);
 	ft_scandale(game);
 
 	return (0);

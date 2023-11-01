@@ -9,6 +9,7 @@ SRC				=		srcs/main.c\
 						srcs/parsing/utils_parsing.c\
 						srcs/parsing/map_verif.c\
 						srcs/engine/render.c\
+						srcs/engine/colors.c\
 						srcs/engine/rays.c\
 						srcs/engine/3d.c\
 						srcs/engine/hook.c\

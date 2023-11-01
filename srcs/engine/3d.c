@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:49:09 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/01 17:18:51 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/01 19:45:04 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	paint_roof(t_game *game, int wallwidth, int x)
 	while (++y < SCREEN_H / 2)
 	{
 		while (++i < wallwidth)
-			put_pixel_to_img(game->img, i + (wallwidth * x), y, 0x0074D1EA);
+			put_pixel_to_img(game->img, i + (wallwidth * x), y,
+					game->mapfile->c);
 		i = -1;
 	}
 }
@@ -39,7 +40,8 @@ void	paint_floor(t_game *game, int wallwidth, int x)
 	while (++y < SCREEN_H)
 	{
 		while (++i < wallwidth)
-			put_pixel_to_img(game->img, i + (wallwidth * x), y, 0x00866D4B);
+			put_pixel_to_img(game->img, i + (wallwidth * x), y,
+					game->mapfile->f);
 		i = -1;
 	}
 }

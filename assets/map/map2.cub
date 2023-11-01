@@ -4,8 +4,8 @@ SO assets/image/sprites/south_sprite.xpm
 NO assets/image/sprites/nord_sprite.xpm
 
 
-C 225,30,0
-F 220,100,0
+C 0,169,206
+F 120,190,32
 
 1111111111
 1000010001

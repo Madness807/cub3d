@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verbos.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joterrett <joterrett@student.42.fr>        +#+  +:+       +#+        */
+/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/22 16:03:35 by joterrett        ###   ########.fr       */
+/*   Updated: 2023/11/01 19:41:35 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	print_struct_data(t_game *game)
 	printf("PATH SOUTH: \t%s\n",game->mapfile->so);
 	printf("PATH WEST: \t%s\n",game->mapfile->we);
 	printf("PATH EAST: \t%s\n",game->mapfile->ea);
-	printf("COLOR FLOOR: \t%s\n",game->mapfile->f);
-	printf("COLOR CEILING: \t%s\n",game->mapfile->c);
+	printf("COLOR FLOOR: \t%X\n",game->mapfile->f);
+	printf("COLOR CEILING: \t%X\n",game->mapfile->c);
 	printf("MAP\n");
 	printf("-------------------------------------------------------\n");
 

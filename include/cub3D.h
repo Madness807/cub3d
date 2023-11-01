@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/31 16:57:21 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/01 19:38:48 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,8 +135,8 @@ typedef struct s_mapfile
 	char				*so;
 	char				*we;
 	char				*ea;
-	char				*f;
-	char				*c;
+	int				f;
+	int				c;
 	int					*fd;
 }t_mapfile;
 
@@ -175,6 +175,7 @@ double	return_lowest_int(double a, double b, t_game *game);
 t_img 	*create_new_img(t_game *game);
 int 	coord_mapy(double y, int limit);
 int 	coord_mapx(t_game *game, double x, int y);
+int		str_to_color(char *str);
 
 //		Hooks
 int		key_hook(int key, t_game *game);
