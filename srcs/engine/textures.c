@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
+/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:44:01 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/07 15:36:17 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/07 16:10:20 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <cub3D.h>
+#include <cub3D.h>
 
 // void load_textures(t_game *game)
 // {
@@ -32,4 +32,3 @@
 // 	game->tex[SO].texture->img = mlx_xpm_file_to_image(game->mlx, game->mapfile->so,
 // 				game->tex[SO].width, game->tex->height);
 // }
-

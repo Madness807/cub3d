@@ -1,2 +1,4 @@
 CUB3D/obj
 *.dSYM
+
+*.DS_Store
