@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   3d.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
+/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:49:09 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/01 19:45:04 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/07 16:34:33 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,6 @@ void	draw_screen_line(t_game *game, t_var *var, double len, int x)
 	if (wallsize >= SCREEN_H)
 		wallsize = SCREEN_H;
 	lineoff = (SCREEN_H - wallsize) / 2;
-	//printf("len : %lf\n", len);
-	// while (y < (SCREEN_H - wallsize) / 2)
-	// 	y++;
 	paint_roof(game, wallwidth, x);
 	paint_floor(game, wallwidth, x);
 	while (++y < wallsize)
@@ -77,8 +74,3 @@ void	draw_screen_line(t_game *game, t_var *var, double len, int x)
 		i = -1;
 	}
 }
-
-// void	draw_screen(t_game *game, t_var *var, double len, int x)
-// {
-	
-// }

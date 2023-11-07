@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 23:17:03 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/06 13:38:31 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/07 16:37:22 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,9 @@ void	ray_caster(t_game *game)
 	double	len;
 	double	aTan;
 	t_var	*var;
+	t_line	*line;
 
+	line = malloc(sizeof(t_line) + 100);
 	var = malloc(sizeof(t_var *) + 1000);
 	var->ra = game->player->angle - (DR * FOV / 2);
 	var->ra = angle_corrector(var->ra);
