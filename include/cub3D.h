@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
+/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/11/01 20:17:10 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/07 15:24:02 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,14 @@
 ////////////////////////////////////////////////////////////////////////////////
 // 									enum								      //
 ////////////////////////////////////////////////////////////////////////////////
+
+enum {
+	NO,
+	WE,
+	EA,
+	SO,
+};
+
 ////////////////////////////////////////////////////////////////////////////////
 // 									structs								      //
 ////////////////////////////////////////////////////////////////////////////////
@@ -87,6 +95,7 @@ typedef struct s_game {
 	struct s_mapfile	*mapfile;
 	struct s_player		*player;
 	struct s_img		*img;
+	struct s_textures	tex[4];
 	void				*mlx;
 	void				*win;
 	int color;
@@ -101,6 +110,12 @@ typedef struct s_img {
 	int					line_length;
 	int					endian;
 }t_img;
+
+typedef struct s_textures {
+	struct s_img		*texture;
+	int					width;
+	int					height;
+}t_textures;
 
 typedef struct s_player {
 	double				posx;
@@ -120,6 +135,15 @@ typedef struct s_var {
 	int					r;
 }t_var;
 
+typedef struct s_line {
+	int					x;
+	int					y;
+	int					y0;
+	int					y1;
+	int					tex_x;
+	int					tex_y;
+}t_line;
+
 typedef struct s_rgb
 {
 	int					hexa_color;
@@ -136,8 +160,8 @@ typedef struct s_mapfile
 	char				*so;
 	char				*we;
 	char				*ea;
-	int				f;
-	int				c;
+	int					f;
+	int					c;
 	int					*fd;
 }t_mapfile;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rays.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
+/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 23:17:03 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/01 20:24:46 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/06 13:38:31 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,17 +130,12 @@ void	ray_caster(t_game *game)
 	var->ra = angle_corrector(var->ra);
 	var->r = FOV;
 	i = -1;
-	//printf("angle: %lf\n\n", game->player->angle);
 	while (++i < var->r)
 	{
 		aTan = -1/tan(var->ra);
 		game->color = 0x0000B08B;
 		len = return_lowest_int(check_horizontal(game, var, aTan),
 				check_vertical(game, var, aTan), game);
-		//len = check_horizontal(game, var, aTan);
-		//len = check_vertical(game, var, aTan);
-		//draw_rays2(game, var);
-		//draw_rays(game, len, var);
 		draw_screen_line(game, var, len, i);
 		var->ra += DR;
 		var->ra = angle_corrector(var->ra);

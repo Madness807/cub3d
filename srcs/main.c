@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
+/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:04:27 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/01 20:23:18 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/07 14:42:53 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,12 +125,11 @@ int	main(int ac, char **av)
 	game = init_game();
 	build_map_tab(game, av[1]);
 	print_struct_data(game);
-	//printf("maph : %d\n\n", game->mapfile->map_h);
 	render(game);
 	// printf("couleur C : %s\n", game->mapfile->c);
 	// printf("couleur F : %s\n\n", game->mapfile->f);
-	printf("maph : %X\n\n", game->mapfile->f);
-	printf("maph : %X\n\n", game->mapfile->c);
+	// printf("maph : %X\n\n", game->mapfile->f);
+	// printf("maph : %X\n\n", game->mapfile->c);
 	ft_scandale(game);
 
 	return (0);
