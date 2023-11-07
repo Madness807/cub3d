@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/11/07 15:24:02 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/07 15:36:01 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,11 @@ enum {
 ////////////////////////////////////////////////////////////////////////////////
 // 									structs								      //
 ////////////////////////////////////////////////////////////////////////////////
+typedef struct s_textures {
+	struct s_img		*texture;
+	int					width;
+	int					height;
+}t_textures;
 
 typedef struct s_game {
 	struct s_mapfile	*mapfile;
@@ -111,11 +116,6 @@ typedef struct s_img {
 	int					endian;
 }t_img;
 
-typedef struct s_textures {
-	struct s_img		*texture;
-	int					width;
-	int					height;
-}t_textures;
 
 typedef struct s_player {
 	double				posx;
