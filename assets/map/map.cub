@@ -1,7 +1,7 @@
-WE assets/image/sprites/west_sprite.xpm
-EA assets/image/sprites/east_sprite.xpm
-SO assets/image/sprites/south_sprite.xpm
-NO assets/image/sprites/nord_sprite.xpm
+WE ./assets/image/sprites/west_sprite.xpm
+EA ./assets/image/sprites/east_sprite.xpm
+SO ./assets/image/sprites/south_sprite.xpm
+NO ./assets/image/sprites/nord_sprite.xpm
 
 
 C 225,30,0

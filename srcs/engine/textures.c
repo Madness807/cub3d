@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:44:01 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/07 16:38:38 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/07 17:32:43 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ void load_textures(t_game *game)
 		game->tex[i].height = 100;
 		game->tex[i].width = 100;
 	}
-	game->tex[NO].texture->img = mlx_xpm_file_to_image(game->mlx, game->mapfile->no,
+	game->tex[NO].texture->img = mlx_xpm_file_to_image(game->mlx, "./assets/image/sprites/nord_sprite.xpm",
 				&game->tex[NO].width, &game->tex->height);
-	game->tex[WE].texture->img = mlx_xpm_file_to_image(game->mlx, game->mapfile->we,
+	game->tex[WE].texture->img = mlx_xpm_file_to_image(game->mlx, "./assets/image/sprites/west_sprite.xpm",
 				&game->tex[WE].width, &game->tex->height);
-	game->tex[EA].texture->img = mlx_xpm_file_to_image(game->mlx, game->mapfile->ea,
+	game->tex[EA].texture->img = mlx_xpm_file_to_image(game->mlx, "./assets/image/sprites/east_sprite.xpm",
 				&game->tex[EA].width, &game->tex->height);
-	game->tex[SO].texture->img = mlx_xpm_file_to_image(game->mlx, game->mapfile->so,
+	game->tex[SO].texture->img = mlx_xpm_file_to_image(game->mlx, "./assets/image/sprites/south_sprite.xpm",
 				&game->tex[SO].width, &game->tex->height);
 	free_text_path(game);
 	get_texture_data(game);

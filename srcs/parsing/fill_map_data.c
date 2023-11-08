@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_map_data.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
+/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/11/01 19:56:16 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/08 12:51:44 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	fill_map_param(t_game *game, char *line)
 void	write_param(t_game *game, char *line)
 {
 	if (!is_param(line))
-		fill_map_param(game, line);
+		fill_map_param(game, copy_clean_line_map(line));
 	else
 		print_error(ERR_INVALID_ARG_PARAM);
 }
