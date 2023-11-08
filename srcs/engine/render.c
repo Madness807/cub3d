@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
+/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 19:16:26 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/26 18:23:19 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/08 13:17:15 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,10 @@ void	render(t_game *game)
 	}
 	//push ton img sur la window
 	mlx_put_image_to_window(game->mlx, game->win, game->img->img, 0, 0);
+	mlx_put_image_to_window(game->mlx, game->win, game->tex[NO].img, 0, 0);
+	mlx_put_image_to_window(game->mlx, game->win, game->tex[WE].img, 200, 200);
+	mlx_put_image_to_window(game->mlx, game->win, game->tex[EA].img, 400, 400);
+	mlx_put_image_to_window(game->mlx, game->win, game->tex[SO].img, 1000, 1000);
 	//free img
 	//free(game->img);
 	//reinit img

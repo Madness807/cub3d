@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:04:27 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/07 14:42:53 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/08 13:13:09 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ int	main(int ac, char **av)
 	game = init_game();
 	build_map_tab(game, av[1]);
 	print_struct_data(game);
+	load_textures(game);
 	render(game);
 	// printf("couleur C : %s\n", game->mapfile->c);
 	// printf("couleur F : %s\n\n", game->mapfile->f);

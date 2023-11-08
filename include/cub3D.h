@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/11/07 17:36:19 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/08 13:12:59 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,22 +91,21 @@ enum {
 // 									structs								      //
 ////////////////////////////////////////////////////////////////////////////////
 
-typedef struct s_textures {
-	struct s_img		*texture;
-	int					width;
+typedef struct s_img {
+	void				*img;
+	char				*addr;
+	int					bpp;
+	int					line_length;
+	int					endian;
 	int					height;
-}t_textures;
+	int					width;
+}t_img;
 
 typedef struct s_game {
 	struct s_mapfile	*mapfile;
 	struct s_player		*player;
 	struct s_img		*img;
-	// struct s_img		*no;
-	// struct s_img		*so;
-	// struct s_img		*ea;
-	// struct s_img		*we;
-
-	struct s_textures	tex[4];
+	struct s_img		tex[4];
 	void				*mlx;
 	void				*win;
 	int color;
@@ -114,13 +113,6 @@ typedef struct s_game {
 	int	mouse;
 }t_game;
 
-typedef struct s_img {
-	void				*img;
-	char				*addr;
-	int					bpp;
-	int					line_length;
-	int					endian;
-}t_img;
 
 
 typedef struct s_player {
@@ -216,6 +208,9 @@ void	open_door(t_game *game);
 void	render(t_game *game);
 void	put_pixel_to_img(t_img *img, int x, int y, int color);
 int		w_colors(t_game *game, int x, int y);
+
+//		Textures
+void	load_textures(t_game *game);
 
 //		Rays
 double	ray_collision(t_game *game, t_var *var);
