@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
+/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 18:33:36 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/01 19:40:18 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/08 13:50:32 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	str_to_color(char *str)
 {
-	char **rgb;
-	int r;
-	int g;
-	int b;
+	char	**rgb;
+	int		r;
+	int		g;
+	int		b;
 
 	rgb = ft_split(str, ',');
 	r = ft_atoi(rgb[0]);

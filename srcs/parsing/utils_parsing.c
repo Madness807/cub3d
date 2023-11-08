@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
+/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/31 17:00:30 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/08 14:25:50 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	is_param(char *line)
 
 int	real_map_h(t_game *game)
 {
-	int y;
+	int	y;
 
 	y = 0;
 	while (game->mapfile->map_tab[y] != 0)
@@ -49,19 +49,19 @@ void	set_player_angle_pos(t_game *game, int x, int y)
 	if (game->mapfile->map_tab[y][x] == 'W')
 		game->player->angle = PI;
 	else if (game->mapfile->map_tab[y][x] == 'N')
-		game->player->angle = PI + PI /2;
+		game->player->angle = PI + PI / 2;
 	else if (game->mapfile->map_tab[y][x] == 'S')
 		game->player->angle = PI / 2;
 	else if (game->mapfile->map_tab[y][x] == 'E')
 		game->player->angle = 0;
-	game->player->deltaX = cos(game->player->angle) * 5;
-	game->player->deltaY = sin(game->player->angle) * 5;
+	game->player->delta_x = cos(game->player->angle) * 5;
+	game->player->delta_y = sin(game->player->angle) * 5;
 }
 
 char	*copy_clean_line_map(char *line)
 {
-	int i;
-	int	line_len;
+	int		i;
+	int		line_len;
 	char	*ret_line;
 
 	i = 0;
@@ -70,7 +70,6 @@ char	*copy_clean_line_map(char *line)
 	ret_line = malloc((line_len) * sizeof(char) + 10);
 	while (line[i])
 	{
-		
 		if (line[i] != '\n')
 		{	
 			ret_line[i] = line[i];

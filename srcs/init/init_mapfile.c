@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mapfile.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
+/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:10:12 by efailla           #+#    #+#             */
-/*   Updated: 2023/10/24 17:13:58 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/08 13:50:32 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,4 @@
 // 	mapfile->we = NULL;
 // 	mapfile->c = NULL;
 // 	mapfile->f = NULL;
-
 // }

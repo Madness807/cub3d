@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
+/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:48:18 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/01 20:25:11 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/08 15:43:22 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,13 @@ void	put_pixel_to_img(t_img *img, int x, int y, int color)
 		y = SCREEN_H;
 	if (y < 0)
 		y = 0;
-
 	dst = img->addr + (y * img->line_length + x * (img->bpp / 8));
 	*(unsigned int*)dst = color;
 }
 
-int coord_mapy(double y, int limit)
+int	coord_mapy(double y, int limit)
 {
-	int n;
+	int	n;
 
 	n = (int)(y) / CUBESIZE;
 	if (n > limit)
@@ -41,7 +40,7 @@ int coord_mapy(double y, int limit)
 	return (n);
 }
 
-int coord_mapx(t_game *game, double x, int y)
+int	coord_mapx(t_game *game, double x, int y)
 {
 	int n;
 	int	i;
@@ -59,18 +58,24 @@ int coord_mapx(t_game *game, double x, int y)
 	return (n);
 }
 
-double	return_lowest_int(double a, double b, t_game *game)
+double	return_lowest_int(double a, double b, t_game *game, t_var *var)
 {
-	// printf("horizontal len : %d\n", a);
-	// printf("vertical len : %d\n\n", b);
 	if (a <= b)
 	{
-		if (game->color != 0x00FF0000)
-			game->color = 0x0000AB84;
+		if (var->ra > PI)
+			var->line->side = SO;
+		else
+			var->line->side = NO;
 		return (a);
 	}
 	else
+	{
+		if (var->ra > P2 && var->ra < P3)
+			var->line->side = EA;
+		else
+			var->line->side = WE;
 		return (b);
+	}
 }
 
 double	angle_corrector(double angle)

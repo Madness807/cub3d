@@ -6,11 +6,25 @@
 /*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:10:12 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/08 12:58:56 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/08 15:43:22 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
+
+t_var	*init_var(t_game *game)
+{
+	t_var	*var;
+	t_line	*line;
+
+	line = malloc(sizeof(t_line) + 100);
+	var = malloc(sizeof(t_var) + 1000);
+	var->line = line;
+	var->ra = game->player->angle - (DR * FOV / 2);
+	var->ra = angle_corrector(var->ra);
+	var->r = FOV;
+	return (var);
+}
 
 t_img	*create_new_img(t_game *game)
 {
@@ -25,27 +39,23 @@ t_img	*create_new_img(t_game *game)
 	return (img);
 }
 
-t_player *init_player(void)
+t_player	*init_player(void)
 {
-	t_player *player;
+	t_player	*player;
 
 	player = malloc(sizeof(t_player) + 100);
-
-	// player->posx = 750;
-	// player->posy = 750;
 	player->angle = 0;
-	player->deltaX = cos(player->angle) * 5;
-	player->deltaY = sin(player->angle) * 5;
+	player->delta_x = cos(player->angle) * 5;
+	player->delta_y = sin(player->angle) * 5;
 
 	return (player);
 }
 
 t_mapfile	*init_map_file(void)
 {
-	t_mapfile *mapfile;
+	t_mapfile	*mapfile;
 
 	mapfile = malloc(sizeof(t_mapfile) + 100);
-
 	mapfile->map_h = 0;
 	mapfile->map_tab = NULL;
 	mapfile->no = NULL;
@@ -54,13 +64,12 @@ t_mapfile	*init_map_file(void)
 	mapfile->we = NULL;
 	mapfile->c = 0;
 	mapfile->f = 0;
-
 	return (mapfile);
 }
 
 t_game	*init_game(void)
 {
-	t_game *game;
+	t_game	*game;
 
 	game = malloc(sizeof(t_game) + 100);
 	game->mapfile = init_map_file();
@@ -71,6 +80,5 @@ t_game	*init_game(void)
 	game->minimap = 0;
 	game->mouse = 0;
 	mlx_mouse_move(game->win, SCREEN_W / 2, SCREEN_H / 2);
-	
 	return (game);
 }

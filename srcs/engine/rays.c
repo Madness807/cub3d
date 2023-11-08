@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 23:17:03 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/07 16:37:22 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/08 15:43:22 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	draw_rays(t_game *game, int depth, t_var *var)
 {
-	int	x;
-	int y;
-	int	len;
-	double angle;
+	int		x;
+	int		y;
+	int		len;
+	double	angle;
 
 	x = (int)game->player->posx;
 	y = (int)game->player->posy;
@@ -30,10 +30,10 @@ void	draw_rays(t_game *game, int depth, t_var *var)
 
 void	draw_direction(t_game *game, int depth)
 {
-	int	x;
-	int y;
-	int	len;
-	double angle;
+	int		x;
+	int		y;
+	int		len;
+	double	angle;
 
 	x = (int)game->player->posx / 10;
 	y = (int)game->player->posy / 10;
@@ -78,9 +78,6 @@ double	check_vertical(t_game *game, t_var *var, double aTan)
 		var->ry = game->player->posy;
 		var->dof = 10;
 	}
-	// printf("coord x : %lf\n", var->rx);
-	// printf("coord y : %lf\n", var->ry);
-	//printf("angle: %lf\n\n", var->ra);
 	len = ray_collision(game, var);
 	var->dof = 0;
 	return (len);
@@ -88,7 +85,7 @@ double	check_vertical(t_game *game, t_var *var, double aTan)
 
 double	check_horizontal(t_game *game, t_var *var, double aTan)
 {
-	double len;
+	double	len;
 
 	if (var->ra > PI)
 	{
@@ -110,35 +107,31 @@ double	check_horizontal(t_game *game, t_var *var, double aTan)
 		var->ry = game->player->posy;
 		var->dof = 10;
 	}
-	// printf("coord x : %lf\n", var->rx);
-	// printf("coord y : %lf\n", var->ry);
-	// printf("angle: %lf\n\n", var->ra);
 	len = ray_collision(game, var);
+	var->len = len;
 	var->dof = 0;
 	return (len);
 }
 
 void	ray_caster(t_game *game)
 {
-	int	i;
-	double	len;
+	int		i;
+	double	len[3];
 	double	aTan;
 	t_var	*var;
-	t_line	*line;
 
-	line = malloc(sizeof(t_line) + 100);
-	var = malloc(sizeof(t_var *) + 1000);
-	var->ra = game->player->angle - (DR * FOV / 2);
-	var->ra = angle_corrector(var->ra);
-	var->r = FOV;
+	var = init_var(game);
 	i = -1;
 	while (++i < var->r)
 	{
 		aTan = -1/tan(var->ra);
 		game->color = 0x0000B08B;
-		len = return_lowest_int(check_horizontal(game, var, aTan),
-				check_vertical(game, var, aTan), game);
-		draw_screen_line(game, var, len, i);
+		// len = return_lowest_int(check_horizontal(game, var, aTan),
+		// 		check_vertical(game, var, aTan), game, var);
+		len[1] = check_horizontal(game, var, aTan);
+		len[2] = check_vertical(game, var, aTan);
+		len[0] = return_lowest_int(len[1], len [2], game, var);
+		draw_screen_line(game, var, len[0], i);
 		var->ra += DR;
 		var->ra = angle_corrector(var->ra);
 	}

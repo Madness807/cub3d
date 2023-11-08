@@ -6,14 +6,14 @@
 /*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 19:16:26 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/08 13:17:15 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/08 13:50:32 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
 
-void draw_cubes(t_game *game, int x, int y, int color)
+void	draw_cubes(t_game *game, int x, int y, int color)
 {
 	// int x1;
 	// int y1;
@@ -26,8 +26,8 @@ void draw_cubes(t_game *game, int x, int y, int color)
 	// 		put_pixel_to_img(game->img, (x * CUBESIZE) + x1, (y * CUBESIZE) + y1, color);
 	// 	y1 = -1;
 	// }
-	int x1;
-	int y1;
+	int	x1;
+	int	y1;
 
 	x1 = -1;
 	y1 = -1;
@@ -39,10 +39,10 @@ void draw_cubes(t_game *game, int x, int y, int color)
 	}
 }
 
-void draw_map(t_game *game)
+void	draw_map(t_game *game)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = 0;
 	y = 0;
@@ -72,10 +72,6 @@ void	render(t_game *game)
 	}
 	//push ton img sur la window
 	mlx_put_image_to_window(game->mlx, game->win, game->img->img, 0, 0);
-	mlx_put_image_to_window(game->mlx, game->win, game->tex[NO].img, 0, 0);
-	mlx_put_image_to_window(game->mlx, game->win, game->tex[WE].img, 200, 200);
-	mlx_put_image_to_window(game->mlx, game->win, game->tex[EA].img, 400, 400);
-	mlx_put_image_to_window(game->mlx, game->win, game->tex[SO].img, 1000, 1000);
 	//free img
 	//free(game->img);
 	//reinit img
@@ -88,21 +84,6 @@ void	render(t_game *game)
 
 void	draw_player(t_game *game)
 {
-	// int x;
-	// int	y;
-	// int	playerposX;                    //EN GRAND
-	// int	playerposY;
-
-	// playerposX = (int)game->player->posx;
-	// playerposY = (int)game->player->posy;
-	// x = -1;
-	// y = -1;
-	// while (++x < CUBESIZE)
-	// {
-	// 	while (y++ < 10)
-	// 		put_pixel_to_img(game->img, (playerposX - 5) + x, (playerposY - 5) + y, 0x00FF00FF);
-	// 	y = -1;
-	// }
 	int x;
 	int	y;
 	int	playerposX;

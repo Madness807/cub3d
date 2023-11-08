@@ -6,33 +6,11 @@
 /*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/11/08 12:51:44 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/08 14:25:53 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
-
-/*//TODO - split et atoi
-void	fill_color(t_game *game, char *line)
-{
-	char *raw_color_line;
-
-	if (ft_strncmp(line, "F", 1) == 0)
-	{
-		game->mapfile->color_floor->r = 0;
-		game->mapfile->color_floor->g = 0; 
-		game->mapfile->color_floor->b = 0;
-		return ;
-	}
-	if (ft_strncmp(line, "C", 1) == 0)
-	{
-		game->mapfile->color_celling->r = 0;
-		game->mapfile->color_celling->g = 0;
-		game->mapfile->color_celling->b = 0;
-		return ;
-	}
-}
-*/
 
 void	fill_map_param(t_game *game, char *line)
 {
@@ -43,11 +21,11 @@ void	fill_map_param(t_game *game, char *line)
 	else if (ft_strncmp(line, "SO", 2) == 0)
 		game->mapfile->so = ft_strtrim(line, "SO ");
 	else if (ft_strncmp(line, "EA", 2) == 0)
-		game->mapfile->ea= ft_strtrim(line, "EA ");
+		game->mapfile->ea = ft_strtrim(line, "EA ");
 	else if (ft_strncmp(line, "F", 1) == 0)
-		game->mapfile->f= str_to_color(ft_strtrim(line, "F "));
+		game->mapfile->f = str_to_color(ft_strtrim(line, "F "));
 	else if (ft_strncmp(line, "C", 1) == 0)
-		game->mapfile->c= str_to_color(ft_strtrim(line, "C "));
+		game->mapfile->c = str_to_color(ft_strtrim(line, "C "));
 }
 
 void	write_param(t_game *game, char *line)
@@ -60,7 +38,6 @@ void	write_param(t_game *game, char *line)
 
 void	write_map(t_game *game, char *line, int mapindex)
 {
-	//printf("la ligne: %s", line);
 	if (is_map_line(line, " 	\n"))
 		print_error(ERR_EMPTY_LINE_MAP);
 	else if (is_map_line(line, " 01WNSEd\n\0"))
@@ -69,8 +46,8 @@ void	write_map(t_game *game, char *line, int mapindex)
 		game->mapfile->map_tab[mapindex] = 0;
 	else
 	{
-		printf("This line: %s\n", line);	
 		print_error(ERR_INVALID_ARG_MAP);
+		exit (1);
 	}
 }
 
@@ -86,7 +63,7 @@ void	write_map_tab(t_game *game, char *argv, int mapstart)
 	mapindex = 0;
 	fd = open(argv, O_RDONLY);
 	if (fd == -1)
-		exit(1) ;
+		exit(1);
 	while (line != NULL)
 	{
 		line = get_next_line(fd);
@@ -101,4 +78,3 @@ void	write_map_tab(t_game *game, char *argv, int mapstart)
 	}
 	close (fd);
 }
-

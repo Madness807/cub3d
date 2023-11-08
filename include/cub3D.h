@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/11/08 13:12:59 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/08 15:43:22 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ enum {
 	WE,
 	EA,
 	SO,
+	DOOR,
 };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -108,18 +109,16 @@ typedef struct s_game {
 	struct s_img		tex[4];
 	void				*mlx;
 	void				*win;
-	int color;
-	int minimap;
-	int	mouse;
+	int					color;
+	int					minimap;
+	int					mouse;
 }t_game;
-
-
 
 typedef struct s_player {
 	double				posx;
 	double				posy;
-	double				deltaX;
-	double				deltaY;
+	double				delta_x;
+	double				delta_y;
 	double				angle;
 }t_player;
 
@@ -131,6 +130,8 @@ typedef struct s_var {
 	double				yo;
 	int					dof;
 	int					r;
+	double				len;
+	struct s_line		*line;
 }t_var;
 
 typedef struct s_line {
@@ -140,15 +141,8 @@ typedef struct s_line {
 	int					y1;
 	int					tex_x;
 	int					tex_y;
+	int					side;
 }t_line;
-
-typedef struct s_rgb
-{
-	int					hexa_color;
-	int					r;
-	int					g;
-	int					b;
-}t_rgb;
 
 typedef struct s_mapfile
 {
@@ -170,6 +164,7 @@ typedef struct s_mapfile
 //		Init
 t_game	*init_game(void);
 void	init_struct(t_game *game);
+t_var	*init_var(t_game *game);
 
 //		Parsing
 void	check_map_file(char *input_file);
@@ -190,14 +185,14 @@ int		is_player(t_game *game, int x, int y);
 void	reset_map(t_game *game);
 
 //		Gestion des erreurs
-void    print_error(char *error);
+void	print_error(char *error);
 
 //		Utils
 double	angle_corrector(double angle);
-double	return_lowest_int(double a, double b, t_game *game);
-t_img 	*create_new_img(t_game *game);
-int 	coord_mapy(double y, int limit);
-int 	coord_mapx(t_game *game, double x, int y);
+double	return_lowest_int(double a, double b, t_game *game, t_var *var);
+t_img	*create_new_img(t_game *game);
+int		coord_mapy(double y, int limit);
+int		coord_mapx(t_game *game, double x, int y);
 int		str_to_color(char *str);
 
 //		Hooks
@@ -233,6 +228,6 @@ int		**map_alloc(t_game *game);
 
 //		Test
 void	print_struct_data(t_game *cub3d);
-int		 mouse(int x, int y, t_game *game);
+int		mouse(int x, int y, t_game *game);
 
 #endif

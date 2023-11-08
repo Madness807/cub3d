@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:44:01 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/08 13:10:45 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/08 13:50:32 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	get_texture_data(t_game *game)
 	}
 }
 
-void load_textures(t_game *game)
+void	load_textures(t_game *game)
 {
 	int	i;
 	
@@ -49,5 +49,3 @@ void load_textures(t_game *game)
 	free_text_path(game);
 	get_texture_data(game);
 }
-
-

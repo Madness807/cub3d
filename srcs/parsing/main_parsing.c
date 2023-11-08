@@ -6,19 +6,19 @@
 /*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/11/07 14:43:34 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/08 14:17:59 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-int		is_map_line(char *line, char *charset)
+int	is_map_line(char *line, char *charset)
 {
 	int	i;
 
 	i = -1;
 	if (!line)
-	return (0);
+		return (0);
 	while (line[++i])
 	{
 		if (ft_strchr(charset, line[i]) == NULL)
@@ -35,8 +35,9 @@ void	read_map_file(t_mapfile *mapfile, char *argv)
 	line = "";
 	fd = open(argv, O_RDONLY);
 	if (fd == -1)
-		exit(EXIT_FAILURE) ;
-	while ((line = get_next_line(fd)) != NULL)
+		exit (EXIT_FAILURE);
+	line = get_next_line(fd);
+	while (line != NULL)
 	{
 		if (is_map_line(line, " WSNE01\n\0") && !is_map_line(line, " 	\n\0"))
 			mapfile->map_h++;
@@ -51,7 +52,7 @@ void	read_map_file(t_mapfile *mapfile, char *argv)
 	close (fd);
 }
 
-int		find_map_start(char *argv)
+int	find_map_start(char *argv)
 {
 	char	*line;
 	int		fd;
@@ -63,8 +64,9 @@ int		find_map_start(char *argv)
 	i = 0;
 	fd = open(argv, O_RDONLY);
 	if (fd == -1)
-		exit(EXIT_FAILURE) ;
-	while ((line = get_next_line(fd)) != NULL)
+		exit (EXIT_FAILURE);
+	line = get_next_line(fd);
+	while (line != NULL)
 	{
 		if (is_map_line(line, "	 d01\n") && !is_map_line(line, " 	\n"))
 		{
@@ -111,8 +113,5 @@ void	build_map_tab(t_game *game, char *argv)
 	only_one_player(game);
 	set_player_pos(game);
 	reset_map(game);
-	
-
 	game->mapfile->map_h = real_map_h(game) - 1;
-
 }

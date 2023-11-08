@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   print_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joterrett <joterrett@student.42.fr>        +#+  +:+       +#+        */
+/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/10/23 13:43:51 by joterrett        ###   ########.fr       */
+/*   Updated: 2023/11/08 13:50:32 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-void    print_error(char *error)
+void	print_error(char *error)
 {
-    printf("%s", error);
-    exit (EXIT_FAILURE);
+	printf("%s", error);
+	exit (EXIT_FAILURE);
 }

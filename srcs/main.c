@@ -6,61 +6,22 @@
 /*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:04:27 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/08 13:13:09 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/08 15:43:22 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-// int	**map_alloc(t_game *game)
-// {
-// 	(void)game;
-// 	int rows = 10;
-//     int cols = 10;
-
-//     // Allouer de la mémoire pour le tableau 2D
-//     int **map = (int **)malloc(rows * sizeof(int *));
-//     for (int i = 0; i < rows; i++) {
-//         map[i] = (int *)malloc(cols * sizeof(int));
-//     }
-
-//     // Initialiser le tableau 2D
-//     int initialMap[10][10] = {
-//         {1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-//         {1, 0, 0, 0, 0, 0, 0, 1, 0, 1},
-//         {1, 0, 1, 1, 0, 0, 0, 1, 0, 1},
-//         {1, 0, 0, 1, 1, 0, 0, 1, 0, 1},
-//         {1, 0, 0, 0, 1, 0, 0, 0, 0, 1},
-//         {1, 0, 0, 1, 0, 1, 0, 0, 0, 1},
-//         {1, 1, 1, 0, 0, 0, 0, 0, 0, 1},
-//         {1, 1, 1, 0, 0, 0, 0, 0, 0, 1},
-//         {1, 1, 1, 0, 0, 0, 0, 0, 0, 1},
-//         {1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
-//     };
-
-//     // Copier les valeurs de initialMap dans map
-//     for (int i = 0; i < rows; i++) {
-//         for (int j = 0; j < cols; j++) {
-//             map[i][j] = initialMap[i][j];
-//         }
-//     }
-// 	return (map);
-// }
-
-
 double	ray_collision(t_game *game, t_var *var)
 {
 	double	len;
-	int mx;
-	int my;
+	int		mx;
+	int		my;
 
-	// var->dof = 0;
 	while (var->dof < 50)
 	{
 		my = coord_mapy(var->ry, game->mapfile->map_h);
 		mx = coord_mapx(game, var->rx, my);
-		// printf("coord x : %d\n", mx);
-		// printf("coord y : %d\n\n", my);
 		if (game->mapfile->map_tab[my][mx] == '1')
 			var->dof = 50;
 		else if (game->mapfile->map_tab[my][mx] == 'd')
@@ -127,11 +88,6 @@ int	main(int ac, char **av)
 	print_struct_data(game);
 	load_textures(game);
 	render(game);
-	// printf("couleur C : %s\n", game->mapfile->c);
-	// printf("couleur F : %s\n\n", game->mapfile->f);
-	// printf("maph : %X\n\n", game->mapfile->f);
-	// printf("maph : %X\n\n", game->mapfile->c);
 	ft_scandale(game);
-
 	return (0);
 }
