@@ -3,16 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
+/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:04:27 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/08 15:43:22 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/15 10:55:55 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-double	ray_collision(t_game *game, t_var *var)
+void stock_x_tex(t_var *var, t_game *game, int len, int x)
+{
+	(void)game;
+	if (x)
+	{
+		if (var->ra > PI)
+			var->line->x = ((int)var->rx % CUBESIZE);
+		else
+			var->line->x = (CUBESIZE - ((int)var->rx % CUBESIZE));
+	}
+	else if (!x && len < var->len)
+	{
+		if (var->ra < P2 || var->ra > P3)
+			var->line->x = ((int)var->ry % CUBESIZE); 
+		else
+			var->line->x = (CUBESIZE - ((int)var->ry % CUBESIZE));
+	}
+}
+
+double	ray_collision(t_game *game, t_var *var, int x)
 {
 	double	len;
 	int		mx;
@@ -38,6 +57,7 @@ double	ray_collision(t_game *game, t_var *var)
 	}
 	len = sqrt((game->player->posx - var->rx) * ((game->player->posx - var->rx))
 			+ ((game->player->posy - var->ry) * (game->player->posy - var->ry)));
+	stock_x_tex(var, game, len, x);
 	return (len);
 }
 
@@ -86,7 +106,7 @@ int	main(int ac, char **av)
 	game = init_game();
 	build_map_tab(game, av[1]);
 	print_struct_data(game);
-	load_textures(game);
+	//load_textures(game);
 	render(game);
 	ft_scandale(game);
 	return (0);

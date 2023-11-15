@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
+/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/11/08 15:43:22 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/09 17:02:27 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,7 +208,7 @@ int		w_colors(t_game *game, int x, int y);
 void	load_textures(t_game *game);
 
 //		Rays
-double	ray_collision(t_game *game, t_var *var);
+double	ray_collision(t_game *game, t_var *var, int x);
 void	draw_rays(t_game *game, int depth, t_var *var);
 void	ray_caster(t_game *game);
 

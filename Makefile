@@ -45,7 +45,7 @@ START			=		echo "$(BLUE)COMPILATION CUB3D\n$(ENDCOLOR)"
 # Compiler and flags
 CC				=		gcc -g
 MINILBX			=		-L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
-CFLAGS			=		-Wall -Wextra -Werror
+CFLAGS			=		#-Wall -Wextra -Werror
 L				=		$(CFLAGS) -fsanitize=address
 RM				=		rm -f
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rays.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
+/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 23:17:03 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/08 15:43:22 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/15 10:24:34 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ double	check_vertical(t_game *game, t_var *var, double aTan)
 		var->ry = game->player->posy;
 		var->dof = 10;
 	}
-	len = ray_collision(game, var);
+	len = ray_collision(game, var, 0);
 	var->dof = 0;
 	return (len);
 }
@@ -107,7 +107,7 @@ double	check_horizontal(t_game *game, t_var *var, double aTan)
 		var->ry = game->player->posy;
 		var->dof = 10;
 	}
-	len = ray_collision(game, var);
+	len = ray_collision(game, var, 1);
 	var->len = len;
 	var->dof = 0;
 	return (len);
@@ -135,5 +135,6 @@ void	ray_caster(t_game *game)
 		var->ra += DR;
 		var->ra = angle_corrector(var->ra);
 	}
+	free(var->line);
 	free(var);
 }

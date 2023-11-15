@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
+/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:10:12 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/08 15:43:22 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/15 10:30:05 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_var	*init_var(t_game *game)
 	t_var	*var;
 	t_line	*line;
 
-	line = malloc(sizeof(t_line) + 100);
+	line = malloc(sizeof(t_line) + 1000);
 	var = malloc(sizeof(t_var) + 1000);
 	var->line = line;
 	var->ra = game->player->angle - (DR * FOV / 2);

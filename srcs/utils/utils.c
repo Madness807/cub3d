@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
+/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:48:18 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/08 15:43:22 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/13 17:46:14 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int	coord_mapx(t_game *game, double x, int y)
 
 double	return_lowest_int(double a, double b, t_game *game, t_var *var)
 {
+	(void)game;
 	if (a <= b)
 	{
 		if (var->ra > PI)
