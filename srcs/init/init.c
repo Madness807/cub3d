@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:10:12 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/15 10:30:05 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/16 18:01:42 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_var	*init_var(t_game *game)
 	var->line = line;
 	var->ra = game->player->angle - (DR * FOV / 2);
 	var->ra = angle_corrector(var->ra);
-	var->r = FOV;
+	var->r = SCREEN_W;//200 * 8;
 	return (var);
 }
 

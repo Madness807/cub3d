@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:49:09 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/15 10:25:20 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/16 19:16:05 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,35 @@ void	paint_floor(t_game *game, int wallwidth, int x)
 // 		(game->tex[i].bpp / 8));
 // }
 
+int	get_color_from_texture(t_game *game, int x, int y, int side)
+{
+	unsigned char	r;
+	unsigned char	g;
+	unsigned char	b;
+	char			*str;
+	int				size;
+
+	str = game->tex[side].addr;
+	size = game->tex[side].width;
+	b = str[(x * 4) + (size * y * 4)];
+	g = str[(x * 4) + (size * y * 4) + 1];
+	r = str[(x * 4) + (size * y * 4) + 2];
+	return (((int)r << 16) + ((int)g << 8) + (int)b);
+}
+
+void print_text(t_game *game, t_var *var, int x, int y, int lineoff, double wallsize)
+{
+	int color; //0xAA74D1EA
+	double r;
+	double r2;
+
+	r = CUBESIZE / wallsize;
+	r2 = CUBESIZE / var->line->x;
+
+
+	color = get_color_from_texture(game, var->line->x, y * r, var->line->side);
+	put_pixel_to_img(game->img, x, y + lineoff, color);
+}
 
 void	draw_screen_line(t_game *game, t_var *var, double len, int x)
 {
@@ -69,17 +98,16 @@ void	draw_screen_line(t_game *game, t_var *var, double len, int x)
 	len = len * cos(ca);
 	y = -1;
 	i = -1;
-	wallwidth = SCREEN_W / FOV;
+	wallwidth = 1;
 	wallsize = (CUBESIZE * SCREEN_H) / len;
-	if (wallsize >= SCREEN_H)
-		wallsize = SCREEN_H;
+	// if (wallsize >= SCREEN_H)
+	// 	wallsize = SCREEN_H;
 	lineoff = (SCREEN_H - wallsize) / 2;
 	paint_roof(game, wallwidth, x);
 	paint_floor(game, wallwidth, x);
 	while (++y < wallsize)
 	{
-		while (++i < wallwidth)
-			put_pixel_to_img(game->img, i + (wallwidth * x), y + lineoff, 0x00FF0000);
-		i = -1;
+		//put_pixel_to_img(game->img, x, y + lineoff, 0x00FF0000);
+		print_text(game, var, x, y, lineoff, wallsize);
 	}
 }

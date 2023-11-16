@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 23:17:03 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/15 10:24:34 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/16 17:59:12 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ void	ray_caster(t_game *game)
 		len[2] = check_vertical(game, var, aTan);
 		len[0] = return_lowest_int(len[1], len [2], game, var);
 		draw_screen_line(game, var, len[0], i);
-		var->ra += DR;
+		var->ra += DR / 8;
 		var->ra = angle_corrector(var->ra);
 	}
 	free(var->line);

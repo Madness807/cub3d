@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/11/09 17:02:27 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/16 16:14:46 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,11 +136,6 @@ typedef struct s_var {
 
 typedef struct s_line {
 	int					x;
-	int					y;
-	int					y0;
-	int					y1;
-	int					tex_x;
-	int					tex_y;
 	int					side;
 }t_line;
 

@@ -1,0 +1,27 @@
+WE ./assets/image/sprites/west_sprite.xpm
+EA ./assets/image/sprites/east_sprite.xpm
+SO ./assets/image/sprites/south_sprite.xpm
+NO ./assets/image/sprites/nord_sprite.xpm
+
+
+C 0,169,206
+F 120,190,32
+
+1111111111
+1000000001
+1000000001
+1000000001
+1000000001
+100d000001
+1000000001
+1000000001
+1000000001
+1000000001
+1000000001
+1000000001
+10000N0001
+1000000001
+1000000001
+1000000001
+1000000001
+1111111111

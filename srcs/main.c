@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:04:27 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/15 10:55:55 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/15 11:24:04 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ int	main(int ac, char **av)
 	game = init_game();
 	build_map_tab(game, av[1]);
 	print_struct_data(game);
-	//load_textures(game);
+	load_textures(game);
 	render(game);
 	ft_scandale(game);
 	return (0);
