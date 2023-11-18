@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:04:27 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/15 11:24:04 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/18 17:08:28 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ double	ray_collision(t_game *game, t_var *var, int x)
 		else if (game->mapfile->map_tab[my][mx] == 'd')
 		{
 			var->dof = 50;
-			game->color = 0x00FF0000;
+			var->line->side = DOOR;
 		}
 		else
 		{

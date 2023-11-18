@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/11/16 16:14:46 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/18 17:04:22 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ typedef struct s_game {
 	struct s_mapfile	*mapfile;
 	struct s_player		*player;
 	struct s_img		*img;
-	struct s_img		tex[4];
+	struct s_img		tex[5];
 	void				*mlx;
 	void				*win;
 	int					color;

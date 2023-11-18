@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:44:01 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/15 10:54:36 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/18 17:17:18 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	get_texture_data(t_game *game)
 	int	i;
 
 	i = -1;
-	while (++i < 4)
+	while (++i < 5)
 	{
 		game->tex[i].addr = mlx_get_data_addr(game->tex[i].img,
 				&game->tex[i].bpp, &game->tex[i].line_length,
@@ -43,6 +43,9 @@ void	load_textures(t_game *game)
 				&game->tex[EA].width, &game->tex[EA].height);
 	game->tex[SO].img = mlx_xpm_file_to_image(game->mlx, game->mapfile->so,
 				&game->tex[SO].width, &game->tex[SO].height);
+	game->tex[DOOR].img = mlx_xpm_file_to_image(game->mlx,
+		"./assets/image/sprites/door_sprite.xpm", &game->tex[DOOR].width,
+			&game->tex[DOOR].height);
 	free_text_path(game);
 	get_texture_data(game);
 }

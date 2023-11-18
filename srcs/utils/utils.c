@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:48:18 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/13 17:46:14 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/18 17:12:18 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,18 +63,24 @@ double	return_lowest_int(double a, double b, t_game *game, t_var *var)
 	(void)game;
 	if (a <= b)
 	{
-		if (var->ra > PI)
-			var->line->side = SO;
-		else
-			var->line->side = NO;
+		if (var->line->side != DOOR)
+		{
+			if (var->ra > PI)
+				var->line->side = SO;
+			else
+				var->line->side = NO;
+		}
 		return (a);
 	}
 	else
 	{
-		if (var->ra > P2 && var->ra < P3)
-			var->line->side = EA;
-		else
-			var->line->side = WE;
+		if (var->line->side != DOOR)
+		{
+			if (var->ra > P2 && var->ra < P3)
+				var->line->side = EA;
+			else
+				var->line->side = WE;
+		}
 		return (b);
 	}
 }
