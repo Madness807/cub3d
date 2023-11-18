@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:10:12 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/16 18:01:42 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/18 17:34:24 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ t_var	*init_var(t_game *game)
 	line = malloc(sizeof(t_line) + 1000);
 	var = malloc(sizeof(t_var) + 1000);
 	var->line = line;
-	var->ra = game->player->angle - (DR * FOV / 2);
-	var->ra = angle_corrector(var->ra);
 	var->r = SCREEN_W;//200 * 8;
+	var->ra = game->player->angle - ((DR / 8) * var->r / 2);
+	var->ra = angle_corrector(var->ra);
 	return (var);
 }
 
