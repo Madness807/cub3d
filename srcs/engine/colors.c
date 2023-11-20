@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 18:33:36 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/20 11:11:00 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/20 11:27:51 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ int str_to_color(char *str)
     check_value_color(r);
     check_value_color(g);
     check_value_color(b);
+	free(rgb[0]);
+	free(rgb[1]);
+	free(rgb[2]);
     free(str);
     free(rgb);
     r *= 65536;

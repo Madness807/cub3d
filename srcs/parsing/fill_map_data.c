@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/11/20 10:36:26 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/20 11:37:47 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	write_param(t_game *game, char *line)
 		fill_map_param(game, copy_clean_line_map(line));
 	else
 		print_error(ERR_INVALID_ARG_PARAM);
+	
 }
 
 void	write_map(t_game *game, char *line, int mapindex)
@@ -68,11 +69,15 @@ void	write_map_tab(t_game *game, char *argv, int mapstart)
 	{
 		line = get_next_line(fd);
 		if (i < mapstart)
+		{
 			write_param(game, line);
+			free(line);
+		}
 		else if (i >= mapstart)
 		{
 			write_map(game, line, mapindex);
 			mapindex++;
+			free(line);
 		}
 		//free(line);
 		i++;
