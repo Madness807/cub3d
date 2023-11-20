@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 19:14:49 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/20 08:53:40 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/20 15:21:58 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,34 @@ int	check_collisions(t_game *game, int key)
 	return (1);
 }
 
-void	side_movement(t_game *game, int key)
+int	check_collisions_LR(t_game *game, int key)
 {
-	if (key == K_LEFT && game->mouse == 0)
+	double	next_x;
+	double	next_y;
+	int		mx;
+	int		my;
+
+	if (key == K_RIGHT)
+	{
+		next_x = game->player->posx - (game->player->delta_y * 4);
+		next_y = game->player->posy + (game->player->delta_x * 4);
+	}
+	else
+	{
+		next_x = game->player->posx + (game->player->delta_y * 4);
+		next_y = game->player->posy - (game->player->delta_x * 4);
+	}
+	mx = next_x / CUBESIZE;//coord_map(next_x);
+	my = next_y / CUBESIZE;//coord_map(next_y);
+	if (game->mapfile->map_tab[my][mx] == '1' ||
+		game->mapfile->map_tab[my][mx] == 'd')
+		return (0);
+	return (1);
+}
+
+void	camera_movement(t_game *game, int key)
+{
+	if (key == K_ROTATE_L && game->mouse == 0)
 	{
 		game->player->angle -= 0.1;
 		if (game->player->angle < 0)
@@ -87,7 +112,7 @@ void	side_movement(t_game *game, int key)
 		game->player->delta_x = cos(game->player->angle) * 5;
 		game->player->delta_y = sin(game->player->angle) * 5;
 	}
-	else if (key == K_RIGHT && game->mouse == 0)
+	else if (key == K_ROTATE_R && game->mouse == 0)
 	{
 		game->player->angle += 0.1;
 		if (game->player->angle > 2 * PI)
@@ -118,6 +143,20 @@ int	hook_exit(t_game *game)
 	exit(0);
 }
 
+void	side_movement(t_game *game, int key)
+{
+	if (key == K_LEFT && check_collisions_LR(game, key))
+	{
+		game->player->posx += game->player->delta_y;
+		game->player->posy -= game->player->delta_x;
+	}
+	else if (key == K_RIGHT && check_collisions_LR(game, key))
+	{
+		game->player->posx -= game->player->delta_y;
+		game->player->posy += game->player->delta_x;
+	}
+}
+
 // void	check_angle(t_game *game)
 // {
 // 	if (game->player->angle == PI || game->player->angle == P2)
@@ -130,14 +169,16 @@ int	key_hook(int key, t_game *game)
 {
 	if (key == K_ESC)
 		hook_exit(game);
-	else if (key == K_LEFT)
-		side_movement(game, key);
-	else if (key == K_DOWN)
+	else if (key == K_ROTATE_L || key == K_ROTATE_R)
+		camera_movement(game, key);
+	else if (key == K_DOWN || key == K_UP)
 		towards_backward_movement(game, key);
-	else if (key == K_RIGHT)
+	else if (key == K_LEFT || key == K_RIGHT)
 		side_movement(game, key);
-	else if (key == K_UP)
-		towards_backward_movement(game, key);
+	// else if (key == K_ROTATE_R)
+	// 	side_movement(game, key);
+	// else if (key == K_UP)
+	// 	towards_backward_movement(game, key);
 	//check_angle(game);
 	render(game);
 	return (0);

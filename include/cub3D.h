@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/11/20 13:34:21 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/20 14:56:16 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@
 # define K_MAP			46
 # define K_MOUSE		45
 # define K_OPEN			14
+# define K_ROTATE_L		123
+# define K_ROTATE_R		124
 
 //presets jeu
 # define SCREEN_W			1400
