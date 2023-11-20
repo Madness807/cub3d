@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 19:14:49 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/18 17:38:10 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/18 17:58:48 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,6 @@ int	check_collisions(t_game *game, int key)
 	}
 	mx = next_x / CUBESIZE;//coord_map(next_x);
 	my = next_y / CUBESIZE;//coord_map(next_y);
-	// printf("coord x : %d\n", mx);
-	// printf("coord y : %d\n\n", my);
 	if (game->mapfile->map_tab[my][mx] == '1' ||
 		game->mapfile->map_tab[my][mx] == 'd')
 		return (0);
@@ -116,6 +114,7 @@ void	towards_backward_movement(t_game *game, int key)
 int	hook_exit(t_game *game)
 {	
 	mlx_destroy_window(game->mlx, game->win);
+	//free_all(game);
 	exit(0);
 }
 

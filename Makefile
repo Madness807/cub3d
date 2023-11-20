@@ -16,7 +16,8 @@ SRC				=		srcs/main.c\
 						srcs/engine/textures.c\
 						srcs/error/print_error.c\
 						srcs/test/verbos.c\
-						srcs/utils/utils.c
+						srcs/utils/utils.c\
+						srcs/freeNexit/freeNexit.c
 
 OBJ_DIR			=		build/
 OBJS			=		$(patsubst srcs/%,$(OBJ_DIR)%,$(SRC:.c=.o))

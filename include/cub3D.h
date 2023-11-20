@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/11/18 17:04:22 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/18 17:54:30 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,6 +217,9 @@ void	draw_direction(t_game *game, int depth);
 //		3D
 void	draw_screen(t_game *game, t_var *var, double len, int x);
 void	draw_screen_line(t_game *game, t_var *var, double len, int x);
+
+//		free
+void	free_all(t_game *game);
 
 //		Test
 int		**map_alloc(t_game *game);
