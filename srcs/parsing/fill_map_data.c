@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/11/20 11:37:47 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/20 14:09:09 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	fill_map_param(t_game *game, char *line)
 
 void	write_param(t_game *game, char *line)
 {
+	//if (ft_strncmp(line, "\n", 1) == 0)
+		
 	if (!is_param(line))
 		fill_map_param(game, copy_clean_line_map(line));
 	else
@@ -39,12 +41,15 @@ void	write_param(t_game *game, char *line)
 
 void	write_map(t_game *game, char *line, int mapindex)
 {
-	if (is_map_line(line, " 	\n"))
+	if (is_map_line(line, " \t\n"))
 		print_error(ERR_EMPTY_LINE_MAP);
 	else if (is_map_line(line, " 01WNSEd\n\0"))
 		game->mapfile->map_tab[mapindex] = copy_clean_line_map(line);
 	else if (line == NULL)
+	{
 		game->mapfile->map_tab[mapindex] = 0;
+		printf("tagrandmere\n");
+	}
 	else
 	{
 		print_error(ERR_INVALID_ARG_MAP);

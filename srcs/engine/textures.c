@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
+/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:44:01 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/18 17:17:18 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/20 13:34:15 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,14 @@ void	get_texture_data(t_game *game)
 	}
 }
 
+// void	alloc_textures(t_game *game)
+// {
+	
+// }
+
 void	load_textures(t_game *game)
-{	
+{
+	//game->tex = malloc(sizeof(t_img) * 5);
 	game->tex[NO].img = mlx_xpm_file_to_image(game->mlx, game->mapfile->no,
 				&game->tex[NO].width, &game->tex[NO].height);
 	game->tex[WE].img = mlx_xpm_file_to_image(game->mlx, game->mapfile->we,

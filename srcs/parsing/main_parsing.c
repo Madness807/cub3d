@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/11/20 10:05:12 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/20 13:14:55 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	read_map_file(t_mapfile *mapfile, char *argv)
 			mapfile->map_h++;
 		free(line);
 	}
-	mapfile->map_tab = malloc((mapfile->map_h + 2) * sizeof(char *));
+	mapfile->map_tab = malloc((mapfile->map_h + 4) * sizeof(char *));
 	if (!mapfile->map_tab)
 	{
 		printf("ERROR: Malloc map tab echouer");

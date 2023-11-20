@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:10:12 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/20 09:14:45 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/20 13:56:59 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	free_map(t_game *game)
 	i = -1;
 	while (game->mapfile->map_tab[++i] != 0)
 		free(game->mapfile->map_tab[i]);
+	free(game->mapfile->map_tab);
 	free(game->mapfile);
 }
 
