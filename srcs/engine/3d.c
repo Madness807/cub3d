@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   3d.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
+/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:49:09 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/16 19:35:09 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/20 10:43:44 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,10 @@ void print_text(t_game *game, t_var *var, int x, int y, int lineoff, double wall
 {
 	int color; //0xAA74D1EA
 	double r;
+	//double r2;
 
-	r = CUBESIZE / wallsize;
+	r = CUBESIZE / wallsize; //game->tex[var->line->side].height / wallsize;
+	//r2 = game->tex[var->line->side].width / wallsize;
 
 	color = get_color_from_texture(game, var->line->x, y * r, var->line->side);
 	put_pixel_to_img(game->img, x, y + lineoff, color);

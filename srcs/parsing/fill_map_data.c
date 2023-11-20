@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/11/08 14:25:53 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/20 10:36:26 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	write_map_tab(t_game *game, char *argv, int mapstart)
 			write_map(game, line, mapindex);
 			mapindex++;
 		}
+		//free(line);
 		i++;
 	}
 	close (fd);
