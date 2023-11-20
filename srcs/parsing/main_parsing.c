@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
+/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/11/15 11:05:08 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/20 10:05:12 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	read_map_file(t_mapfile *mapfile, char *argv)
 		exit(EXIT_FAILURE) ;
 	while ((line = get_next_line(fd)) != NULL)
 	{
+		printf("%s\n", line);
 		if (is_map_line(line, " WSNE01\n\0") && !is_map_line(line, " 	\n\0"))
 			mapfile->map_h++;
 		free(line);
@@ -66,16 +67,14 @@ int		find_map_start(char *argv)
 		exit(EXIT_FAILURE) ;
 	while ((line = get_next_line(fd)) != NULL)
 	{
-		if (is_map_line(line, "	 d01\n") && !is_map_line(line, " 	\n"))
-		{
+		//printf("%s\n", line);
+		if (is_map_line(line, "	 d01\n") && !is_map_line(line, " 	\n") && !mapstart)
 			mapstart = i;
-			return (mapstart);
-		}
 		free(line);
 		i++;
 	}
 	close (fd);
-	return (0);
+	return (mapstart);
 }
 
 void	set_player_pos(t_game *game)
@@ -105,6 +104,8 @@ void	build_map_tab(t_game *game, char *argv)
 	int	mapstart;
 
 	mapstart = find_map_start(argv);
+	if (mapstart == 0)
+		print_error("coucou");
 	read_map_file(game->mapfile, argv);
 	write_map_tab(game, argv, mapstart);
 	//verif_map_spaces(game);

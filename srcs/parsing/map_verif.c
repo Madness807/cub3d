@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 18:45:31 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/08 14:07:59 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/20 10:01:33 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ void	only_one_player(t_game *game)
 		}
 		x = -1;
 	}
+	if (player_count == 0)
+		print_error("There is no player in the map\n");
 	if (player_count > 1)
 		print_error("There is more than 1 player in the map\n");
 }

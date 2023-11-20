@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
+/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 19:14:49 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/18 17:58:48 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/20 08:53:40 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void	towards_backward_movement(t_game *game, int key)
 int	hook_exit(t_game *game)
 {	
 	mlx_destroy_window(game->mlx, game->win);
-	//free_all(game);
+	free_all(game);
 	exit(0);
 }
 
