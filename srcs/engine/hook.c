@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 19:14:49 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/20 15:21:58 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/21 14:51:51 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ void	open_door(t_game *game)
 	mx = next_x / CUBESIZE;
 	my = next_y / CUBESIZE;
 	if (game->mapfile->map_tab[my][mx] == 'd')
-		game->mapfile->map_tab[my][mx] = '0';
+		game->mapfile->map_tab[my][mx] = 'D';
+	else if (game->mapfile->map_tab[my][mx] == 'D')
+		game->mapfile->map_tab[my][mx] = 'd';
 }
 
 int	mouse(int x, int y, t_game *game)
@@ -157,16 +159,31 @@ void	side_movement(t_game *game, int key)
 	}
 }
 
-// void	check_angle(t_game *game)
-// {
-// 	if (game->player->angle == PI || game->player->angle == P2)
-// 		game->player->angle -= 0.001;
-// 	if (game->player->angle == P3 || game->player->angle == PI * 2)
-// 		game->player->angle += 0.001;
-// }
+int	sprint_release(int key, t_game *game)
+{
+	if (key == K_SHIFT && game->sprint == 1)
+	{
+		game->sprint = 0;
+		game->player->delta_x /= 2;
+		game->player->delta_y /= 2;
+	}
+	return (0);
+}
+
+int	sprint_press(int key, t_game *game)
+{
+	if (key == K_SHIFT && game->sprint == 0)
+	{
+		game->sprint = 1;
+		game->player->delta_x *= 2;
+		game->player->delta_y *= 2;
+	}
+	return (0);
+}
 
 int	key_hook(int key, t_game *game)
 {
+	//printf("key: %i\n", key);
 	if (key == K_ESC)
 		hook_exit(game);
 	else if (key == K_ROTATE_L || key == K_ROTATE_R)
@@ -175,11 +192,9 @@ int	key_hook(int key, t_game *game)
 		towards_backward_movement(game, key);
 	else if (key == K_LEFT || key == K_RIGHT)
 		side_movement(game, key);
-	// else if (key == K_ROTATE_R)
-	// 	side_movement(game, key);
-	// else if (key == K_UP)
-	// 	towards_backward_movement(game, key);
-	//check_angle(game);
+	else if (key == K_SHIFT)
+		sprint_press(key, game);
+	params(key, game);
 	render(game);
 	return (0);
 }

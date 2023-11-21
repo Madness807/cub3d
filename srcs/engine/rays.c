@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rays.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
+/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 23:17:03 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/18 17:34:46 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/21 14:46:44 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	draw_direction(t_game *game, int depth)
 	int		len;
 	double	angle;
 
-	x = (int)game->player->posx / 10;
-	y = (int)game->player->posy / 10;
+	x = (int)game->player->posx / 10 + MAP_OFFSET;
+	y = (int)game->player->posy / 10 + MAP_OFFSET;
 	angle = game->player->angle;
 	len = 1;
 	while (++len < depth)

@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:04:27 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/20 13:03:09 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/21 14:54:28 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,15 @@ int	params(int key, t_game *game)
 	else if (game->minimap == 1 && key == K_MAP)
 		game->minimap = 0;
 	if (game->mouse == 0 && key == K_MOUSE)
+	{
 		game->mouse = 1;
+		mlx_mouse_hide();
+	}
 	else if (game->mouse == 1 && key == K_MOUSE)
+	{
 		game->mouse = 0;
+		mlx_mouse_show();
+	}
 	render(game);
 	return (0);
 }
@@ -85,15 +91,18 @@ int	w_colors(t_game *game, int x, int y)
 		return (0x00D9D9D6);
 	else if (game->mapfile->map_tab[y][x] == 'd')
 		return (0x00FF0000);
+	else if (game->mapfile->map_tab[y][x] == 'D')
+		return (0x0000FF00);
 	return (0);
 }
 
 void	ft_scandale(t_game *game)
 {
-	mlx_key_hook(game->win, params, game);
+	//mlx_key_hook(game->win, params, game);
 	mlx_hook(game->win, 2, (1L<<0), key_hook, game);
 	mlx_hook(game->win, 6, (1L << 6), mouse, game);
-	mlx_mouse_hide();
+	mlx_hook(game->win, 3, 3, sprint_release, game);
+	mlx_hook(game->win, 17, 0, hook_exit, game);
 	mlx_loop(game->mlx);
 }
 

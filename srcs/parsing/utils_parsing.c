@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/11/20 14:14:12 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/21 14:37:31 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,20 @@ void	set_player_angle_pos(t_game *game, int x, int y)
 	game->player->delta_y = sin(game->player->angle) * 5;
 }
 
+void	ft_bzero2(void *s, size_t n)
+{
+	size_t			i;
+	unsigned char	*ptr;
+
+	ptr = (unsigned char *) s;
+	i = 0;
+	while (i < n)
+	{
+		ptr[i] = 0;
+		i++;
+	}
+}
+
 char	*copy_clean_line_map(char *line)
 {
 	int		i;
@@ -72,6 +86,7 @@ char	*copy_clean_line_map(char *line)
 	line_len = 0;
 	line_len = ft_strlen(line);
 	ret_line = malloc((line_len) * sizeof(char) + 10);
+	ft_bzero2(ret_line, line_len + 10);
 	while (line[i])
 	{
 		if (line[i] != '\n')

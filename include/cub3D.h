@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/11/20 14:56:16 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/21 14:54:46 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@
 # define K_OPEN			14
 # define K_ROTATE_L		123
 # define K_ROTATE_R		124
+# define K_SHIFT		257
 
 //presets jeu
 # define SCREEN_W			1400
@@ -58,6 +59,7 @@
 # define CUBESIZE			100
 # define FOV				150
 //# define FOV				60
+# define MAP_OFFSET			25
 
 //valeurs math
 # define PI					3.1415926
@@ -126,6 +128,7 @@ typedef struct s_game {
 	int					color;
 	int					minimap;
 	int					mouse;
+	int					sprint;
 }t_game;
 
 typedef struct s_player {
@@ -207,6 +210,10 @@ int		str_to_color(char *str);
 //		Hooks
 int		key_hook(int key, t_game *game);
 void	open_door(t_game *game);
+int		sprint_press(int key, t_game *game);
+int		sprint_release(int key, t_game *game);
+int		params(int key, t_game *game);
+int		hook_exit(t_game *game);
 
 //		render
 void	render(t_game *game);

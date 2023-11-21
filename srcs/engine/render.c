@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
+/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 19:16:26 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/14 19:17:29 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/21 14:46:15 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,6 @@
 
 void	draw_cubes(t_game *game, int x, int y, int color)
 {
-	// int x1;
-	// int y1;
-
-	// x1 = -1;
-	// y1 = -1;
-	// while (++x1 < CUBESIZE - 1)      //EN GRAND
-	// {
-	// 	while (++y1 < CUBESIZE - 1)
-	// 		put_pixel_to_img(game->img, (x * CUBESIZE) + x1, (y * CUBESIZE) + y1, color);
-	// 	y1 = -1;
-	// }
 	int	x1;
 	int	y1;
 
@@ -34,7 +23,7 @@ void	draw_cubes(t_game *game, int x, int y, int color)
 	while (++x1 < 10)
 	{
 		while (++y1 < 10)
-			put_pixel_to_img(game->img, (x * 10) + x1, (y * 10) + y1, color);
+			put_pixel_to_img(game->img, (x * 10) + x1 + MAP_OFFSET, (y * 10) + y1 + MAP_OFFSET, color);
 		y1 = -1;
 	}
 }
@@ -43,6 +32,7 @@ void	draw_map(t_game *game)
 {
 	int	x;
 	int	y;
+	int	color;
 
 	x = 0;
 	y = 0;
@@ -50,7 +40,9 @@ void	draw_map(t_game *game)
 	{
 		while (game->mapfile->map_tab[y] != 0)
 		{
-			draw_cubes(game, x, y, w_colors(game, x, y));
+			color = w_colors(game, x, y);
+			if (color != 0)
+				draw_cubes(game, x , y, color);
 			y++;
 		}
 		y = 0;
@@ -89,8 +81,8 @@ void	draw_player(t_game *game)
 	int	playerposX;
 	int	playerposY;
 
-	playerposX = (int)game->player->posx / 10; //screenW / 20
-	playerposY = (int)game->player->posy / 10; // screen H / 20
+	playerposX = (int)game->player->posx / 10 + MAP_OFFSET; //screenW / 20
+	playerposY = (int)game->player->posy / 10 + MAP_OFFSET; // screen H / 20
 	x = -1;
 	y = -1;
 	while (++x < 6)

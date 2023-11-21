@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
+/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:10:12 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/18 17:34:24 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/21 13:55:30 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ t_game	*init_game(void)
 	game->img = create_new_img(game);
 	game->minimap = 0;
 	game->mouse = 0;
+	game->sprint = 0;
 	mlx_mouse_move(game->win, SCREEN_W / 2, SCREEN_H / 2);
 	return (game);
 }
