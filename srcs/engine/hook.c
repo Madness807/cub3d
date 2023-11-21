@@ -6,11 +6,23 @@
 /*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 19:14:49 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/21 14:51:51 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/21 17:07:16 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+int		ok_to_open(t_game *game)
+{
+	int		px;
+	int		py;
+	
+	px = game->player->posx / CUBESIZE;
+	py = game->player->posy / CUBESIZE;
+	if (game->mapfile->map_tab[py][px] == 'D')
+		return (0);
+	return (1);
+}
 
 void	open_door(t_game *game)
 {
@@ -25,7 +37,8 @@ void	open_door(t_game *game)
 	my = next_y / CUBESIZE;
 	if (game->mapfile->map_tab[my][mx] == 'd')
 		game->mapfile->map_tab[my][mx] = 'D';
-	else if (game->mapfile->map_tab[my][mx] == 'D')
+	else if (game->mapfile->map_tab[my][mx] == 'D'
+		&& ok_to_open(game))
 		game->mapfile->map_tab[my][mx] = 'd';
 }
 

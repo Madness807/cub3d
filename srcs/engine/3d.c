@@ -6,41 +6,33 @@
 /*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:49:09 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/21 15:58:15 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/21 16:29:29 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	paint_roof(t_game *game, int wallwidth, int x)
+void	paint_roof(t_game *game, int x)
 {
 	int	y;
-	int	i;
 	y = -1;
-	i = -1;
 
 	while (++y < SCREEN_H / 2)
 	{
-		while (++i < wallwidth)
-			put_pixel_to_img(game->img, i + (wallwidth * x), y,
-					game->mapfile->c);
-		i = -1;
+		put_pixel_to_img(game->img, x, y,
+				game->mapfile->c);
 	}
 }
 
-void	paint_floor(t_game *game, int wallwidth, int x)
+void	paint_floor(t_game *game, int x)
 {
 	int	y;
-	int	i;
 
 	y = SCREEN_H / 2;
-	i = -1;
 	while (++y < SCREEN_H)
 	{
-		while (++i < wallwidth)
-			put_pixel_to_img(game->img, i + (wallwidth * x), y,
-					game->mapfile->f);
-		i = -1;
+		put_pixel_to_img(game->img, x, y,
+				game->mapfile->f);
 	}
 }
 
@@ -74,19 +66,18 @@ void print_text(t_game *game, t_var *var, int x, int y, int lineoff, double wall
 {
 	int color; //0xAA74D1EA
 	double r;
-	//double r2;
+	double r2;
 
-	r = CUBESIZE / wallsize; //game->tex[var->line->side].height / wallsize;
-	//r2 = game->tex[var->line->side].width / wallsize;
+	r = game->tex[var->line->side].height / wallsize; //game->tex[var->line->side].height / wallsize;
+	r2 = var->line->x * (game->tex[var->line->side].width / CUBESIZE);
 
-	color = get_color_from_texture(game, var->line->x, y * r, var->line->side);
+	color = get_color_from_texture(game, r2, y * r, var->line->side);
 	put_pixel_to_img(game->img, x, y + lineoff, color);
 }
 
 void	draw_screen_line(t_game *game, t_var *var, double len, int x)
 {
 	double	wallsize;
-	int		wallwidth;
 	int		y;
 	int		lineoff;
 	float	ca;
@@ -95,13 +86,12 @@ void	draw_screen_line(t_game *game, t_var *var, double len, int x)
 	ca = angle_corrector(ca);
 	len = len * cos(ca);
 	y = -1;
-	wallwidth = 1;
 	wallsize = (CUBESIZE * SCREEN_H) / len;
 	// if (wallsize >= SCREEN_H)
 	// 	wallsize = SCREEN_H;
 	lineoff = (SCREEN_H - wallsize) / 2;
-	paint_roof(game, wallwidth, x);
-	paint_floor(game, wallwidth, x);
+	paint_roof(game, x);
+	paint_floor(game, x);
 	while (++y < wallsize)
 	{
 		//put_pixel_to_img(game->img, x, y + lineoff, 0x00FF0000);
