@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:04:27 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/21 14:54:28 by efailla          ###   ########.fr       */
+/*   Updated: 2023/11/21 16:06:09 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ double	ray_collision(t_game *game, t_var *var, int x)
 	int		mx;
 	int		my;
 
+	var->line->side = -1;
 	while (var->dof < 50)
 	{
 		my = coord_mapy(var->ry, game->mapfile->map_h);
