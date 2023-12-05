@@ -6,7 +6,7 @@
 /*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/12/04 19:18:38 by joterret         ###   ########.fr       */
+/*   Updated: 2023/12/05 16:01:50 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ void	build_map_tab(t_game *game, char *argv)
 {
 	int	mapstart;
 
+	
 	mapstart = find_map_start(argv);
 	if (mapstart == 0)
 		print_error(ERR_MAP_FILE);

@@ -3,9 +3,8 @@ EA ./assets/image/sprites/diff.xpm
 SO ./assets/image/sprites/bob.xpm
 NO ./assets/image/sprites/nord_sprite.xpm
 
-
 F 110,110,100
-C 3,227,252
+C 0,0,0
 
         1111111111111111111111111
         1000000000110000000000001

@@ -6,7 +6,7 @@
 /*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/12/04 19:24:14 by joterret         ###   ########.fr       */
+/*   Updated: 2023/12/05 16:12:36 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@
 # define DR					0.005
 
 //message erreurs
-# define ERR_NO_ARGS			"ERROR\nAUCUN ARGUMENT\n"
+# define ERR_NO_ARGS			"ERROR\nPas assez ou trop d argument\n"
 # define ERR_EXTENSION			"ERROR\nMAUVAISE EXTENSION DE FICHIER DE MAP\n"
 # define ERR_MAP_WALL			"ERROR\nLA MAP N'EST PAS FERMEE PAR DES MURS\n"
 # define ERR_MAP_SPRITE_PATH	"ERROR\nLA TEXTURE N'EXISTE PAS\n"
@@ -89,6 +89,7 @@
 # define ERR_MAP_PLAYER_OUT		"ERROR\nJoueur hors de la map\n"
 # define ERR_MAP_TOO_PLAYER		"ERROR\nTrop de joueur sur la map\n"
 # define ERR_MAP_NO_FILE_ACCESS	"ERROR\nPas les droits d acces sur le .cub\n"
+# define ERR_MAP_CUB_BAD_EXT	"ERROR\nMauvaise extention de fichier map\n"
 # define ERR_MAP_NO_XPM_ACCESS	"ERROR\nPas les droits d acces sur les xpm\n"
 # define ERR_MAP_XPM_BAD_EXT	"ERROR\nMauvaise extension de ficher\n"
 
@@ -190,6 +191,7 @@ int		real_map_h(t_game *game);
 void	verif_map_spaces(t_game *game);
 void	set_player_angle_pos(t_game *game, int x, int y);
 int		chk_extension(t_game *game);
+int		ft_check_argv(char *argv);
 
 //		Verif Map
 void	only_one_player(t_game *game);

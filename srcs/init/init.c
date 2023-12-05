@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
+/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:10:12 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/21 13:55:30 by efailla          ###   ########.fr       */
+/*   Updated: 2023/12/05 17:00:39 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ t_mapfile	*init_map_file(void)
 	mapfile->so = NULL;
 	mapfile->ea = NULL;
 	mapfile->we = NULL;
-	mapfile->c = 0;
-	mapfile->f = 0;
+	mapfile->c = -1;
+	mapfile->f = -1;
 	return (mapfile);
 }
 
