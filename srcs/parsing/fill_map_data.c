@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_map_data.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
+/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/12/05 17:01:58 by joterret         ###   ########.fr       */
+/*   Updated: 2023/12/05 17:29:12 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,14 @@ void	fill_map_param(t_game *game, char *line)
 }
 
 void	write_param(t_game *game, char *line)
-{
-	//if (ft_strncmp(line, "\n", 1) == 0)
-		
+{	
 	if (!is_param(line))
 		fill_map_param(game, copy_clean_line_map(line));
 	else
+	{
 		print_error(ERR_INVALID_ARG_PARAM);
+		exit(1);
+	}
 	
 }
 
@@ -98,10 +99,11 @@ void	write_map_tab(t_game *game, char *argv, int mapstart)
 		line = get_next_line(fd);
 		if (i < mapstart)
 		{
-			write_param(game, line);
+			if (line[0] != '\n')
+				write_param(game, line);
 			free(line);
 		}
-		else if (i >= mapstart)
+		if (i >= mapstart)
 		{
 			write_map(game, line, mapindex);
 			mapindex++;

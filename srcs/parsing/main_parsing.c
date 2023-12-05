@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
+/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/12/05 16:01:50 by joterret         ###   ########.fr       */
+/*   Updated: 2023/12/05 17:20:45 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,4 +114,5 @@ void	build_map_tab(t_game *game, char *argv)
 	set_player_pos(game);
 	reset_map(game);
 	game->mapfile->map_h = real_map_h(game) - 1;
+	//exit(0);
 }

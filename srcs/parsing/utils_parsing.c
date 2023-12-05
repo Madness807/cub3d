@@ -6,7 +6,7 @@
 /*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/11/21 16:49:28 by efailla          ###   ########.fr       */
+/*   Updated: 2023/12/05 17:27:40 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,7 @@ int	is_param(char *line)
 	else if (ft_strncmp(line, "C", 1) == 0)
 		return (0);
 	else if (ft_strncmp(line, "\n", 1) == 0)
-	{
-		// free(line);
-		// line = NULL;
 		return (0);
-	}
 	else
 		return (1);
 }
