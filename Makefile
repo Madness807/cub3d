@@ -8,6 +8,7 @@ SRC				=		srcs/main.c\
 						srcs/parsing/fill_map_data.c\
 						srcs/parsing/utils_parsing.c\
 						srcs/parsing/map_verif.c\
+						srcs/parsing/path_file_chk.c\
 						srcs/engine/render.c\
 						srcs/engine/colors.c\
 						srcs/engine/rays.c\

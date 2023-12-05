@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
+/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:04:27 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/21 16:54:01 by efailla          ###   ########.fr       */
+/*   Updated: 2023/12/05 15:44:16 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,12 +110,14 @@ void	ft_scandale(t_game *game)
 int	main(int ac, char **av)
 {
 	t_game *game;
-	//sleep(10);
-	if (ac < 2)
+	sleep(10);
+	if (ac != 2)
 		return (1);
 	game = init_game();
+	
 	build_map_tab(game, av[1]);
 	print_struct_data(game);
+	chk_extension(game);
 	load_textures(game);
 	render(game);
 	ft_scandale(game);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
+/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/11/21 16:39:19 by efailla          ###   ########.fr       */
+/*   Updated: 2023/12/04 19:24:14 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,18 +79,18 @@
 # define ERR_CANT_OPEN_FILE		"ERROR\nIMPOSSIBLE D'OUVRIR LE FICHIER\n"
 # define ERR_INVALID_ARG_MAP	"ERROR\nCorp étrange dans la map\n"
 # define ERR_INVALID_ARG_PARAM	"ERROR\nCorp étrange dans les param de la map\n"
-# define ERR_MAP_EMPTY            "ERROR\nLe fichier de la map est vide\n"
-# define ERR_MAP_DOUBLONS        "ERROR\nDoublons present le fichier .cub\n"
-# define ERR_MAP_NUMER_OF_COLOR    "ERROR\nTrop ou pas assez de couleur\n"
-# define ERR_MAP_COLOR_RANGE    "ERROR\nNumero de couleur hors range\n"
-# define ERR_MAP_PATH_TEXTURE    "ERROR\nLe chemin de la texture est absent\n"
-# define ERR_MAP_NO_PLAYER        "ERROR\nPas de joueur sur la map\n"
-# define ERR_MAP_FILE            "ERROR\nFichier map vide\n"
-# define ERR_MAP_PLAYER_OUT        "ERROR\nJoueur hors de la map\n"
-# define ERR_MAP_TOO_PLAYER        "ERROR\nTrop de joueur sur la map\n"
-
-# define ERR_MAP_NO_FILE_ACCESS    "ERROR\nPas les droits d acces sur le .cub\n"
-# define ERR_MAP_NO_XPM_ACCESS    "ERROR\nPas les droits d acces sur les xpm\n"
+# define ERR_MAP_EMPTY			"ERROR\nLe fichier de la map est vide\n"
+# define ERR_MAP_DOUBLONS		"ERROR\nDoublons present le fichier .cub\n"
+# define ERR_MAP_NUMER_OF_COLOR "ERROR\nTrop ou pas assez de couleur\n"
+# define ERR_MAP_COLOR_RANGE	"ERROR\nNumero de couleur hors range\n"
+# define ERR_MAP_PATH_TEXTURE	"ERROR\nLe chemin de la texture est absent\n"
+# define ERR_MAP_NO_PLAYER		"ERROR\nPas de joueur sur la map\n"
+# define ERR_MAP_FILE			"ERROR\nFichier map vide\n"
+# define ERR_MAP_PLAYER_OUT		"ERROR\nJoueur hors de la map\n"
+# define ERR_MAP_TOO_PLAYER		"ERROR\nTrop de joueur sur la map\n"
+# define ERR_MAP_NO_FILE_ACCESS	"ERROR\nPas les droits d acces sur le .cub\n"
+# define ERR_MAP_NO_XPM_ACCESS	"ERROR\nPas les droits d acces sur les xpm\n"
+# define ERR_MAP_XPM_BAD_EXT	"ERROR\nMauvaise extension de ficher\n"
 
 ////////////////////////////////////////////////////////////////////////////////
 // 									enum								      //
@@ -189,6 +189,7 @@ char	*copy_clean_line_map(char *line);
 int		real_map_h(t_game *game);
 void	verif_map_spaces(t_game *game);
 void	set_player_angle_pos(t_game *game, int x, int y);
+int		chk_extension(t_game *game);
 
 //		Verif Map
 void	only_one_player(t_game *game);

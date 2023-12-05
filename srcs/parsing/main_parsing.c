@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
+/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/11/20 13:14:55 by efailla          ###   ########.fr       */
+/*   Updated: 2023/12/04 19:18:38 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	read_map_file(t_mapfile *mapfile, char *argv)
 		exit(EXIT_FAILURE) ;
 	while ((line = get_next_line(fd)) != NULL)
 	{
-		printf("%s\n", line);
+		//printf("%s\n", line);
 		if (is_map_line(line, " WSNE01\n\0") && !is_map_line(line, " 	\n\0"))
 			mapfile->map_h++;
 		free(line);
@@ -105,7 +105,7 @@ void	build_map_tab(t_game *game, char *argv)
 
 	mapstart = find_map_start(argv);
 	if (mapstart == 0)
-		print_error("coucou");
+		print_error(ERR_MAP_FILE);
 	read_map_file(game->mapfile, argv);
 	write_map_tab(game, argv, mapstart);
 	//verif_map_spaces(game);
