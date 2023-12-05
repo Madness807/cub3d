@@ -6,7 +6,7 @@
 /*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:10:12 by efailla           #+#    #+#             */
-/*   Updated: 2023/12/05 17:00:39 by joterret         ###   ########.fr       */
+/*   Updated: 2023/12/05 18:01:37 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_var	*init_var(t_game *game)
 	line = malloc(sizeof(t_line) + 1000);
 	var = malloc(sizeof(t_var) + 1000);
 	var->line = line;
-	var->r = SCREEN_W;//200 * 8;
+	var->r = SCREEN_W;
 	var->ra = game->player->angle - ((DR / 8) * var->r / 2);
 	var->ra = angle_corrector(var->ra);
 	return (var);
@@ -33,7 +33,7 @@ t_img	*create_new_img(t_game *game)
 	img = malloc(sizeof(t_img) + 100);
 	img->img = mlx_new_image(game->mlx, SCREEN_W, SCREEN_H);
 	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->line_length,
-								&img->endian);
+			&img->endian);
 	img->height = 0;
 	img->width = 0;
 	return (img);
@@ -47,7 +47,6 @@ t_player	*init_player(void)
 	player->angle = 0;
 	player->delta_x = cos(player->angle) * 5;
 	player->delta_y = sin(player->angle) * 5;
-
 	return (player);
 }
 

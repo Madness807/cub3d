@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
+/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 14:44:01 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/20 13:34:15 by efailla          ###   ########.fr       */
+/*   Updated: 2023/12/05 17:57:51 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,24 +33,18 @@ void	get_texture_data(t_game *game)
 	}
 }
 
-// void	alloc_textures(t_game *game)
-// {
-	
-// }
-
 void	load_textures(t_game *game)
 {
-	//game->tex = malloc(sizeof(t_img) * 5);
 	game->tex[NO].img = mlx_xpm_file_to_image(game->mlx, game->mapfile->no,
-				&game->tex[NO].width, &game->tex[NO].height);
+			&game->tex[NO].width, &game->tex[NO].height);
 	game->tex[WE].img = mlx_xpm_file_to_image(game->mlx, game->mapfile->we,
-				&game->tex[WE].width, &game->tex[WE].height);
+			&game->tex[WE].width, &game->tex[WE].height);
 	game->tex[EA].img = mlx_xpm_file_to_image(game->mlx, game->mapfile->ea,
-				&game->tex[EA].width, &game->tex[EA].height);
+			&game->tex[EA].width, &game->tex[EA].height);
 	game->tex[SO].img = mlx_xpm_file_to_image(game->mlx, game->mapfile->so,
-				&game->tex[SO].width, &game->tex[SO].height);
+			&game->tex[SO].width, &game->tex[SO].height);
 	game->tex[DOOR].img = mlx_xpm_file_to_image(game->mlx,
-		"./assets/image/sprites/door_sprite.xpm", &game->tex[DOOR].width,
+			"./assets/image/sprites/door_sprite.xpm", &game->tex[DOOR].width,
 			&game->tex[DOOR].height);
 	free_text_path(game);
 	get_texture_data(game);

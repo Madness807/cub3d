@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_map_data.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
+/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/12/05 17:29:12 by efailla          ###   ########.fr       */
+/*   Updated: 2023/12/05 17:50:05 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void	write_param(t_game *game, char *line)
 		print_error(ERR_INVALID_ARG_PARAM);
 		exit(1);
 	}
-	
 }
 
 void	write_map(t_game *game, char *line, int mapindex)
@@ -109,7 +108,6 @@ void	write_map_tab(t_game *game, char *argv, int mapstart)
 			mapindex++;
 			free(line);
 		}
-		//free(line);
 		i++;
 	}
 	close (fd);

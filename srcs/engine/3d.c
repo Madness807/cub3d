@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   3d.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
+/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:49:09 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/21 16:29:29 by efailla          ###   ########.fr       */
+/*   Updated: 2023/12/05 17:53:29 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 void	paint_roof(t_game *game, int x)
 {
 	int	y;
-	y = -1;
 
+	y = -1;
 	while (++y < SCREEN_H / 2)
 	{
 		put_pixel_to_img(game->img, x, y,
-				game->mapfile->c);
+			game->mapfile->c);
 	}
 }
 
@@ -32,7 +32,7 @@ void	paint_floor(t_game *game, int x)
 	while (++y < SCREEN_H)
 	{
 		put_pixel_to_img(game->img, x, y,
-				game->mapfile->f);
+			game->mapfile->f);
 	}
 }
 
@@ -62,15 +62,14 @@ int	get_color_from_texture(t_game *game, int x, int y, int side)
 	return (((int)r << 16) + ((int)g << 8) + (int)b);
 }
 
-void print_text(t_game *game, t_var *var, int x, int y, int lineoff, double wallsize)
+void	print_text(t_game *game, t_var *var, int x, int y, int lineoff, double wallsize)
 {
-	int color; //0xAA74D1EA
-	double r;
-	double r2;
+	int		color;
+	double	r;
+	double	r2;
 
-	r = game->tex[var->line->side].height / wallsize; //game->tex[var->line->side].height / wallsize;
+	r = game->tex[var->line->side].height / wallsize;
 	r2 = var->line->x * (game->tex[var->line->side].width / CUBESIZE);
-
 	color = get_color_from_texture(game, r2, y * r, var->line->side);
 	put_pixel_to_img(game->img, x, y + lineoff, color);
 }
@@ -87,14 +86,11 @@ void	draw_screen_line(t_game *game, t_var *var, double len, int x)
 	len = len * cos(ca);
 	y = -1;
 	wallsize = (CUBESIZE * SCREEN_H) / len;
-	// if (wallsize >= SCREEN_H)
-	// 	wallsize = SCREEN_H;
 	lineoff = (SCREEN_H - wallsize) / 2;
 	paint_roof(game, x);
 	paint_floor(game, x);
 	while (++y < wallsize)
 	{
-		//put_pixel_to_img(game->img, x, y + lineoff, 0x00FF0000);
 		print_text(game, var, x, y, lineoff, wallsize);
 	}
 }

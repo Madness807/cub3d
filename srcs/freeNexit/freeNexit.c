@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   freeNexit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
+/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:10:12 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/20 13:56:59 by efailla          ###   ########.fr       */
+/*   Updated: 2023/12/05 17:58:07 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,3 @@ void	free_all(t_game *game)
 	free_map(game);
 	free(game);
 }
-/*
-void    free_exit(t_game *game)
-{
-    
-    free(game->mapfile->color_celling);
-    free(game->mapfile->color_floor);
-
-    free(game->mapfile);
-
-    free(game);
-
-    return ;
-}
-*/
-

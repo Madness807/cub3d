@@ -6,13 +6,13 @@
 /*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 14:04:27 by efailla           #+#    #+#             */
-/*   Updated: 2023/12/05 16:11:35 by joterret         ###   ########.fr       */
+/*   Updated: 2023/12/05 18:05:32 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void stock_x_tex(t_var *var, t_game *game, int len, int x)
+void	stock_x_tex(t_var *var, t_game *game, int len, int x)
 {
 	(void)game;
 	if (x)
@@ -25,7 +25,7 @@ void stock_x_tex(t_var *var, t_game *game, int len, int x)
 	else if (!x && len < var->len)
 	{
 		if (var->ra < P2 || var->ra > P3)
-			var->line->x = ((int)var->ry % CUBESIZE); 
+			var->line->x = ((int)var->ry % CUBESIZE);
 		else
 			var->line->x = (CUBESIZE - ((int)var->ry % CUBESIZE));
 	}
@@ -99,8 +99,7 @@ int	w_colors(t_game *game, int x, int y)
 
 void	ft_scandale(t_game *game)
 {
-	//mlx_key_hook(game->win, params, game);
-	mlx_hook(game->win, 2, (1L<<0), key_hook, game);
+	mlx_hook(game->win, 2, (1L << 0), key_hook, game);
 	mlx_hook(game->win, 6, (1L << 6), mouse, game);
 	mlx_hook(game->win, 3, 3, sprint_release, game);
 	mlx_hook(game->win, 17, 0, hook_exit, game);
@@ -109,8 +108,8 @@ void	ft_scandale(t_game *game)
 
 int	main(int ac, char **av)
 {
-	t_game *game;
-	//sleep(10);
+	t_game	*game;
+
 	if (ac != 2)
 	{
 		print_error(ERR_NO_ARGS);

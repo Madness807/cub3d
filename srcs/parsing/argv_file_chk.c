@@ -6,24 +6,22 @@
 /*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 15:57:23 by joterret          #+#    #+#             */
-/*   Updated: 2023/12/05 16:06:45 by joterret         ###   ########.fr       */
+/*   Updated: 2023/12/05 17:49:53 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cub3D.h>
 
-int ft_check_argv(char *argv)
+int	ft_check_argv(char *argv)
 {
-    char *extension;
-    char *res;
-    size_t  suffix_lenght;
+	char	*extension;
+	char	*res;
+	size_t	suffix_lenght;
 
-    extension = ".cub";
-    suffix_lenght = ft_strlen(extension);
-
+	extension = ".cub";
+	suffix_lenght = ft_strlen(extension);
 	res = ft_strnstr(argv, extension, ft_strlen(argv));
-
-	if (res == NULL || (res - argv) + strlen(extension) != strlen(argv) 
+	if (res == NULL || (res - argv) + strlen(extension) != strlen(argv)
 		|| ft_strncmp(res, extension, suffix_lenght) != 0)
 	{
 		print_error(ERR_MAP_CUB_BAD_EXT);

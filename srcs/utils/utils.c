@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
+/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 16:48:18 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/18 17:12:18 by efailla          ###   ########.fr       */
+/*   Updated: 2023/12/05 18:02:29 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	put_pixel_to_img(t_img *img, int x, int y, int color)
 	if (y < 0)
 		y = 0;
 	dst = img->addr + (y * img->line_length + x * (img->bpp / 8));
-	*(unsigned int*)dst = color;
+	*(unsigned int *)dst = color;
 }
 
 int	coord_mapy(double y, int limit)
@@ -42,9 +42,9 @@ int	coord_mapy(double y, int limit)
 
 int	coord_mapx(t_game *game, double x, int y)
 {
-	int n;
+	int	n;
 	int	i;
-	int limit;
+	int	limit;
 
 	i = 0;
 	while (game->mapfile->map_tab[y][i] != 0)

@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: efailla <efailla@student.42.fr>            +#+  +:+       +#+        */
+/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 19:14:49 by efailla           #+#    #+#             */
-/*   Updated: 2023/11/21 17:07:16 by efailla          ###   ########.fr       */
+/*   Updated: 2023/12/05 18:07:02 by joterret         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int		ok_to_open(t_game *game)
+int	ok_to_open(t_game *game)
 {
 	int		px;
 	int		py;
-	
+
 	px = game->player->posx / CUBESIZE;
 	py = game->player->posy / CUBESIZE;
 	if (game->mapfile->map_tab[py][px] == 'D')
@@ -30,7 +30,7 @@ void	open_door(t_game *game)
 	double	next_y;
 	int		mx;
 	int		my;
-	
+
 	next_x = game->player->posx + (game->player->delta_x * 15);
 	next_y = game->player->posy + (game->player->delta_y * 15);
 	mx = next_x / CUBESIZE;
@@ -47,8 +47,7 @@ int	mouse(int x, int y, t_game *game)
 	double	sens;
 	double	angle;
 	int		dx;
-	// printf("coord x : %d\n", x);
-	// printf("coord y : %d\n\n", y);
+
 	if (game->mouse == 0)
 		return (0);
 	(void)y;
@@ -60,7 +59,7 @@ int	mouse(int x, int y, t_game *game)
 		angle += (0.1 * sens);
 	else if (dx < 0)
 		angle -= (0.1 * sens);
-	game->player->angle =  angle_corrector(angle);
+	game->player->angle = angle_corrector(angle);
 	game->player->delta_x = cos(game->player->angle) * 5;
 	game->player->delta_y = sin(game->player->angle) * 5;
 	render(game);
@@ -84,15 +83,15 @@ int	check_collisions(t_game *game, int key)
 		next_x = game->player->posx - (game->player->delta_x * 4);
 		next_y = game->player->posy - (game->player->delta_y * 4);
 	}
-	mx = next_x / CUBESIZE;//coord_map(next_x);
-	my = next_y / CUBESIZE;//coord_map(next_y);
+	mx = next_x / CUBESIZE;
+	my = next_y / CUBESIZE;
 	if (game->mapfile->map_tab[my][mx] == '1' ||
 		game->mapfile->map_tab[my][mx] == 'd')
 		return (0);
 	return (1);
 }
 
-int	check_collisions_LR(t_game *game, int key)
+int	check_collisions_lr(t_game *game, int key)
 {
 	double	next_x;
 	double	next_y;
@@ -109,8 +108,8 @@ int	check_collisions_LR(t_game *game, int key)
 		next_x = game->player->posx + (game->player->delta_y * 4);
 		next_y = game->player->posy - (game->player->delta_x * 4);
 	}
-	mx = next_x / CUBESIZE;//coord_map(next_x);
-	my = next_y / CUBESIZE;//coord_map(next_y);
+	mx = next_x / CUBESIZE;
+	my = next_y / CUBESIZE;
 	if (game->mapfile->map_tab[my][mx] == '1' ||
 		game->mapfile->map_tab[my][mx] == 'd')
 		return (0);
@@ -160,12 +159,12 @@ int	hook_exit(t_game *game)
 
 void	side_movement(t_game *game, int key)
 {
-	if (key == K_LEFT && check_collisions_LR(game, key))
+	if (key == K_LEFT && check_collisions_lr(game, key))
 	{
 		game->player->posx += game->player->delta_y;
 		game->player->posy -= game->player->delta_x;
 	}
-	else if (key == K_RIGHT && check_collisions_LR(game, key))
+	else if (key == K_RIGHT && check_collisions_lr(game, key))
 	{
 		game->player->posx -= game->player->delta_y;
 		game->player->posy += game->player->delta_x;
@@ -196,7 +195,6 @@ int	sprint_press(int key, t_game *game)
 
 int	key_hook(int key, t_game *game)
 {
-	//printf("key: %i\n", key);
 	if (key == K_ESC)
 		hook_exit(game);
 	else if (key == K_ROTATE_L || key == K_ROTATE_R)
