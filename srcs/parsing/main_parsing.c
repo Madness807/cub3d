@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_parsing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
+/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:41:42 by joterret          #+#    #+#             */
-/*   Updated: 2023/12/05 17:50:49 by joterret         ###   ########.fr       */
+/*   Updated: 2023/12/06 17:33:56 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,13 @@ void	read_map_file(t_mapfile *mapfile, char *argv)
 	fd = open(argv, O_RDONLY);
 	if (fd == -1)
 		exit(EXIT_FAILURE);
-	while ((line = get_next_line(fd)) != NULL)
+	line = get_next_line(fd);
+	while (line != NULL)
 	{
 		if (is_map_line(line, " WSNE01\n\0") && !is_map_line(line, " 	\n\0"))
 			mapfile->map_h++;
 		free(line);
+		line = get_next_line(fd);
 	}
 	mapfile->map_tab = malloc((mapfile->map_h + 4) * sizeof(char *));
 	if (!mapfile->map_tab)
@@ -58,17 +60,19 @@ int	find_map_start(char *argv)
 	int		mapstart;
 	int		i;
 
-	line = "";
 	mapstart = 0;
 	i = 0;
 	fd = open(argv, O_RDONLY);
 	if (fd == -1)
 		exit(EXIT_FAILURE);
-	while ((line = get_next_line(fd)) != NULL)
+	line = get_next_line(fd);
+	while (line != NULL)
 	{
-		if (is_map_line(line, "	 d01\n") && !is_map_line(line, " 	\n") && !mapstart)
+		if (is_map_line(line, "	 d01\n")
+			&& !is_map_line(line, " 	\n") && !mapstart)
 			mapstart = i;
 		free(line);
+		line = get_next_line(fd);
 		i++;
 	}
 	close (fd);

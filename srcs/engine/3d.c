@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   3d.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
+/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 18:49:09 by efailla           #+#    #+#             */
-/*   Updated: 2023/12/05 17:53:29 by joterret         ###   ########.fr       */
+/*   Updated: 2023/12/06 17:50:28 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,6 @@ void	paint_floor(t_game *game, int x)
 	}
 }
 
-// int	texture_color(t_game *game, t_var *var, int x, int y)
-// {
-// 	int	i;
-// 	unsigned int color;
-
-// 	i = var->line->side;
-// 	color = game->tex[i].addr + (y * game->tex[i].line_length + var->line->x *
-// 		(game->tex[i].bpp / 8));
-// }
-
 int	get_color_from_texture(t_game *game, int x, int y, int side)
 {
 	unsigned char	r;
@@ -62,35 +52,34 @@ int	get_color_from_texture(t_game *game, int x, int y, int side)
 	return (((int)r << 16) + ((int)g << 8) + (int)b);
 }
 
-void	print_text(t_game *game, t_var *var, int x, int y, int lineoff, double wallsize)
+void	print_text(t_game *game, t_var *var, t_scandale scand)
 {
 	int		color;
 	double	r;
 	double	r2;
 
-	r = game->tex[var->line->side].height / wallsize;
+	r = game->tex[var->line->side].height / scand.wallsize;
 	r2 = var->line->x * (game->tex[var->line->side].width / CUBESIZE);
-	color = get_color_from_texture(game, r2, y * r, var->line->side);
-	put_pixel_to_img(game->img, x, y + lineoff, color);
+	color = get_color_from_texture(game, r2, scand.y * r, var->line->side);
+	put_pixel_to_img(game->img, scand.x, scand.y + scand.lineoff, color);
 }
 
 void	draw_screen_line(t_game *game, t_var *var, double len, int x)
 {
-	double	wallsize;
-	int		y;
-	int		lineoff;
-	float	ca;
+	float		ca;
+	t_scandale	scand;
 
+	scand.x = x;
+	scand.y = -1;
 	ca = game->player->angle - var->ra;
 	ca = angle_corrector(ca);
 	len = len * cos(ca);
-	y = -1;
-	wallsize = (CUBESIZE * SCREEN_H) / len;
-	lineoff = (SCREEN_H - wallsize) / 2;
+	scand.wallsize = (CUBESIZE * SCREEN_H) / len;
+	scand.lineoff = (SCREEN_H - scand.wallsize) / 2;
 	paint_roof(game, x);
 	paint_floor(game, x);
-	while (++y < wallsize)
+	while (++scand.y < scand.wallsize)
 	{
-		print_text(game, var, x, y, lineoff, wallsize);
+		print_text(game, var, scand);
 	}
 }

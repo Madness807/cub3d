@@ -13,9 +13,13 @@ SRC				=		srcs/main.c\
 						srcs/engine/render.c\
 						srcs/engine/colors.c\
 						srcs/engine/rays.c\
+						srcs/engine/rays2.c\
 						srcs/engine/3d.c\
 						srcs/engine/hook.c\
+						srcs/engine/hook2.c\
+						srcs/engine/hooks3.c\
 						srcs/engine/textures.c\
+						srcs/engine/norm.c\
 						srcs/error/print_error.c\
 						srcs/test/verbos.c\
 						srcs/utils/utils.c\

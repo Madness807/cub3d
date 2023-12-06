@@ -3,53 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   rays.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
+/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 23:17:03 by efailla           #+#    #+#             */
-/*   Updated: 2023/12/05 18:07:30 by joterret         ###   ########.fr       */
+/*   Updated: 2023/12/06 17:55:03 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	draw_rays(t_game *game, int depth, t_var *var)
+void	infinite_ray(t_game *game, t_var *var)
 {
-	int		x;
-	int		y;
-	int		len;
-	double	angle;
-
-	x = (int)game->player->posx;
-	y = (int)game->player->posy;
-	angle = var->ra;
-	len = 1;
-	while (++len < depth)
-		put_pixel_to_img(game->img, (int)(cos(angle) * len + x),
-			(int)(sin(angle) * len + y), 0x00EF95CF);
-}
-
-void	draw_direction(t_game *game, int depth)
-{
-	int		x;
-	int		y;
-	int		len;
-	double	angle;
-
-	x = (int)game->player->posx / 10 + MAP_OFFSET;
-	y = (int)game->player->posy / 10 + MAP_OFFSET;
-	angle = game->player->angle;
-	len = 1;
-	while (++len < depth)
-		put_pixel_to_img(game->img, (int)(cos(angle) * len + x),
-			(int)(sin(angle) * len + y), 0x00FF0000);
-}
-
-int	check_ray_len(int ax, int ay, int bx, int by)
-{
-	int	len;
-
-	len = ((ax - bx) * (ax - bx)) + ((ay - by) * (ay - by));
-	return (len);
+	var->rx = game->player->posx;
+	var->ry = game->player->posy;
+	var->dof = 10;
 }
 
 double	check_vertical(t_game *game, t_var *var, double atan)
@@ -72,11 +39,7 @@ double	check_vertical(t_game *game, t_var *var, double atan)
 		var->yo = -var->xo * atan;
 	}
 	if (var->ra == PI || var->ra == 0)
-	{
-		var->rx = game->player->posx;
-		var->ry = game->player->posy;
-		var->dof = 10;
-	}
+		infinite_ray(game, var);
 	len = ray_collision(game, var, 0);
 	var->dof = 0;
 	return (len);
@@ -101,11 +64,7 @@ double	check_horizontal(t_game *game, t_var *var, double atan)
 		var->xo = -var->yo * atan;
 	}
 	if (var->ra == PI || var->ra == 0)
-	{
-		var->rx = game->player->posx;
-		var->ry = game->player->posy;
-		var->dof = 10;
-	}
+		infinite_ray(game, var);
 	len = ray_collision(game, var, 1);
 	var->len = len;
 	var->dof = 0;

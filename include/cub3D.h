@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
+/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 13:53:57 by joterret          #+#    #+#             */
-/*   Updated: 2023/12/05 16:12:36 by joterret         ###   ########.fr       */
+/*   Updated: 2023/12/06 17:46:25 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,6 +170,14 @@ typedef struct s_mapfile
 	int					*fd;
 }t_mapfile;
 
+typedef struct s_scandale
+{
+	int		x;
+	int		y;
+	int		lineoff;
+	double	wallsize;
+}t_scandale;
+
 ////////////////////////////////////////////////////////////////////////////////
 // 							Prototype de fonctions						      //
 ////////////////////////////////////////////////////////////////////////////////
@@ -192,6 +200,7 @@ void	verif_map_spaces(t_game *game);
 void	set_player_angle_pos(t_game *game, int x, int y);
 int		chk_extension(t_game *game);
 int		ft_check_argv(char *argv);
+void	fill_map_param(t_game *game, char *line);
 
 //		Verif Map
 void	only_one_player(t_game *game);
@@ -201,6 +210,7 @@ void	reset_map(t_game *game);
 
 //		Gestion des erreurs
 void	print_error(char *error);
+int		print_err_double_path(void);
 
 //		Utils
 double	angle_corrector(double angle);
@@ -217,6 +227,10 @@ int		sprint_press(int key, t_game *game);
 int		sprint_release(int key, t_game *game);
 int		params(int key, t_game *game);
 int		hook_exit(t_game *game);
+int		check_collisions_lr(t_game *game, int key);
+void	camera_movement(t_game *game, int key);
+void	towards_backward_movement(t_game *game, int key);
+int		check_collisions(t_game *game, int key);
 
 //		render
 void	render(t_game *game);

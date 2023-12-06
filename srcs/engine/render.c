@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: joterret <joterret@student.42.fr>          +#+  +:+       +#+        */
+/*   By: efailla <efailla@42Lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 19:16:26 by efailla           #+#    #+#             */
-/*   Updated: 2023/12/05 18:09:12 by joterret         ###   ########.fr       */
+/*   Updated: 2023/12/06 17:50:59 by efailla          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	draw_cubes(t_game *game, int x, int y, int color)
 	while (++x1 < 10)
 	{
 		while (++y1 < 10)
-			put_pixel_to_img(game->img, (x * 10) + x1 + MAP_OFFSET, (y * 10) + y1 + MAP_OFFSET, color);
+			put_pixel_to_img(game->img, (x * 10) + x1 + MAP_OFFSET,
+				(y * 10) + y1 + MAP_OFFSET, color);
 		y1 = -1;
 	}
 }
